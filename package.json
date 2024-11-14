@@ -39,7 +39,8 @@
     "doc": "typedoc",
     "copy": "copyfiles README.md LICENSE.md dist/",
     "gen": "openapi-generator-cli generate -i https://api.sandbox.mozaic.io/swagger/v1/swagger.json -g typescript-axios -o ./src/api -t ./custom-templates",
-    "ver": "npm version prerelease --preid alpha"
+    "ver": "npm version prerelease --preid alpha",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "axios": "^1.7.7"
