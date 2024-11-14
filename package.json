@@ -1,11 +1,22 @@
 {
   "name": "@mozaic-io/mozaic-sdk-node",
+  "description": "The Mozaic Node SDK enables you to pay your creators easily via the Mozaic API.",
+  "keywords": ["Node", "Mozaic", "Mozaic.io", "Creator", "Creators", "Payments", "API", "SDK", "CommonJS", "ESM"],
   "version": "1.0.2-alpha.1",
   "author": {
     "email": "product@jammber.com",
     "name": "mozaic.io",
     "url": "https://mozaic.io"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mozaic-io/sdk-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mozaic-io/sdk-node/issues"
+  },
+  "homepage": "https://github.com/mozaic-io/sdk-node",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

@@ -1,7 +1,7 @@
 {
     "entryPoints": ["src"], // ["src/index.ts", "src/resources/PaymentCycles/PaymentCycles.ts", "src/resources/Wallets/Wallets.ts"], //["src/**/*.ts"], // ["src/index.ts", "src/resources/PaymentCycles/PaymentCycles.ts"], // , "src/resources/**/*.ts" "src/api/**/*.ts" // or ["src"] for the whole directory
     "entryPointStrategy": "expand", // This will include all files under the directory recursively
-    "out": "dist/docs",
+    "out": "docs",
     //"logLevel": "Error",
     "includeVersion": true,
 
