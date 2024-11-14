@@ -3,7 +3,7 @@ The Mozaic SDK gives users simplified access to the Mozaic API. A Personal Acces
 
 # Documentation
 
-[SDK Documentation](./documents/index.md)
+[SDK Documentation](https://mozaic-io.github.io/sdk-node/documents/Mozaic_SDK.html)
 
 # Installation
 

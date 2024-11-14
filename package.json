@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/mozaic-io/sdk-node/issues"
   },
-  "homepage": "https://github.com/mozaic-io/sdk-node",
+  "homepage": "https://mozaic-io.github.io/sdk-node/documents/Mozaic_SDK.html",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
