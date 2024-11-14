@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+      "module": "commonjs",
+      "target": "es6",
+      "strict": true,
+      "esModuleInterop": true,
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "declaration": true,        // Generates .d.ts files
+      "declarationMap": true,      // Optional: Generates .d.ts.map files for better debugging
+      "emitDeclarationOnly": false, // Emits both .js and .d.ts files
+      "resolveJsonModule": true,
+      //"types": ["node"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "test"]
+}
+
+
+// {
+//   "extends": "./tsconfig.cjs.json",
+//   "compilerOptions": {
+//         "module": "commonjs",
+//         "target": "es6",
+//         "strict": true,
+//         "esModuleInterop": true,
+//         "outDir": "./dist",
+//         "rootDir": "./src",
+//         "skipLibCheck": true,
+//         "forceConsistentCasingInFileNames": true
+//     // "noEmit": true,
+//     // "types": ["node"]
+//   },
+//   // "ts-node": {
+//   //   "experimentalResolver": true
+//   // },
+//   "include": ["src/**/*.ts", "test/**/*.ts"]
+// }
+
+
+
+
+// {
+//     "extends": "./tsconfig.cjs.json",
+//     "compilerOptions": {
+//       "noEmit": true,
+//       "types": ["node", "jest"],
+//       "declaration": true
+//     },
+//     "ts-node": {
+//       "experimentalResolver": true
+//     },
+//     "include": ["src/**/*.ts", "test/**/*.ts"]
+//   }

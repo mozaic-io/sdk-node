@@ -1,0 +1,9 @@
+/* tslint:disable */
+/* eslint-disable */
+/**
+* This module provides low level access to the API. Refer to the Mozaic SDK for high level access to Mozaic.
+*/
+{{>licenseInfo}}
+export * from "./api";
+export * from "./configuration";
+{{#withSeparateModelsAndApi}}export * from "./{{tsModelPackage}}";{{/withSeparateModelsAndApi}}

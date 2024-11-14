@@ -1,0 +1,53 @@
+title Payment Cycles (SDK)
+
+participant Evolved as e
+participant Mozaic SDK as sdk
+participant Mozaic as m
+participant Recipients as r
+
+opt Authenticate
+e->+sdk: new Mozaic(basePath, apiKey)
+sdk-->>e: sdk (Mozaic)
+end
+
+opt Execute Payment Cycle
+    e->sdk: sdk.PaymentCycles.createPaymentCycle\n(name, feeDirection, memo, accountingFromDateUtc, accountingToDateUtc)
+    sdk-->>e: paymentCycle
+    
+    loop Create a Payment Cycle Entry for each Recipient using API
+        e->sdk: paymentCycle.addPaymentCycleEntry(name, email, amount, currency)
+        sdk-->>e: paymentCycleEntry
+    end
+    
+    opt Get Funding Source
+        e->sdk: sdk.Wallets.getWallets()
+        sdk-->>e: wallets
+        e->e: Select Wallet with\npayment method 
+        e->e: Select walletItem from\nwallet representing\nthe payment method
+    end
+    
+    opt Fund Payment Cycle and Finalize
+        e->sdk: paymentCycle.finalize(walletItem)
+        sdk-->>e: paymentCycle (updated status to invoicing)
+    end
+    
+    sdk->m: Issue Payments
+    m->r: Issue Payments
+end
+
+opt Checking the payment cycle status
+    e->sdk: sdk.PaymentCycles.getPaymentCycle(paymentCycleId)
+    sdk-->>e: paymentCycle
+end
+
+
+opt Checking the status of each payment on a payment cycle
+    e->sdk: paymentCycle.getPaymentCycleEntries(limit, page)
+    sdk-->>e: paymentCycleEntryList
+end
+
+opt Getting an Invoice for a Payment Cycle API as pcapi
+    e->sdk: paymentCycle.getInvoice()
+    sdk-->>e: ArrayBuffer (PDF Bytes)
+end
+
