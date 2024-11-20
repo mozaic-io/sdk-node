@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "build": "tsc & npm run copy & npm run doc",
+    "build": "tsc && npm run copy && npm run doc",
     "doc": "typedoc",
     "copy": "copyfiles README.md LICENSE.md dist/",
     "gen": "openapi-generator-cli generate -i https://api.sandbox.mozaic.io/swagger/v1/swagger.json -g typescript-axios -o ./src/api -t ./custom-templates",
