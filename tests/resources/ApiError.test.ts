@@ -1,5 +1,5 @@
 import { AxiosError, AxiosHeaders, AxiosResponse, InternalAxiosRequestConfig } from "axios";
-import { ApiError } from "../../src";
+import { MozaicError } from "../../src";
 
 describe("ApiError Tests", () => {
 
@@ -7,7 +7,7 @@ describe("ApiError Tests", () => {
         const error = new AxiosError("This is an error", "400");
         error.status = 400;
         
-        const apiError = ApiError.create(error);
+        const apiError = MozaicError.create(error);
 
         expect(apiError.stack).toBe(error.stack);
     });
@@ -16,7 +16,7 @@ describe("ApiError Tests", () => {
         const config: InternalAxiosRequestConfig = {headers: new AxiosHeaders()};
         const result: AxiosResponse = {data: "pork", status: 400, config: config, headers: new AxiosHeaders(), statusText: "pork status" };
 
-        const apiError = ApiError.create(result);
+        const apiError = MozaicError.create(result);
 
         expect(apiError.stack).not.toBe(undefined);
     });
@@ -26,10 +26,32 @@ describe("ApiError Tests", () => {
         const config: InternalAxiosRequestConfig = {headers: new AxiosHeaders()};
         error.response = {data: "data", config: config, headers: config.headers, status: 400, statusText: "broken"};
 
-        const apiError = ApiError.create(error);
+        const apiError = MozaicError.create(error);
 
         expect(apiError.status).toBe(-1);
-        expect(apiError.message).toBe("This is an error: broken");
+        expect(apiError.message).toBe("This is an error: broken, data");
+    });
+
+    it("It should show all values from data when data is an array", async () => {
+        const error = new AxiosError("This is an error");
+        const config: InternalAxiosRequestConfig = {headers: new AxiosHeaders()};
+        error.response = {data: [{ErrorMessage: "data 1", ErrorNumber: -1234}, {ErrorMessage: "data 2", ErrorNumber: -1234}], config: config, headers: config.headers, status: 400, statusText: "broken"};
+
+        const apiError = MozaicError.create(error);
+
+        expect(apiError.status).toBe(-1);
+        expect(apiError.message).toBe("This is an error: broken, data 1, data 2");
+    });
+
+    it("It should not break with an invalid type in the data array", async () => {
+        const error = new AxiosError("This is an error");
+        const config: InternalAxiosRequestConfig = {headers: new AxiosHeaders()};
+        error.response = {data: [{Flonk: "data 1", Bonk: -1234}, {Donk: "data 2", McGonk: -1234}], config: config, headers: config.headers, status: 400, statusText: "broken"};
+
+        const apiError = MozaicError.create(error);
+
+        expect(apiError.status).toBe(-1);
+        expect(apiError.message).toBe("This is an error: broken{\"Flonk\":\"data 1\",\"Bonk\":-1234}{\"Donk\":\"data 2\",\"McGonk\":-1234}");
     });
 
 });

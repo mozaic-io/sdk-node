@@ -13,7 +13,7 @@ import { PaymentCycles } from "./resources/PaymentCycles/PaymentCycles";
 import { Permissions } from "./resources/Permissions/Permissions";
 import { Wallets } from "./resources/Wallets/Wallets";
 
-export { ApiError } from "./resources/ApiError";
+export { MozaicError } from "./resources/MozaicError";
 
 // export { Invoices } from "./resources/Invoices/Invoices";
 // export { PaymentCycles } from "./resources/PaymentCycles/PaymentCycles";

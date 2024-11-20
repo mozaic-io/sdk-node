@@ -1,6 +1,5 @@
-import { Mozaic } from "../../../src";
+import { Mozaic, MozaicError } from "../../../src";
 import { PermissionsApi } from "../../../src/api";
-import { ApiError } from "../../../src/resources/ApiError";
 import { TestUtils } from "../../TestUtils";
 
 const sdk = new Mozaic(
@@ -34,7 +33,7 @@ describe("Mock Permissions Tests", () => {
             await sdk.Permissions.getPermissions();
             fail("Call did not throw an exception.");
         } catch (ex) {
-            expect(ex).toBeInstanceOf(ApiError);
+            expect(ex).toBeInstanceOf(MozaicError);
         }
     });
 });

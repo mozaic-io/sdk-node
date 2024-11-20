@@ -1,7 +1,7 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { Mozaic } from "../..";
 import { Configuration, PermissionsApi } from "../../api";
-import { ApiError } from "../ApiError";
+import { MozaicError } from "../MozaicError";
 import { BaseResource } from "../BaseResource";
 
 /**

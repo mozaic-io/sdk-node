@@ -1,4 +1,4 @@
-import { ApiError, Mozaic } from "../../../src";
+import { MozaicError, Mozaic } from "../../../src";
 import { InvoicesApi, PaymentCycleListResponse, PaymentCyclesApi } from "../../../src/api";
 import { TestUtils } from "../../TestUtils";
 import { RawAxiosRequestConfig } from "axios";
@@ -39,7 +39,7 @@ describe("Payment Cycle Tests", () => {
             fail("It didn't throw the exception.");
         }
         catch (ex) {
-            expect(ex).toBeInstanceOf(ApiError);
+            expect(ex).toBeInstanceOf(MozaicError);
         }
     });
 

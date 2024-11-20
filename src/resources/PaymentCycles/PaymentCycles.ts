@@ -7,7 +7,7 @@
 
 import { Mozaic } from "../..";
 import { Configuration, PaymentCyclesApi, PaymentCycleCreateDeets, FeeDirection } from "../../api";
-import { ApiError } from "../ApiError";
+import { MozaicError } from "../MozaicError";
 import { BaseResource } from "../BaseResource";
 import { PaymentCycle } from "./PaymentCycle";
 import { PaymentCycleList } from "./PaymentCycleList";
