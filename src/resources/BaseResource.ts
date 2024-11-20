@@ -1,5 +1,5 @@
-import { AxiosResponse } from "axios";
-import { ApiException } from "./ApiException";
+import { AxiosError, AxiosResponse } from "axios";
+import { ApiError } from "./ApiError";
 
 /**
  * All classes in the resource folder should implement this interface so that they
@@ -39,12 +39,34 @@ export abstract class BaseResource {
     }
 
     /**
-     * A helper function to detect when the API has returned a non-ok response and throw an exception.
-     * @param response 
+     * A helper function to ensure that API calls are successful and return a valid status code.
+     * @param call The API call to guard for exceptions and bad return codes.
+     * @returns A promise of the type returned by Axios in the data field.
      */
-    protected throwIfServerResponseIsNot200(response: AxiosResponse) : void {
-        if(response.status != 200)
-            throw new ApiException(response);
+    protected async execute<T>(call: () => Promise<AxiosResponse<T, any>>) : Promise<T> {
+        
+        let result: AxiosResponse;
+
+        try {
+        
+            // var x = async() => {return await this._permissionsApi.permissionsGet(true)};
+            // await x();
+
+         result = await call();
+
+        } catch(ex) {
+            
+            if(ex instanceof AxiosError) {
+                throw ApiError.create(ex);
+            }
+
+            throw ex;
+        }
+
+        if(result.status != 200)
+            throw ApiError.create(result);
+
+        return result.data;
     }
 }
 

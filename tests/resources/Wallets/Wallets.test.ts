@@ -1,6 +1,5 @@
 import { Mozaic } from "../../../src";
 import { WalletsApi } from "../../../src/api";
-import { ApiException } from "../../../src/resources/ApiException";
 import { TestUtils } from "../../TestUtils";
 import { WalletsEntities } from "./WalletsEntities";
 

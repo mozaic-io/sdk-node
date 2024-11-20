@@ -1,10 +1,9 @@
 import { RawAxiosRequestConfig } from "axios";
-import { Mozaic } from "../../../src";
+import { ApiError, Mozaic } from "../../../src";
 import { InvoicesApi, PaymentCycleEntryCreateDeets, PaymentCycleEntryStatus, PaymentCycleFinalizeDeets, PaymentCyclesApi, PaymentCycleStatus, WalletsApi } from "../../../src/api";
 import { PaymentCycle } from "../../../src/resources/PaymentCycles/PaymentCycle";
 import { TestUtils } from "../../TestUtils";
 import { PaymentCyclesEntities } from "./PaymentCyclesEntities";
-import { ApiException } from "../../../src/resources/ApiException";
 import { PaymentCycleEntryList } from "../../../src/resources/PaymentCycles/PaymentCycleEntryList";
 import { WalletsEntities } from "../Wallets/WalletsEntities";
 import { InvoicesEntities } from "../Invoices/InvoicesEntities";
@@ -212,7 +211,7 @@ it("getPaymentCycleEntries should throw an exception when the response is not 20
         fail("It didn't throw the exception.");
     }
     catch (ex) {
-        expect(ex).toBeInstanceOf(ApiException);
+        expect(ex).toBeInstanceOf(ApiError);
     }
 });
 
@@ -252,7 +251,7 @@ it("addPaymentCycleEntry should throw an exception when the response is not 200"
         fail("It didn't throw the exception.");
     }
     catch (ex) {
-        expect(ex).toBeInstanceOf(ApiException);
+        expect(ex).toBeInstanceOf(ApiError);
     }
 });
 

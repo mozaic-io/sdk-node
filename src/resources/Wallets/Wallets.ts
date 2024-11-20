@@ -1,6 +1,5 @@
 import { Mozaic } from "../..";
 import { Configuration, Wallet as RawWallet, WalletsApi } from "../../api";
-import { ApiException } from "../ApiException";
 import { BaseResource } from "../BaseResource";
 import { Wallet } from "./Wallet";
 
@@ -34,10 +33,8 @@ export class Wallets extends BaseResource {
      * @returns 
      */
     async getWallets() : Promise<Wallet[]> {
-        var result = await this._walletsApi.apiWalletsGet();
+        var result = await this.execute(() => this._walletsApi.apiWalletsGet());
 
-        this.throwIfServerResponseIsNot200(result);
-
-        return result.data.map((value) => new Wallet(value));
+        return result.map((value) => new Wallet(value));
     }
 }

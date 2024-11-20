@@ -34,7 +34,7 @@ export class Wallet {
         this.key = source.key ?? "";
 
         if(this.key === "")
-            throw Error("Unknown wallet type");
+            throw new Error("Unknown wallet type");
 
         this.paymentMethods = source.payment_methods?.map((value) => new WalletItem(value)) ?? [];
         this.payoutMethods = source.payout_methods?.map((value) => new WalletItem(value)) ?? [];

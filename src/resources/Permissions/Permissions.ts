@@ -1,6 +1,7 @@
+import { AxiosError, AxiosResponse } from "axios";
 import { Mozaic } from "../..";
 import { Configuration, PermissionsApi } from "../../api";
-import { ApiException } from "../ApiException";
+import { ApiError } from "../ApiError";
 import { BaseResource } from "../BaseResource";
 
 /**
@@ -35,14 +36,34 @@ export class Permissions extends BaseResource {
      * Gets a list of permissions assigned to the Personal Access Token
      * that was used to initialize the Mozaic SDK.
      * @returns a list of visibility roles
+     * @throws ApiException
      */
     async getPermissions() : Promise<string[]>
     {
-        const result = await this._permissionsApi.permissionsGet(true);
+        return await this.execute(() => this._permissionsApi.permissionsGet(true));
 
-        if(result.status != 200)
-            throw new ApiException(result);
+        // let result: AxiosResponse;
 
-        return result.data;
+        // try {
+        
+        //     // var x = async() => {return await this._permissionsApi.permissionsGet(true)};
+        //     // await x();
+
+        //  result = await this._permissionsApi.permissionsGet(true);
+
+        // } catch(ex) {
+            
+        //     if(ex instanceof AxiosError) {
+        //         throw ApiError.create(ex);
+        //     }
+
+        //     throw ex;
+        // }
+
+        // this.throwIfServerResponseIsNot200(result);
+
+        // return result.data;
+
+
     }
 }

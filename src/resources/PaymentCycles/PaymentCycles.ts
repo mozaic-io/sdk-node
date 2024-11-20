@@ -7,7 +7,7 @@
 
 import { Mozaic } from "../..";
 import { Configuration, PaymentCyclesApi, PaymentCycleCreateDeets, FeeDirection } from "../../api";
-import { ApiException } from "../ApiException";
+import { ApiError } from "../ApiError";
 import { BaseResource } from "../BaseResource";
 import { PaymentCycle } from "./PaymentCycle";
 import { PaymentCycleList } from "./PaymentCycleList";
@@ -53,12 +53,9 @@ export class PaymentCycles extends BaseResource {
             accounting_to: accountingToDateUtc.toISOString()
         };
 
-        const result = await this._paymentCycleApi.createPaymentCycle(deets);
+        var result = await this.execute(() => this._paymentCycleApi.createPaymentCycle(deets));
 
-        if(result.status != 200)
-            throw new ApiException(result);
-
-        return new PaymentCycle(this._mozaic, this._paymentCycleApi, result.data);
+        return new PaymentCycle(this._mozaic, this._paymentCycleApi, result);
     }
     
     /**
@@ -70,13 +67,11 @@ export class PaymentCycles extends BaseResource {
     async getPaymentCycles(limit: number, page: number): Promise<PaymentCycleList> {
         this.throwIfLimitOrPageAreInvalid(limit, page);
 
-        const result = await this._paymentCycleApi.listPaymentCycles(undefined, undefined, undefined, limit, page, undefined, undefined);
+        var result = await this.execute(() => this._paymentCycleApi.listPaymentCycles(undefined, undefined, undefined, limit, page, undefined, undefined));
 
-        this.throwIfServerResponseIsNot200(result);
+        const data = result.data?.map((value, index) => new PaymentCycle(this._mozaic, this._paymentCycleApi, value));
 
-        const data = result.data.data?.map((value, index) => new PaymentCycle(this._mozaic, this._paymentCycleApi, value));
-
-        return new PaymentCycleList(result.data, data);
+        return new PaymentCycleList(result, data);
     }
 
     /**
@@ -86,11 +81,8 @@ export class PaymentCycles extends BaseResource {
      */
     async getPaymentCycle(paymentCycleId: string): Promise<PaymentCycle> {
 
-        const result = await this._paymentCycleApi.getPaymentCycleById(paymentCycleId);
+        var result = await this.execute(() => this._paymentCycleApi.getPaymentCycleById(paymentCycleId));
 
-        if(result.status != 200)
-            throw new ApiException(result);
-
-        return new PaymentCycle(this._mozaic, this._paymentCycleApi, result.data);
+        return new PaymentCycle(this._mozaic, this._paymentCycleApi, result);
     }
 }

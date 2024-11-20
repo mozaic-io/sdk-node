@@ -1,8 +1,7 @@
 
-import { Mozaic } from "../../../src";
+import { ApiError, Mozaic } from "../../../src";
 import { PaymentCycleListResponse, PaymentCyclesApi } from "../../../src/api";
 import { TestUtils } from "../../TestUtils";
-import { ApiException } from "../../../src/resources/ApiException";
 import { PaymentCyclesEntities } from "./PaymentCyclesEntities";
 import { PaymentCycleList } from "../../../src/resources/PaymentCycles/PaymentCycleList";
 import { PaymentCycle } from "../../../src/resources/PaymentCycles/PaymentCycle";
@@ -46,7 +45,7 @@ describe("Payment Cycle Tests", () => {
       await sdk.PaymentCycles.createPaymentCycle("test cycle", "default", "This is a memo", new Date("1/1/2024"), new Date("1/31/2024"));
       fail("Call did not throw an exception.");
     } catch (ex) {
-      expect(ex).toBeInstanceOf(ApiException);
+      expect(ex).toBeInstanceOf(ApiError);
     }
   });
 
@@ -87,7 +86,7 @@ describe("Payment Cycle Tests", () => {
       fail("It didn't throw the exception.");
     }
     catch(ex) {
-      expect(ex).toBeInstanceOf(ApiException);
+      expect(ex).toBeInstanceOf(ApiError);
     }
   });
 
@@ -143,7 +142,7 @@ describe("Payment Cycle Tests", () => {
             fail("It didn't throw the exception.");
           }
           catch(ex) {
-            expect(ex).toBeInstanceOf(ApiException);
+            expect(ex).toBeInstanceOf(ApiError);
           }
 
         });

@@ -38,12 +38,10 @@ export class Invoices extends BaseResource {
      * ```fs.writeFileSync(fileName, Buffer.from(arrayBuffer));```
      */
     async getInvoice(invoiceId: string) : Promise<ArrayBuffer> {
-        let invoice = await this._invoicesApi.downloadInvoice(invoiceId, {responseType: "arraybuffer"});
-
-        this.throwIfServerResponseIsNot200(invoice);
+        var result = await this.execute(() => this._invoicesApi.downloadInvoice(invoiceId, {responseType: "arraybuffer"}));
 
         // There is a signature error in the generated proxy, this is a work-around for it.
-        return invoice.data as unknown as ArrayBuffer;
+        return result as unknown as ArrayBuffer;
     }
 
 }

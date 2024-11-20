@@ -1,6 +1,5 @@
 import { Mozaic } from "../..";
 import { Amount, FeeDirection, PaymentCycle as RawPaymentCycle, PaymentCycleStatus, PaymentCyclesApi, PaymentCycleEntryCreateDeets, Wallet, Invoice } from "../../api";
-import { ApiException } from "../ApiException";
 import { BaseResource } from "../BaseResource";
 import { WalletItem } from "../Wallets/WalletItem";
 import { PaymentCycleEntry } from "./PaymentCycleEntry";
@@ -143,11 +142,9 @@ export class PaymentCycle extends BaseResource {
             }
         };
 
-        const result = await this._paymentCycleApi.createPaymentCycleEntry(this.paymentCycleId, deets);
+        var result = await this.execute(() => this._paymentCycleApi.createPaymentCycleEntry(this.paymentCycleId, deets));
 
-        this.throwIfServerResponseIsNot200(result);
-
-        return new PaymentCycleEntry(result.data);
+        return new PaymentCycleEntry(result);
     }
 
     /**
@@ -160,13 +157,11 @@ export class PaymentCycle extends BaseResource {
     async getPaymentCycleEntries(limit: number, page: number) : Promise<PaymentCycleEntryList> {
         this.throwIfLimitOrPageAreInvalid(limit, page);
 
-        const result = await this._paymentCycleApi.listPaymentCycleEntries(this.paymentCycleId, undefined, undefined, undefined, limit, page, undefined, undefined);
+        var result = await this.execute(() => this._paymentCycleApi.listPaymentCycleEntries(this.paymentCycleId, undefined, undefined, undefined, limit, page, undefined, undefined));
 
-        this.throwIfServerResponseIsNot200(result);
+        const data = result.data?.map((value) => new PaymentCycleEntry(value));
 
-        const data = result.data.data?.map((value, index) => new PaymentCycleEntry(value));
-
-        return new PaymentCycleEntryList(result.data, data);
+        return new PaymentCycleEntryList(result, data);
     }
 
     /**
@@ -187,16 +182,14 @@ export class PaymentCycle extends BaseResource {
         })
 
         if(existingPaymentMethod === undefined)
-            throw Error("An invalid payment method id was selected. You must use a valid payment method. (Did you select a payout method by mistake?)");
+            throw new Error("An invalid payment method id was selected. You must use a valid payment method. (Did you select a payout method by mistake?)");
 
-        const result = await this._paymentCycleApi.finalizePaymentCycleEntry(this.paymentCycleId, {
+        var result = await this.execute(() => this._paymentCycleApi.finalizePaymentCycleEntry(this.paymentCycleId, {
             auto_advance: true,
             payment_method_id: walletItem.paymentMethodId
-        });
+        }));
 
-        this.throwIfServerResponseIsNot200(result);
-
-        return new PaymentCycle(this._mozaic, this._paymentCycleApi, result.data);
+        return new PaymentCycle(this._mozaic, this._paymentCycleApi, result);
     }
 
     /**

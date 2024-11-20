@@ -13,6 +13,7 @@ import { PaymentCycles } from "./resources/PaymentCycles/PaymentCycles";
 import { Permissions } from "./resources/Permissions/Permissions";
 import { Wallets } from "./resources/Wallets/Wallets";
 
+export { ApiError } from "./resources/ApiError";
 
 // export { Invoices } from "./resources/Invoices/Invoices";
 // export { PaymentCycles } from "./resources/PaymentCycles/PaymentCycles";
@@ -27,6 +28,7 @@ import { Wallets } from "./resources/Wallets/Wallets";
  * More information: [SDK Documentation](../documents/index.md)
  * 
  * @category Mozaic SDK
+ * @throws ApiException
  */
 export class Mozaic {
     private _basePath: string;
