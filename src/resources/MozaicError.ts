@@ -7,16 +7,23 @@ export class MozaicError extends Error {
     status: number;
 
     /**
+     * The raw exception or other data object that was wrapped by MozaicError. 
+     * This can be logged if you need additional details about the issue.
+     */
+    rawError: any;
+
+    /**
      * @internal - To be used by the internal system only. 
      * @param axiosResponse 
      */
-    private constructor(status: number, message: string, stack: string | undefined) {
+    private constructor(status: number, message: string, stack: string | undefined, rawError: any) {
         super(message);
 
         if (stack !== undefined)
             this.stack = stack;
 
         this.status = status;
+        this.rawError = rawError;
 
         // Restore the prototype chain
         Object.setPrototypeOf(this, new.target.prototype);
@@ -63,23 +70,23 @@ export class MozaicError extends Error {
 
             let status = obj.status ?? -1;
 
-            return new MozaicError(status, message, obj.stack);
+            return new MozaicError(status, message, obj.stack, obj);
         }
         else if (obj instanceof Error) {
-            return new MozaicError(-1, obj.message, obj.stack);
+            return new MozaicError(-1, obj.message, obj.stack, obj);
         }
 
         const response = obj as AxiosResponse;
 
         // If it is a real AxiosRespose, then these should be set at a minimum.
         if (response.status !== undefined && response.data !== undefined)
-            return new MozaicError(response.status, response.data, undefined);
+            return new MozaicError(response.status, response.data, undefined, obj);
 
         // If it's just a raw string.
         if (typeof obj === "string")
-            return new MozaicError(-1, obj, undefined);
+            return new MozaicError(-1, obj, undefined, obj);
 
         // Everything else!
-        return new MozaicError(-1, JSON.stringify(obj), undefined);
+        return new MozaicError(-1, JSON.stringify(obj), undefined, obj);
     }
 }

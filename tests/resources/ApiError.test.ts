@@ -10,6 +10,7 @@ describe("ApiError Tests", () => {
         const apiError = MozaicError.create(error);
 
         expect(apiError.stack).toBe(error.stack);
+        expect(apiError.rawError).toEqual(error);
     });
 
     it("It should use it's own stack when no stack is present from an inner error", async () => {
@@ -19,6 +20,7 @@ describe("ApiError Tests", () => {
         const apiError = MozaicError.create(result);
 
         expect(apiError.stack).not.toBe(undefined);
+        expect(apiError.rawError).toEqual(result);
     });
 
     it("It should have status = -1 and statusText = empty string when values are not present in AxiosError", async () => {
@@ -30,6 +32,7 @@ describe("ApiError Tests", () => {
 
         expect(apiError.status).toBe(-1);
         expect(apiError.message).toBe("This is an error: broken, data");
+        expect(apiError.rawError).toEqual(error);
     });
 
     it("It should show all values from data when data is an array", async () => {
@@ -41,6 +44,7 @@ describe("ApiError Tests", () => {
 
         expect(apiError.status).toBe(-1);
         expect(apiError.message).toBe("This is an error: broken, data 1, data 2");
+        expect(apiError.rawError).toEqual(error);
     });
 
     it("It should not break with an invalid type in the data array", async () => {
@@ -52,6 +56,7 @@ describe("ApiError Tests", () => {
 
         expect(apiError.status).toBe(-1);
         expect(apiError.message).toBe("This is an error: broken{\"Flonk\":\"data 1\",\"Bonk\":-1234}{\"Donk\":\"data 2\",\"McGonk\":-1234}");
+        expect(apiError.rawError).toEqual(error);
     });
 
 });
