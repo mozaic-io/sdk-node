@@ -41,29 +41,5 @@ export class Permissions extends BaseResource {
     async getPermissions() : Promise<string[]>
     {
         return await this.execute(() => this._permissionsApi.permissionsGet(true));
-
-        // let result: AxiosResponse;
-
-        // try {
-        
-        //     // var x = async() => {return await this._permissionsApi.permissionsGet(true)};
-        //     // await x();
-
-        //  result = await this._permissionsApi.permissionsGet(true);
-
-        // } catch(ex) {
-            
-        //     if(ex instanceof AxiosError) {
-        //         throw ApiError.create(ex);
-        //     }
-
-        //     throw ex;
-        // }
-
-        // this.throwIfServerResponseIsNot200(result);
-
-        // return result.data;
-
-
     }
 }

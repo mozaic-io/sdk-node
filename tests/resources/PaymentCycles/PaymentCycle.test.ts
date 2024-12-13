@@ -35,7 +35,7 @@ describe("Payment Cycle Tests", () => {
         }
         catch (ex) {
             expect(ex).toBeInstanceOf(Error);
-        }    
+        }
 
         try {
             const paymentCycle = await getTestPaymentCycle("draft");
@@ -44,7 +44,7 @@ describe("Payment Cycle Tests", () => {
         }
         catch (ex) {
             expect(ex).toBeInstanceOf(Error);
-        }    
+        }
 
         try {
             const paymentCycle = await getTestPaymentCycle("failed");
@@ -53,7 +53,7 @@ describe("Payment Cycle Tests", () => {
         }
         catch (ex) {
             expect(ex).toBeInstanceOf(Error);
-        }    
+        }
 
         try {
             const paymentCycle = await getTestPaymentCycle("locked");
@@ -62,238 +62,253 @@ describe("Payment Cycle Tests", () => {
         }
         catch (ex) {
             expect(ex).toBeInstanceOf(Error);
-        }    
+        }
     });
 
-it("A completed payment cycle should be able to download an invoice", async () => {
+    it("A completed payment cycle should be able to download an invoice", async () => {
 
-    mockInvoiceApi.downloadInvoice.mockImplementation(async (id: string, options?: RawAxiosRequestConfig) =>
-        TestUtils.createSuccessfulAxiosResponse(
-            InvoicesEntities.downloadInvoice(id)
-        )
-    );
-
-    const paymentCycle = await getTestPaymentCycle("completed");
-
-    let invoice = await paymentCycle.getInvoice();
-
-    let invoiceData = Buffer.from(invoice).toString();
-
-    expect(invoiceData).toBe("PDFBYTES");
-});
-
-it("finalize should fail if there are no payment methods in the wallet and the caller tries to fake it", async () => {
-    mockPaymentCyclesApi.finalizePaymentCycleEntry
-        .mockImplementation(async (id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig) =>
+        mockInvoiceApi.downloadInvoice.mockImplementation(async (id: string, options?: RawAxiosRequestConfig) =>
             TestUtils.createSuccessfulAxiosResponse(
-                PaymentCyclesEntities.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets))
-        );
-
-    mockWalletApi.apiWalletsGet.mockResolvedValue(
-        TestUtils.createSuccessfulAxiosResponse(
-            WalletsEntities.apiWalletsGet(true, false)
-        )
-    );
-
-    const paymentCycle = await getTestPaymentCycle("draft");
-
-    // Use the first available payment method from the wallet.
-    const paymentMethod = (await sdk.Wallets.getWallets())[0].paymentMethods[0];
-
-    try {
-        var paymentCycleEntries = await paymentCycle.finalize(paymentMethod);
-        fail("It did not throw the exception");
-    } catch (ex) {
-        expect(ex).toBeInstanceOf(Error);
-        expect((ex as Error).message).toBe("An invalid payment method id was selected. You must use a valid payment method. (Did you select a payout method by mistake?)");
-    }
-});
-
-it("finalize should fail if a payout method is chosen instead of a payment method", async () => {
-    mockPaymentCyclesApi.finalizePaymentCycleEntry
-        .mockImplementation(async (id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig) =>
-            TestUtils.createSuccessfulAxiosResponse(
-                PaymentCyclesEntities.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets))
-        );
-
-    mockWalletApi.apiWalletsGet.mockResolvedValue(
-        TestUtils.createSuccessfulAxiosResponse(
-            WalletsEntities.apiWalletsGet(false, false)
-        )
-    );
-
-    const paymentCycle = await getTestPaymentCycle("draft");
-
-    // Use the first available payout method from the wallet.
-    const payoutMethod = (await sdk.Wallets.getWallets())[0].payoutMethods[0];
-
-    try {
-        var paymentCycleEntries = await paymentCycle.finalize(payoutMethod);
-        fail("It did not throw the exception");
-    } catch (ex) {
-        expect(ex).toBeInstanceOf(Error);
-    }
-});
-
-
-it("finalize should finalize the payment cycle", async () => {
-    mockPaymentCyclesApi.finalizePaymentCycleEntry
-        .mockImplementation(async (id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig) =>
-            TestUtils.createSuccessfulAxiosResponse(
-                PaymentCyclesEntities.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets))
-        );
-
-    mockWalletApi.apiWalletsGet.mockResolvedValue(
-        TestUtils.createSuccessfulAxiosResponse(
-            WalletsEntities.apiWalletsGet(false, false)
-        )
-    );
-
-    const paymentCycle = await getTestPaymentCycle("draft");
-
-    // Use the first available payment method from the wallet.
-    const paymentMethod = (await sdk.Wallets.getWallets())[0].paymentMethods[0];
-
-    var finalizedPaymentCycle = await paymentCycle.finalize(paymentMethod);
-
-    expect(finalizedPaymentCycle.status).toBe(PaymentCycleStatus.Invoicing);
-    expect(finalizedPaymentCycle.invoiceId).toBe("invoice_12345678");
-});
-
-
-it("PaymentCycleEntryList should be create-able with no arguments", async () => {
-    new PaymentCycleEntryList({}, []);
-});
-
-it("getPaymentCycleEntries should get payment cycle entries for the payment cycle", async () => {
-    mockPaymentCyclesApi.listPaymentCycleEntries
-        .mockImplementation(async (id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
-            TestUtils.createSuccessfulAxiosResponse(
-                PaymentCyclesEntities.listPaymentCycleEntries(id, limit ?? 0, page ?? 0))
-        );
-
-    const paymentCycle = await getTestPaymentCycle("draft");
-
-    var paymentCycleEntries = await paymentCycle.getPaymentCycleEntries(10, 1);
-
-    expect(paymentCycleEntries.data.length).toBe(10);
-});
-
-it("getPaymentCycleEntries should set data to undefined when the server response is invalid", async () => {
-    mockPaymentCyclesApi.listPaymentCycleEntries
-        .mockImplementation(async (id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
-            TestUtils.createSuccessfulAxiosResponse(
-                {}
+                InvoicesEntities.downloadInvoice(id)
             )
         );
 
-    const paymentCycle = await getTestPaymentCycle("draft");
+        const paymentCycle = await getTestPaymentCycle("completed");
 
-    try {
-        var paymentCycleEntries = await paymentCycle.getPaymentCycleEntries(10, 1);
-        fail("It didn't throw the exception.");
-    } catch (ex) {
-        expect(ex).toBeInstanceOf(Error);
-    }
-});
+        let invoice = await paymentCycle.getInvoice();
 
-it("getPaymentCycleEntries should throw an exception when the response is not 200", async () => {
-    mockPaymentCyclesApi.listPaymentCycleEntries
-        .mockImplementation(async (id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
-            TestUtils.createFailedAxiosResponse(
-                PaymentCyclesEntities.listPaymentCycleEntries(id, limit ?? 0, page ?? 0))
-        );
+        let invoiceData = Buffer.from(invoice).toString();
 
-    const paymentCycle = await getTestPaymentCycle("draft");
+        expect(invoiceData).toBe("PDFBYTES");
+    });
 
-    try {
-        var paymentCycleEntries = await paymentCycle.getPaymentCycleEntries(10, 1);
-        fail("It didn't throw the exception.");
-    }
-    catch (ex) {
-        expect(ex).toBeInstanceOf(MozaicError);
-    }
-});
+    it("finalize should fail if there are no payment methods in the wallet and the caller tries to fake it", async () => {
+        mockPaymentCyclesApi.finalizePaymentCycleEntry
+            .mockImplementation(async (id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig) =>
+                TestUtils.createSuccessfulAxiosResponse(
+                    PaymentCyclesEntities.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets))
+            );
 
-it("addPaymentCycleEntry should create a payment cycle entry", async () => {
-    mockPaymentCyclesApi.createPaymentCycleEntry
-        .mockImplementation(async (id: string, paymentCycleEntryCreateDeets?: PaymentCycleEntryCreateDeets, options?: RawAxiosRequestConfig) =>
+        mockWalletApi.apiWalletsGet.mockResolvedValue(
             TestUtils.createSuccessfulAxiosResponse(
-                PaymentCyclesEntities.getTestPaymentCycleEntryResponse(id, paymentCycleEntryCreateDeets))
+                WalletsEntities.apiWalletsGet(true, false)
+            )
         );
 
-    const paymentCycle = await getTestPaymentCycle("draft");
+        const paymentCycle = await getTestPaymentCycle("draft");
 
-    const paymentCycleEntry = await paymentCycle.addPaymentCycleEntry("Jamie Johnson", "jamie.johnson@noemail.com", 200.12345678, "USD");
+        // Use the first available payment method from the wallet.
+        const paymentMethod = (await sdk.Wallets.getWallets())[0].paymentMethods[0];
 
-    expect(paymentCycleEntry.name).toBe("Jamie Johnson");
-    expect(paymentCycleEntry.email).toBe("jamie.johnson@noemail.com");
-    expect(paymentCycleEntry.amount.quantity).toBe(200.12345678);
-    expect(paymentCycleEntry.amount.currency).toBe("USD");
+        try {
+            var paymentCycleEntries = await paymentCycle.finalize(paymentMethod);
+            fail("It did not throw the exception");
+        } catch (ex) {
+            expect(ex).toBeInstanceOf(Error);
+            expect((ex as Error).message).toBe("An invalid payment method id was selected. You must use a valid payment method. (Did you select a payout method by mistake?)");
+        }
+    });
 
-    expect(paymentCycleEntry.rawObject.to?.name).toBe("Jamie Johnson");
-    expect(paymentCycleEntry.rawObject.to?.email).toBe("jamie.johnson@noemail.com");
-    expect(paymentCycleEntry.rawObject.original_amount?.quantity).toBe(200.12345678);
-    expect(paymentCycleEntry.rawObject.original_amount?.currency).toBe("USD");
-});
+    it("finalize should fail if a payout method is chosen instead of a payment method", async () => {
+        mockPaymentCyclesApi.finalizePaymentCycleEntry
+            .mockImplementation(async (id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig) =>
+                TestUtils.createSuccessfulAxiosResponse(
+                    PaymentCyclesEntities.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets))
+            );
 
-it("addPaymentCycleEntry should throw an exception when the response is not 200", async () => {
-    mockPaymentCyclesApi.createPaymentCycleEntry
-        .mockImplementation(async (id: string, paymentCycleEntryCreateDeets?: PaymentCycleEntryCreateDeets, options?: RawAxiosRequestConfig) =>
-            TestUtils.createFailedAxiosResponse(
-                PaymentCyclesEntities.getTestPaymentCycleEntryResponse(id, paymentCycleEntryCreateDeets))
+        mockWalletApi.apiWalletsGet.mockResolvedValue(
+            TestUtils.createSuccessfulAxiosResponse(
+                WalletsEntities.apiWalletsGet(false, false)
+            )
         );
 
-    const paymentCycle = await getTestPaymentCycle("draft");
+        const paymentCycle = await getTestPaymentCycle("draft");
 
-    try {
+        // Use the first available payout method from the wallet.
+        const payoutMethod = (await sdk.Wallets.getWallets())[0].payoutMethods[0];
+
+        try {
+            var paymentCycleEntries = await paymentCycle.finalize(payoutMethod);
+            fail("It did not throw the exception");
+        } catch (ex) {
+            expect(ex).toBeInstanceOf(Error);
+        }
+    });
+
+
+    it("finalize should finalize the payment cycle", async () => {
+        mockPaymentCyclesApi.finalizePaymentCycleEntry
+            .mockImplementation(async (id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig) =>
+                TestUtils.createSuccessfulAxiosResponse(
+                    PaymentCyclesEntities.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets))
+            );
+
+        mockWalletApi.apiWalletsGet.mockResolvedValue(
+            TestUtils.createSuccessfulAxiosResponse(
+                WalletsEntities.apiWalletsGet(false, false)
+            )
+        );
+
+        const paymentCycle = await getTestPaymentCycle("draft");
+
+        // Use the first available payment method from the wallet.
+        const paymentMethod = (await sdk.Wallets.getWallets())[0].paymentMethods[0];
+
+        var finalizedPaymentCycle = await paymentCycle.finalize(paymentMethod);
+
+        expect(finalizedPaymentCycle.status).toBe(PaymentCycleStatus.Invoicing);
+        expect(finalizedPaymentCycle.invoiceId).toBe("invoice_12345678");
+    });
+
+    it("finalize should finalize the payment cycle using pay by invoice", async () => {
+        mockPaymentCyclesApi.finalizePaymentCycleEntry
+            .mockImplementation(async (id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig) =>
+                TestUtils.createSuccessfulAxiosResponse(
+                    PaymentCyclesEntities.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets))
+            );
+
+        const paymentCycle = await getTestPaymentCycle("draft");
+
+        var finalizedPaymentCycle = await paymentCycle.finalizeByInvoice();
+
+        expect(finalizedPaymentCycle.status).toBe(PaymentCycleStatus.Invoicing);
+        expect(finalizedPaymentCycle.invoiceId).toBe("invoice_12345678");
+    });
+
+
+    it("PaymentCycleEntryList should be create-able with no arguments", async () => {
+        new PaymentCycleEntryList({}, []);
+    });
+
+    it("getPaymentCycleEntries should get payment cycle entries for the payment cycle", async () => {
+        mockPaymentCyclesApi.listPaymentCycleEntries
+            .mockImplementation(async (id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
+                TestUtils.createSuccessfulAxiosResponse(
+                    PaymentCyclesEntities.listPaymentCycleEntries(id, limit ?? 0, page ?? 0))
+            );
+
+        const paymentCycle = await getTestPaymentCycle("draft");
+
+        var paymentCycleEntries = await paymentCycle.getPaymentCycleEntries(10, 1);
+
+        expect(paymentCycleEntries.data.length).toBe(10);
+    });
+
+    it("getPaymentCycleEntries should set data to undefined when the server response is invalid", async () => {
+        mockPaymentCyclesApi.listPaymentCycleEntries
+            .mockImplementation(async (id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
+                TestUtils.createSuccessfulAxiosResponse(
+                    {}
+                )
+            );
+
+        const paymentCycle = await getTestPaymentCycle("draft");
+
+        try {
+            var paymentCycleEntries = await paymentCycle.getPaymentCycleEntries(10, 1);
+            fail("It didn't throw the exception.");
+        } catch (ex) {
+            expect(ex).toBeInstanceOf(Error);
+        }
+    });
+
+    it("getPaymentCycleEntries should throw an exception when the response is not 200", async () => {
+        mockPaymentCyclesApi.listPaymentCycleEntries
+            .mockImplementation(async (id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
+                TestUtils.createFailedAxiosResponse(
+                    PaymentCyclesEntities.listPaymentCycleEntries(id, limit ?? 0, page ?? 0))
+            );
+
+        const paymentCycle = await getTestPaymentCycle("draft");
+
+        try {
+            var paymentCycleEntries = await paymentCycle.getPaymentCycleEntries(10, 1);
+            fail("It didn't throw the exception.");
+        }
+        catch (ex) {
+            expect(ex).toBeInstanceOf(MozaicError);
+        }
+    });
+
+    it("addPaymentCycleEntry should create a payment cycle entry", async () => {
+        mockPaymentCyclesApi.createPaymentCycleEntry
+            .mockImplementation(async (id: string, paymentCycleEntryCreateDeets?: PaymentCycleEntryCreateDeets, options?: RawAxiosRequestConfig) =>
+                TestUtils.createSuccessfulAxiosResponse(
+                    PaymentCyclesEntities.getTestPaymentCycleEntryResponse(id, paymentCycleEntryCreateDeets))
+            );
+
+        const paymentCycle = await getTestPaymentCycle("draft");
+
         const paymentCycleEntry = await paymentCycle.addPaymentCycleEntry("Jamie Johnson", "jamie.johnson@noemail.com", 200.12345678, "USD");
-        fail("It didn't throw the exception.");
-    }
-    catch (ex) {
-        expect(ex).toBeInstanceOf(MozaicError);
-    }
-});
 
-it("PaymentCycle should ensure the RawPaymentCycle contains correct data during wrapping", () => {
+        expect(paymentCycleEntry.name).toBe("Jamie Johnson");
+        expect(paymentCycleEntry.email).toBe("jamie.johnson@noemail.com");
+        expect(paymentCycleEntry.amount.quantity).toBe(200.12345678);
+        expect(paymentCycleEntry.amount.currency).toBe("USD");
 
-    try {
-        new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, {});
-        fail("It didn't throw the exception.");
-    }
-    catch (ex) {
-        expect((ex as Error).message).toBe("paymentCycle.id is null or undefined");
-    }
+        expect(paymentCycleEntry.rawObject.to?.name).toBe("Jamie Johnson");
+        expect(paymentCycleEntry.rawObject.to?.email).toBe("jamie.johnson@noemail.com");
+        expect(paymentCycleEntry.rawObject.original_amount?.quantity).toBe(200.12345678);
+        expect(paymentCycleEntry.rawObject.original_amount?.currency).toBe("USD");
+    });
 
-    try {
-        new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542" });
-        fail("It didn't throw the exception.");
-    }
-    catch (ex) {
-        expect((ex as Error).message).toBe("paymentCycle.status is null or undefined");
-    }
+    it("addPaymentCycleEntry should throw an exception when the response is not 200", async () => {
+        mockPaymentCyclesApi.createPaymentCycleEntry
+            .mockImplementation(async (id: string, paymentCycleEntryCreateDeets?: PaymentCycleEntryCreateDeets, options?: RawAxiosRequestConfig) =>
+                TestUtils.createFailedAxiosResponse(
+                    PaymentCyclesEntities.getTestPaymentCycleEntryResponse(id, paymentCycleEntryCreateDeets))
+            );
 
-    try {
-        new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1" });
-        fail("It didn't throw the exception.");
-    }
-    catch (ex) {
-        expect((ex as Error).message).toBe("paymentCycle.status is null or undefined");
-    }
+        const paymentCycle = await getTestPaymentCycle("draft");
 
-    try {
-        new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed" });
-        fail("It didn't throw the exception.");
-    }
-    catch (ex) {
-        expect((ex as Error).message).toBe("paymentCycle.name is null or undefined");
-    }
+        try {
+            const paymentCycleEntry = await paymentCycle.addPaymentCycleEntry("Jamie Johnson", "jamie.johnson@noemail.com", 200.12345678, "USD");
+            fail("It didn't throw the exception.");
+        }
+        catch (ex) {
+            expect(ex).toBeInstanceOf(MozaicError);
+        }
+    });
 
-    const testCycle = new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed", name: "Payment Cycle Name" });
+    it("PaymentCycle should ensure the RawPaymentCycle contains correct data during wrapping", () => {
 
-    expect(testCycle.accountingFrom?.getTime()).toBeNaN();
-    expect(testCycle.accountingTo?.getTime()).toBeNaN();
-});
+        try {
+            new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, {});
+            fail("It didn't throw the exception.");
+        }
+        catch (ex) {
+            expect((ex as Error).message).toBe("paymentCycle.id is null or undefined");
+        }
+
+        try {
+            new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542" });
+            fail("It didn't throw the exception.");
+        }
+        catch (ex) {
+            expect((ex as Error).message).toBe("paymentCycle.status is null or undefined");
+        }
+
+        try {
+            new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1" });
+            fail("It didn't throw the exception.");
+        }
+        catch (ex) {
+            expect((ex as Error).message).toBe("paymentCycle.status is null or undefined");
+        }
+
+        try {
+            new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed" });
+            fail("It didn't throw the exception.");
+        }
+        catch (ex) {
+            expect((ex as Error).message).toBe("paymentCycle.name is null or undefined");
+        }
+
+        const testCycle = new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed", name: "Payment Cycle Name" });
+
+        expect(testCycle.accountingFrom?.getTime()).toBeNaN();
+        expect(testCycle.accountingTo?.getTime()).toBeNaN();
+    });
 
 });
 

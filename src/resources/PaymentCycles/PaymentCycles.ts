@@ -45,7 +45,7 @@ export class PaymentCycles extends BaseResource {
      * @returns {PaymentCycle}
      */
     async createPaymentCycle(name: string, feeDirection: FeeDirection, memo: string, accountingFromDateUtc: Date, accountingToDateUtc: Date): Promise<PaymentCycle> {
-        let deets: PaymentCycleCreateDeets = {
+        const deets: PaymentCycleCreateDeets = {
             name: name,
             fee_direction: feeDirection,
             memo: memo,
@@ -67,7 +67,7 @@ export class PaymentCycles extends BaseResource {
     async getPaymentCycles(limit: number, page: number): Promise<PaymentCycleList> {
         this.throwIfLimitOrPageAreInvalid(limit, page);
 
-        var result = await this.execute(() => this._paymentCycleApi.listPaymentCycles(undefined, undefined, undefined, limit, page, undefined, undefined));
+        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycles(undefined, undefined, undefined, limit, page, undefined, undefined));
 
         const data = result.data?.map((value, index) => new PaymentCycle(this._mozaic, this._paymentCycleApi, value));
 
@@ -81,7 +81,7 @@ export class PaymentCycles extends BaseResource {
      */
     async getPaymentCycle(paymentCycleId: string): Promise<PaymentCycle> {
 
-        var result = await this.execute(() => this._paymentCycleApi.getPaymentCycleById(paymentCycleId));
+        const result = await this.execute(() => this._paymentCycleApi.getPaymentCycleById(paymentCycleId));
 
         return new PaymentCycle(this._mozaic, this._paymentCycleApi, result);
     }

@@ -157,7 +157,7 @@ export class PaymentCycle extends BaseResource {
     async getPaymentCycleEntries(limit: number, page: number) : Promise<PaymentCycleEntryList> {
         this.throwIfLimitOrPageAreInvalid(limit, page);
 
-        var result = await this.execute(() => this._paymentCycleApi.listPaymentCycleEntries(this.paymentCycleId, undefined, undefined, undefined, limit, page, undefined, undefined));
+        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycleEntries(this.paymentCycleId, undefined, undefined, undefined, limit, page, undefined, undefined));
 
         const data = result.data?.map((value) => new PaymentCycleEntry(value));
 
@@ -169,7 +169,7 @@ export class PaymentCycle extends BaseResource {
      * distributing it to recipients on the payment cycle. 
      * @param walletItem The source of funding for the payment cycle. This must be a Payment wallet item and 
      * not a Payout wallet item.
-     * @returns 
+     * @returns A new PaymentCycle object representing the finalized payment cycle.
      */
     async finalize(walletItem: WalletItem) : Promise<PaymentCycle> {
 
@@ -184,9 +184,28 @@ export class PaymentCycle extends BaseResource {
         if(existingPaymentMethod === undefined)
             throw new Error("An invalid payment method id was selected. You must use a valid payment method. (Did you select a payout method by mistake?)");
 
-        var result = await this.execute(() => this._paymentCycleApi.finalizePaymentCycleEntry(this.paymentCycleId, {
+        const result = await this.execute(() => this._paymentCycleApi.finalizePaymentCycleEntry(this.paymentCycleId, {
             auto_advance: true,
             payment_method_id: walletItem.paymentMethodId
+        }));
+
+        return new PaymentCycle(this._mozaic, this._paymentCycleApi, result);
+    }
+
+    /**
+     * Completes the payment cycle using "Pay by Invoice". You will need to download the invoice 
+     * through the Invoices.getInvoice method, and then send a payment to the bank account listed 
+     * on the invoice. 
+     * @returns A new PaymentCycle object representing the finalized payment cycle.
+     */
+    async finalizeByInvoice(): Promise<PaymentCycle> {
+
+        const result = await this.execute(() => this._paymentCycleApi.finalizePaymentCycleEntry(this.paymentCycleId, {
+            auto_advance: true,
+            payment_method_id: null,
+            collection_method: "send_invoice",
+            ach_auto_reconciliation: false,
+            auto_finalize_invoice: false
         }));
 
         return new PaymentCycle(this._mozaic, this._paymentCycleApi, result);
@@ -202,7 +221,7 @@ export class PaymentCycle extends BaseResource {
      */
     async getInvoice() : Promise<ArrayBuffer> {
 
-        let invoiceId = this.invoiceId ?? "";
+        const invoiceId = this.invoiceId ?? "";
 
         if(invoiceId === "")
             throw new Error("There isn't an invoice assigned to this payment cycle yet. Please finalize the payment cycle to receive an invoice.");

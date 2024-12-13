@@ -10,4 +10,14 @@ export class InvoicesEntities {
 
         return arrayBuffer;
     }
+
+    static payInvoice(id: string): Invoice {
+        const invoice: Invoice = {
+            id: id,
+            created_at: (new Date()).toUTCString(),
+            status: "paid"
+        };
+
+        return invoice;
+    }
 }

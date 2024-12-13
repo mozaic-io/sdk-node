@@ -1,5 +1,5 @@
 import { Mozaic } from "../..";
-import { Configuration, InvoicesApi } from "../../api";
+import { Configuration, Invoice, InvoicesApi } from "../../api";
 import { BaseResource } from "../BaseResource";
 
 /**
@@ -38,10 +38,25 @@ export class Invoices extends BaseResource {
      * ```fs.writeFileSync(fileName, Buffer.from(arrayBuffer));```
      */
     async getInvoice(invoiceId: string) : Promise<ArrayBuffer> {
-        var result = await this.execute(() => this._invoicesApi.downloadInvoice(invoiceId, {responseType: "arraybuffer"}));
+        const result = await this.execute(() => this._invoicesApi.downloadInvoice(invoiceId, {responseType: "arraybuffer"}));
 
         // There is a signature error in the generated proxy, this is a work-around for it.
         return result as unknown as ArrayBuffer;
     }
 
+    /**
+     * Mark an invoice as Paid. If the invoice is for a payment cycle that has been finalized, then
+     * the payment cycle will attempt to be funded from your available Mozaic balance. If there is not
+     * enough funds in your balance, then the payment cycle will fail, and you will need to resubmit it.
+     * You can use this method to test your Mozaic integration in non-production environments. Ask your
+     * Mozaic representative to pre-fund your account with test funds.
+     */
+    async payInvoice(invoiceId: string | null | undefined): Promise<Invoice> {
+        
+        invoiceId = this.throwIfNullOrUndefined("invoiceId", invoiceId);
+        
+        const result = await this.execute(() => this._invoicesApi.payInvoice(invoiceId));
+
+        return result;
+    }
 }

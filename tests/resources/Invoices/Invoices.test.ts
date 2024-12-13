@@ -1,5 +1,5 @@
 import { MozaicError, Mozaic } from "../../../src";
-import { InvoicesApi, PaymentCycleListResponse, PaymentCyclesApi } from "../../../src/api";
+import { InvoicePayDeets, InvoicesApi, PaymentCycleListResponse, PaymentCyclesApi } from "../../../src/api";
 import { TestUtils } from "../../TestUtils";
 import { RawAxiosRequestConfig } from "axios";
 import { InvoicesEntities } from "./InvoicesEntities";
@@ -40,6 +40,29 @@ describe("Payment Cycle Tests", () => {
         }
         catch (ex) {
             expect(ex).toBeInstanceOf(MozaicError);
+        }
+    });
+
+    it("payInvoice should mark the invoice as paid", async () => {
+
+        mockInvoicesApi.payInvoice.mockImplementation(async (id: string, invoicePayDeets: InvoicePayDeets | undefined, options?: RawAxiosRequestConfig) =>
+            TestUtils.createSuccessfulAxiosResponse(
+                InvoicesEntities.payInvoice(id)
+            )
+        );
+
+        let invoice = await sdk.Invoices.payInvoice("invoice_1234456677");
+
+        expect(invoice.status).toBe("paid");
+    });
+
+    it("payInvoice should throw an error if the invoiceId is undefined", async () => {
+       try {
+            await sdk.Invoices.payInvoice(undefined);
+            fail("It didn't throw the exception.");
+        }
+        catch (ex) {
+            expect(ex).toBeInstanceOf(Error);
         }
     });
 
