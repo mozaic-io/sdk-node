@@ -7,6 +7,7 @@ children:
     - ./resources/PaymentCycles.md
     - ./resources/Permissions.md
     - ./resources/Wallets.md
+    - ./webhooks.md
 ---
 
 # The Mozaic SDK
