@@ -37,13 +37,16 @@ const sdk = new Mozaic(<End Point>, <Personal Access Token>);
 
 Creating an instance of the SDK is very cheap and it is also stateless. You can keep it globally, or create one whenever you need to use it.
 
+## Web Hooks
+Mozaic provides a rich set of Web Hooks that enables direct callbacks to your own API when key events happen inside the system. For more information and documentation of web hook options, please see [Web Hooks](webhooks.md).
+
 ## Resources
 
-The Mozaic SDK consists of *Resources*. These are functional groupings of services and logic that let you perform actions with the Mozaic API. Each resource will have a main level object that is the main interface to other classes and functionality in the Resource. Resources can call other Resources and you may use several Resources together to complete a business process. The SDK's goal is to make this as easy and intuitive as possible.
+The Mozaic SDK consists of *Resources*. These are functional groupings of services and logic that let you perform actions with the Mozaic API. Each resource will have a top level object that is the main interface to other classes and functionality in the Resource. Resources can call other Resources and you may use several Resources together to complete a business process. The SDK's goal is to make this as easy and intuitive as possible.
 
 ### [Invoices](resources/Invoices.md)
 
-The [Invoices](resources/Invoices.md) resource enables you to download the PDF bytes of an invoice. You can then send them to a UI or download the bytes to a local file. 
+The [Invoices](resources/Invoices.md) resource enables you to download the PDF bytes of an invoice. You can then send them to a UI or download the bytes to a local file. You can also use this resource to mark an invoice as paid which will then use your Mozaic balance to fund your payment cycle.
 
 ### [PaymentCycles](resources/PaymentCycles.md)
 
@@ -51,8 +54,9 @@ The [PaymentCycles](resources/PaymentCycles.md) resource enables you to create a
 
 ### [Permissions](resources/Permissions.md)
 
-The [Permissions](resources/Permissions.md) resource enables you to get a list of UI visibility permissions for the current Personal Access Token used to authenticate to the SDK. If you are running into issues doing an action with the API, it might be because your Personal Access Token is lacking the correct security setup. Contact your Mozaic account representative to correct any issues.
+The [Permissions](resources/Permissions.md) resource enables you to get a list of UI visibility permissions for the current Personal Access Token used to authenticate to the SDK. If you are running into issues while doing an action with the API, it might be because your Personal Access Token is lacking the correct security setup. Contact your Mozaic account representative to correct any issues.
 
 ### [Wallets](resources/Wallets.md)
 
 The [Wallets](resources/Wallets.md) resource enables you to manipulate your stored payment and payout methods. You will use your wallet to fund payment cycles, withdraw money from your Mozaic account and other wallet actions.
+

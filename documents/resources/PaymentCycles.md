@@ -7,7 +7,7 @@ category: Guides
 [Back to the SDK](../index.md)
 
 # PaymentCycles (Resource)
-As a company or individual who is going to make a one-time payment of varying amounts to various individuals will create a Payment Cycle. A Payment Cycle has an accounting time period that covers a date range, a memo and a name. These fields can be used for accounting so that the payments for a specific time period can be tracked. 
+As a company or individual who is going to make a one-time payment of varying amounts to various individuals will create a Payment Cycle. A Payment Cycle has an accounting time period that covers a date range, a memo and a name. These fields can be used for accounting so that the payments for a specific time period can be tracked. A payment cycle goes through several stages. While a payment cycle is in draft, you can continue to make changes to it and add additional payment recipients to it as payment cycle entries. Once you have set all of the details for a payment cycle, the payment cycle is finalized. When finalizing the payment cycle, you specify how you would like to fund it. There are two options: pay using a payment method on file, or pay via invoice. Paying my method on file enables the payment cycle to be processed immediately. Funds are withdrawn from your payment method, and then distributed to all of the payment cycle entries that you defined. If you are paying by invoice, you will need to work with your bank to wire funds to the virtual bank account shown on the invoice. Once the invoice is paid, the money is distributed to the recipients defined in the payment cycle entries.
 
 ## Sequence Diagram of a Payment Cycle
 ![A sequence diagram of a payment cycle](../images/sequence.png)
@@ -39,8 +39,8 @@ const entry1 = await paymentCycle.addPaymentCycleEntry("Jamie Johnson", "jamie.j
 const entry2 = await paymentCycle.addPaymentCycleEntry("Pat Jones", "pat.jones@noemail.com", 100, "AUD");
 ```
 
-### Select a Funding Source for the Payment Cycle
-After a Payment Cycle has been created and Payment Cycle Entries have been added to it, the Payment Cycle must be funded so that Payments can be sent to Recipients. In order to fund a Payment Cycle, a Payment Method must be selected from your Wallet using the Wallet API. 
+### Funding a Payment Cycle with a stored Payment Method
+After a Payment Cycle has been created and Payment Cycle Entries have been added to it, the Payment Cycle must be funded so that Payments can be sent to Recipients. If you would like to use a stored debit card or bank account to fund a Payment Cycle, a Payment Method must be selected from your Wallet using the Wallet API. Once finalized, the payment cycle will be processed and payment recipients will be paid. 
 
 ```
 const wallets = await sdk.Wallets.getWallets();
@@ -52,17 +52,22 @@ if(paymentMethod === undefined
     {
         paymentMethod = stripeWallet?.paymentMethods[0];
     }
-```
 
-### Fund and Finalize the Payment Cycle
-Next, Finalize the Payment Cycle which will transfer money from your Payment Method to Mozaic. Once Mozaic has your funding payment, we will proceed to Pay all of the recipients on your Payment Cycle. Note that this call returns an updated paymentCycle object that reflects the status change from "draft" to "invoicing".
-
-```
 paymentCycle = paymentCycle.finalize(paymentMethod);
 ```
 
+### Funding a Payment Cycle with an Invoice
+If you would prefer to fund your payment cycle manually, you can do so by paying a Mozaic invoice. Once finalized, you will need to download the invoice and then work with your bank to send payment to the virtual account specified in the Mozaic invoice. If you would like to test this workflow in a non-production environment, please see the example in the [Invoices](Invoices.md) resource.
+```
+const finalizedPaymentCycle = await paymentCycle.finalizeByInvoice();
+
+const pdfInvoice = await sdk.Invoices.getInvoice(paymentCycle.invoiceId);
+
+fs.writeFileSync("invoice.pdf", Buffer.from(pdfInvoice));
+```
+
 ### Get the status of the Payment Cycle while it is being processed
-The Payment Cycle is sent to a Mozaic payment partner for fulfillment. The payment partner depends on the Wallet you selected above. When the partner updates the payment cycle status, we make that available to you by updating the status in our records. You can get the overall status of the Payment Cycle, or the individual status of each payment that the Payment Cycle will issue. Note that bigger Payment Cycles can take several minutes to complete, please do not make calls less than 5 minutes apart to the API looking for immediate status. 
+The Payment Cycle is sent to a Mozaic payment partner for fulfillment. The payment partner depends on the Wallet you selected above. When the partner updates the payment cycle status, we make that available to you by updating the status in our records. You can get the overall status of the Payment Cycle, or the individual status of each payment that the Payment Cycle will issue. Note that bigger Payment Cycles can take several minutes to complete, please do not make calls less than 5 minutes apart to the API looking for immediate status. To get real time status, we recommend that you use a [web hook](../webhooks.md) instead of polling the Mozaic SDK/API.
 
 ```
 const currentPaymentCycle = sdk.PaymentCycles.getPaymentCycle(oldPaymentCycle.paymentCycleId);

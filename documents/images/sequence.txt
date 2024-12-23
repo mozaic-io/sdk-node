@@ -19,19 +19,29 @@ opt Execute Payment Cycle
         sdk-->>e: paymentCycleEntry
     end
     
-    opt Get Funding Source
-        e->sdk: sdk.Wallets.getWallets()
-        sdk-->>e: wallets
-        e->e: Select Wallet with\npayment method 
-        e->e: Select walletItem from\nwallet representing\nthe payment method
-    end
+    opt Pay with Stored Funding
+        opt Get Funding Source
+            e->sdk: sdk.Wallets.getWallets()
+            sdk-->>e: wallets
+            e->e: Select Wallet with\npayment method 
+            e->e: Select walletItem from\nwallet representing\nthe payment method
+        end
+        
+        opt Fund Payment Cycle and Finalize
+            e->sdk: paymentCycle.finalize(walletItem)
+            sdk-->>e: paymentCycle (updated status to invoicing)
+           e->m: Funds for payment cycle
+        end
+    end 
     
-    opt Fund Payment Cycle and Finalize
-        e->sdk: paymentCycle.finalize(walletItem)
+    opt Pay with Invoice
+        e->sdk: paymentCycle.finalizeByInvoice()
         sdk-->>e: paymentCycle (updated status to invoicing)
+        e->sdk: sdk.Invoices.getInvoice(invoiceId)
+        sdk-->>e: PDF Invoice with Virtual Bank Account Information
+        e->m: Pay amount to Virtual Bank Account
     end
     
-    sdk->m: Issue Payments
     m->r: Issue Payments
 end
 
@@ -46,7 +56,7 @@ opt Checking the status of each payment on a payment cycle
     sdk-->>e: paymentCycleEntryList
 end
 
-opt Getting an Invoice for a Payment Cycle API as pcapi
+opt Getting an Invoice for a Payment Cycle API
     e->sdk: paymentCycle.getInvoice()
     sdk-->>e: ArrayBuffer (PDF Bytes)
 end
