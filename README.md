@@ -8,7 +8,7 @@ The Mozaic SDK gives users simplified access to the Mozaic API. A Personal Acces
 # Installation
 
 ```
-npm install @mozaic-io/sdk-node
+npm install @mozaic-io/mozaic-sdk-node
 ```
 
 # Build and Test
