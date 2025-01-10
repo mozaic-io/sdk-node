@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Pay By Invoice",
+        "type": "node",
+        "request": "launch",
+        "skipFiles": ["<node_internals>/**"],
+        "program": "${workspaceFolder}/dist/index.js",  // Path to the compiled JS file
+        "preLaunchTask": "tsc: build - tsconfig.json",  // Runs TypeScript build before debugging
+        "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+        "args": ["invoice"]
+      },
+      {
+        "name": "Pay By Stored Method",
+        "type": "node",
+        "request": "launch",
+        "skipFiles": ["<node_internals>/**"],
+        "program": "${workspaceFolder}/dist/index.js",  // Path to the compiled JS file
+        "preLaunchTask": "tsc: build - tsconfig.json",  // Runs TypeScript build before debugging
+        "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+        "args": ["stored"]
+      }
+    ]
+  }

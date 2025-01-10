@@ -366,3 +366,5 @@ FodyWeavers.xsd
 dist/
 coverage/
 test-results/
+examples/payment-cycles/.env
+examples/payment-cycles/invoice.pdf
