@@ -7,6 +7,8 @@ The Mozaic SDK gives users simplified access to the Mozaic API. A Personal Acces
 
 [NPM Package](https://www.npmjs.com/package/@mozaic-io/mozaic-sdk-node)
 
+[Examples](https://github.com/mozaic-io/sdk-node/tree/master/examples)
+
 # Installation
 
 ```
