@@ -1,6 +1,4 @@
-import { faker } from "@faker-js/faker";
 import { Mozaic, MozaicError } from "@mozaic-io/mozaic-sdk-node";
-import { PaymentCycleEntry } from "@mozaic-io/mozaic-sdk-node/dist/resources/PaymentCycles/PaymentCycleEntry";
 import { WalletItem } from "@mozaic-io/mozaic-sdk-node/dist/resources/Wallets/WalletItem";
 import { AxiosError } from "axios";
 import 'dotenv/config'
