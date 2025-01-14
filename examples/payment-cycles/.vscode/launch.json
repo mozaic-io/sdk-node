@@ -9,7 +9,7 @@
         "program": "${workspaceFolder}/dist/index.js",  // Path to the compiled JS file
         "preLaunchTask": "tsc: build - tsconfig.json",  // Runs TypeScript build before debugging
         "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-        "args": ["invoice"]
+        "args": ["pay-by-invoice"]
       },
       {
         "name": "Pay By Stored Method",
@@ -19,7 +19,7 @@
         "program": "${workspaceFolder}/dist/index.js",  // Path to the compiled JS file
         "preLaunchTask": "tsc: build - tsconfig.json",  // Runs TypeScript build before debugging
         "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-        "args": ["stored"]
+        "args": ["pay-with-stored-payment-method"]
       }
     ]
   }
