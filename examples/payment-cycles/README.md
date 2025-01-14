@@ -37,12 +37,12 @@ This example demonstrates how to use the Mozaic SDK for Node.js to manage paymen
 
 3. Run the example (Pay by Invoice):
     ```
-    npm start invoice
+    npm start pay-by-invoice
     ```
 
 4. Run the example (Pay by Stored Payment Method):
     ```
-    npm start stored
+    npm start pay-with-stored-payment-method
     ```
 
 ## VisualStudio Code
@@ -59,8 +59,8 @@ the example you wish to run (Ctrl-Shift-D) then press F5 so launch the debugger.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](../../LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](../../LICENSE.md) file for details.
 
 ## Support
 
-If you have any questions or need help, feel free to open an issue on the [GitHub repository](https://github.com/your-repo/sdk-node/issues).
+If you have any questions or need help, feel free to open an issue on the [GitHub repository](https://github.com/mozaic-io/sdk-node/issues).

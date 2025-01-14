@@ -106,12 +106,12 @@ export default class PaymentCyclesExample {
     const method = process.argv[2];
 
     try {
-        if (method === "invoice") {
+        if (method === "pay-by-invoice") {
             await app.paymentCyclePayByInvoice();
-        } else if (method === "stored") {
+        } else if (method === "pay-with-stored-payment-method") {
             await app.paymentCyclePayWithStoredPaymentMethod();
         } else {
-            console.error("Please specify a valid method: 'invoice' or 'stored'.");
+            console.error("Please specify a valid method: 'pay-by-invoice' or 'pay-with-stored-payment-method'.");
             process.exit(1);
         }
     } catch (error) {
