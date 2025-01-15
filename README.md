@@ -38,3 +38,8 @@ Generate API Proxy:
 ```
 npm run gen
 ```
+
+Publish to NPM:
+```
+npm run publish
+```
