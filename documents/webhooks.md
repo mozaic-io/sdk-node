@@ -26,12 +26,6 @@ This event is sent when an invoice has been created. Once you finalize a payment
 ### Invoice Paid (invoice-paid)
 This event is sent when an invoice has been paid. Once the invoice is paid, then the related workflow is completed. When the invoice is related to a payment cycle, then invoice payment triggers the payment cycle to complete. payments will be issued to all recipients on the payment cycle. 
 
-### Payment Completed (payment-complete)
-This event is raised when the payment is completed to a recipient. If the recipient was in your contacts list, then the payment is completed automatically. If the recipient is not in your contacts list, then they must accept the payment before it can be completed. This event will not be sent until the payment is completed.
-
-### Payment Created (payment-created)
-This event is raised when your payment has been funded and is on its way to a recipient. You will receive this notification for each payment sent as part of a payment cycle. The recipient must have you in their contacts list or accept your payment before the payment can be completed.
-
 ### Payment Cycle Entry Updated (payment-cycle-entry-updated)
 This event is sent when a payment cycle entry has been updated. Each payment recipient on your payment cycle is represented by a payment cycle entry consisting of a name, email address, amount and currency. As each recipient is paid in a payment cycle, this event is raised to indicate the status of the payment and provide details about the payment.
 

@@ -7,7 +7,7 @@ category: Guides
 [Back to the SDK](../index.md)
 
 # PaymentCycles (Resource)
-As a company or individual who is going to make a one-time payment of varying amounts to various individuals will create a Payment Cycle. A Payment Cycle has an accounting time period that covers a date range, a memo and a name. These fields can be used for accounting so that the payments for a specific time period can be tracked. A payment cycle goes through several stages. While a payment cycle is in draft, you can continue to make changes to it and add additional payment recipients to it as payment cycle entries. Once you have set all of the details for a payment cycle, the payment cycle is finalized. When finalizing the payment cycle, you specify how you would like to fund it. There are two options: pay using a payment method on file, or pay via invoice. Paying my method on file enables the payment cycle to be processed immediately. Funds are withdrawn from your payment method, and then distributed to all of the payment cycle entries that you defined. If you are paying by invoice, you will need to work with your bank to wire funds to the virtual bank account shown on the invoice. Once the invoice is paid, the money is distributed to the recipients defined in the payment cycle entries.
+As a company or individual who is going to make a one-time payment of varying amounts to various individuals will create a Payment Cycle. A Payment Cycle has an accounting time period that covers a date range, a memo and a name. These fields can be used for accounting so that the payments for a specific time period can be tracked. A payment cycle goes through several stages. While a payment cycle is in draft, you can continue to make changes to it and add additional payment recipients to it as payment cycle entries. Once you have set all of the details for a payment cycle, the payment cycle is finalized. When finalizing the payment cycle, you specify how you would like to fund it. There are two options: pay using a payment method on file, or pay via invoice. Paying my method on file enables the payment cycle to be processed immediately. Funds are withdrawn from your payment method, and then distributed to all of the payment cycle entries that you defined. If you are paying by invoice, you will need to work with your bank to wire funds to the virtual bank account shown on the invoice or use the online payment link shown on the invoice. Once the invoice is paid, the money is distributed to the recipients defined in the payment cycle entries. You can also view the results of a payment cycle using the Mozaic web app. Refer to the [main documentation page](../index.md) for a list of environments.
 
 ## Sequence Diagram of a Payment Cycle
 ![A sequence diagram of a payment cycle](../images/sequence.png)
@@ -78,7 +78,7 @@ const currentPaymentCycleEntries = (await currentPaymentCycle).getPaymentCycleEn
 
 Note: If you have more than 100 entries on a single payment cycle, you will need to page through the results to view them all. 
 
-### Get the Invoice for a Payment Cycle
+### Get the Invoice for a completed Payment Cycle
 When a Payment Cycle has been completed, you can retrieve an Invoice for your funding payment. The Payment Cycle has a convenience method, or you can use the Invoice resource with the invoice ID. The return value from this method is an ArrayBuffer containing the bytes of a PDF. 
 
 ```

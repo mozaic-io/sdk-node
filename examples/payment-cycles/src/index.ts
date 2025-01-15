@@ -1,4 +1,6 @@
 import { Mozaic, MozaicError } from "@mozaic-io/mozaic-sdk-node";
+import { FeeDirection } from "@mozaic-io/mozaic-sdk-node/dist/api";
+import { PaymentCycle } from "@mozaic-io/mozaic-sdk-node/dist/resources/PaymentCycles/PaymentCycle";
 import { WalletItem } from "@mozaic-io/mozaic-sdk-node/dist/resources/Wallets/WalletItem";
 import { AxiosError } from "axios";
 import 'dotenv/config'
@@ -16,11 +18,11 @@ export default class PaymentCyclesExample {
     /**
      * Example of creating a payment cycle and paying it by invoice.
      */
-    public async paymentCyclePayByInvoice(): Promise<void> {
+    public async paymentCycle(useStoredPaymentMethod: boolean): Promise<void> {
 
         console.log("Running payment cycle example using pay by invoice...");
 
-        const paymentCycle = await this._client.PaymentCycles.createPaymentCycle("Test Payment Cycle", "payee", "October Test Payments", new Date("10/1/2024"), new Date("10/31/2024"));
+        const paymentCycle = await this._client.PaymentCycles.createPaymentCycle("Test Payment Cycle", FeeDirection.Payer, "October Test Payments", new Date("10/1/2024"), new Date("10/31/2024"));
 
         console.log(paymentCycle.paymentCycleId);
 
@@ -32,40 +34,20 @@ export default class PaymentCyclesExample {
 
         console.log(`Added: ${entry2.name}`);
 
-        const finalizedPaymentCycle = await paymentCycle.finalizeByInvoice();
+        let finalizedPaymentCycle: PaymentCycle;
 
-        console.log(`Finalized: ${finalizedPaymentCycle.paymentCycleId}`);
+        if (useStoredPaymentMethod == true) {
+            const paymentMethod = await this.getPaymentMethod(this._client);
 
-        const paidInvoice = await this._client.Invoices.payInvoice(finalizedPaymentCycle.invoiceId);
+            console.log(`Got payment method: ${paymentMethod.paymentMethodId}`);
 
-        console.log(`Paid Invoice: ${paidInvoice.id} = ${paidInvoice.status}`);
-    }
+            finalizedPaymentCycle = await paymentCycle.finalize(paymentMethod);
+        }
+        else {
+            finalizedPaymentCycle = await paymentCycle.finalizeByInvoice();
+        }
 
-    /**
-     * Example of creating a payment cycle and paying it with a stored payment method.
-     */
-    public async paymentCyclePayWithStoredPaymentMethod(): Promise<void> {
-        console.log("Running payment cycle example using pay by stored payment method...");
-
-        const paymentCycle = await this._client.PaymentCycles.createPaymentCycle("Test Payment Cycle", "payee", "October Test Payments", new Date("10/1/2024"), new Date("10/31/2024"));
-
-        console.log(paymentCycle.paymentCycleId);
-
-        const entry1 = await paymentCycle.addPaymentCycleEntry("Jamie Johnson", "jamie.johnson@nomail.com", 245, "USD");
-
-        console.log(`Added: ${entry1.name}`);
-
-        const entry2 = await paymentCycle.addPaymentCycleEntry("Pat Jones", "pat.jones@noemail.com", 99.99, "AUD");
-
-        console.log(`Added: ${entry2.name}`);
-
-        const paymentMethod = await this.getPaymentMethod(this._client);
-
-        console.log(`Got payment method: ${paymentMethod.paymentMethodId}`);
-
-        const finalizedPaymentCycle = await paymentCycle.finalize(paymentMethod);
-
-        console.log(`Finalized: ${finalizedPaymentCycle.paymentCycleId}`);
+        console.log(`Finalized: ${finalizedPaymentCycle.paymentCycleId}, invoice: ${finalizedPaymentCycle.invoiceId}`);
 
         const invoice = await finalizedPaymentCycle.getInvoice();
 
@@ -107,9 +89,9 @@ export default class PaymentCyclesExample {
 
     try {
         if (method === "pay-by-invoice") {
-            await app.paymentCyclePayByInvoice();
+            await app.paymentCycle(true);
         } else if (method === "pay-with-stored-payment-method") {
-            await app.paymentCyclePayWithStoredPaymentMethod();
+            await app.paymentCycle(false);
         } else {
             console.error("Please specify a valid method: 'pay-by-invoice' or 'pay-with-stored-payment-method'.");
             process.exit(1);

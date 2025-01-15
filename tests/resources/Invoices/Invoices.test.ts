@@ -43,27 +43,28 @@ describe("Payment Cycle Tests", () => {
         }
     });
 
-    it("payInvoice should mark the invoice as paid", async () => {
+    // Removing payInvoice as is it a test method that will not work in all environments. 
+    // it("payInvoice should mark the invoice as paid", async () => {
 
-        mockInvoicesApi.payInvoice.mockImplementation(async (id: string, invoicePayDeets: InvoicePayDeets | undefined, options?: RawAxiosRequestConfig) =>
-            TestUtils.createSuccessfulAxiosResponse(
-                InvoicesEntities.payInvoice(id)
-            )
-        );
+    //     mockInvoicesApi.payInvoice.mockImplementation(async (id: string, invoicePayDeets: InvoicePayDeets | undefined, options?: RawAxiosRequestConfig) =>
+    //         TestUtils.createSuccessfulAxiosResponse(
+    //             InvoicesEntities.payInvoice(id)
+    //         )
+    //     );
 
-        let invoice = await sdk.Invoices.payInvoice("invoice_1234456677");
+    //     let invoice = await sdk.Invoices.payInvoice("invoice_1234456677");
 
-        expect(invoice.status).toBe("paid");
-    });
+    //     expect(invoice.status).toBe("paid");
+    // });
 
-    it("payInvoice should throw an error if the invoiceId is undefined", async () => {
-       try {
-            await sdk.Invoices.payInvoice(undefined);
-            fail("It didn't throw the exception.");
-        }
-        catch (ex) {
-            expect(ex).toBeInstanceOf(Error);
-        }
-    });
+    // it("payInvoice should throw an error if the invoiceId is undefined", async () => {
+    //    try {
+    //         await sdk.Invoices.payInvoice(undefined);
+    //         fail("It didn't throw the exception.");
+    //     }
+    //     catch (ex) {
+    //         expect(ex).toBeInstanceOf(Error);
+    //     }
+    // });
 
 });

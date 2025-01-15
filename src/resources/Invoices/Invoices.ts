@@ -44,6 +44,9 @@ export class Invoices extends BaseResource {
         return result as unknown as ArrayBuffer;
     }
 
+    
+    // Removing payInvoice as is it a test method that will not work in all environments. 
+
     /**
      * Mark an invoice as Paid. If the invoice is for a payment cycle that has been finalized, then
      * the payment cycle will attempt to be funded from your available Mozaic balance. If there is not
@@ -51,12 +54,12 @@ export class Invoices extends BaseResource {
      * You can use this method to test your Mozaic integration in non-production environments. Ask your
      * Mozaic representative to pre-fund your account with test funds.
      */
-    async payInvoice(invoiceId: string | null | undefined): Promise<Invoice> {
+    // async payInvoice(invoiceId: string | null | undefined): Promise<Invoice> {
         
-        invoiceId = this.throwIfNullOrUndefined("invoiceId", invoiceId);
+    //     invoiceId = this.throwIfNullOrUndefined("invoiceId", invoiceId);
         
-        const result = await this.execute(() => this._invoicesApi.payInvoice(invoiceId));
+    //     const result = await this.execute(() => this._invoicesApi.payInvoice(invoiceId));
 
-        return result;
-    }
+    //     return result;
+    // }
 }

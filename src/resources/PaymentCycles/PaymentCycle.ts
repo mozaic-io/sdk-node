@@ -205,7 +205,7 @@ export class PaymentCycle extends BaseResource {
             payment_method_id: null,
             collection_method: "send_invoice",
             ach_auto_reconciliation: false,
-            auto_finalize_invoice: false
+            auto_finalize_invoice: true
         }));
 
         return new PaymentCycle(this._mozaic, this._paymentCycleApi, result);

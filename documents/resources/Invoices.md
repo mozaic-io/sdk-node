@@ -12,11 +12,11 @@ Mozaic uses invoices to request money from you to pay other people. When you cre
 
 ## Testing an Invoice Payment
 
-While there isn't a way to test transferring money to your Mozaic virtual account on a test invoice, you can use the Mozaic SDK to make an invoice as paid. When you do this, Mozaic will use your virtual account balance to fund your payment cycle. As part of your sandbox setup, Mozaic will add money to this virtual account balance to enable you to test the integration in the sandbox environment. 
+While there isn't a way to test transferring money to your Mozaic virtual account to fund a test invoice, you can download the invoice and then use the online payment link to pay the invoice using a test credit card. The following test credit card will work for testing an invoice payment in any non-production environment. See the [Payment Cycle Example](https://github.com/mozaic-io/sdk-node/tree/master/examples/payment-cycles) for details.
 
-### Marking an Invoice as Paid (Example)
 ```
-const finalizedPaymentCycle = await paymentCycle.finalizeByInvoice();
-
-const paidInvoice = await client.Invoices.payInvoice(finalizedPaymentCycle.invoiceId);
+Visa (Debit)
+PAN: 4000 0566 5566 5556 
+EXP: 09/30 
+CVC: 123
 ```

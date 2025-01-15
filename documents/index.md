@@ -22,11 +22,13 @@ The purpose of this SDK to is to provide easy access to the underlying Mozaic AP
 
 The following endpoints can be passed to the SDK:
 
-| Environment | End Point |
-| --------- | ----------- | 
-| Sandbox | https://api.sandbox.mozaic.io |
+| Environment | End Point | Mozaic Web App |
+| --------- | ----------- | -------------- |
+| Sandbox | https://api.sandbox.mozaic.io | https://app.sandbox.mozaic.io |
 
+## Example Applications
 
+We have provided example applications to help you get started with the Mozaic SDK. Please refer to the [Examples](https://github.com/mozaic-io/sdk-node/tree/master/examples) directory in the SDK source for details.
 
 ## Before you call a Resource...
 
