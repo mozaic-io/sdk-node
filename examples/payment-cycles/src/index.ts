@@ -89,9 +89,9 @@ export default class PaymentCyclesExample {
 
     try {
         if (method === "pay-by-invoice") {
-            await app.paymentCycle(true);
-        } else if (method === "pay-with-stored-payment-method") {
             await app.paymentCycle(false);
+        } else if (method === "pay-with-stored-payment-method") {
+            await app.paymentCycle(true);
         } else {
             console.error("Please specify a valid method: 'pay-by-invoice' or 'pay-with-stored-payment-method'.");
             process.exit(1);
