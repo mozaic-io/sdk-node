@@ -7,6 +7,13 @@ import { MozaicError } from "./MozaicError";
  */
 export abstract class BaseResource {
 
+    protected getValueOrDefault<T>(value: T | null | undefined, defaultValue: T): T {
+        if(value === null || value === undefined)
+            return defaultValue;
+
+        return value;
+    }
+
     /**
      * A helper function that will either return the variable's value or throw an exception
      * if the value is null or undefined. Unit testing is simplified by avoiding ??

@@ -53,7 +53,19 @@ describe("Payment Cycle Tests", () => {
   {
     mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
       TestUtils.createSuccessfulAxiosResponse(
-        PaymentCyclesEntities.listPaymentCycles(10, 1)
+        PaymentCyclesEntities.listPaymentCycles(10, 1, false)
+      )
+    );
+
+    var paymentCycles = await sdk.PaymentCycles.getPaymentCycles(10, 1);
+
+    expect(paymentCycles.data.length).toBe(10);
+  });
+
+  it("getPaymentCycles should not fail when a list of payment cycles has a payment cycle with name = null", async () => {
+    mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
+      TestUtils.createSuccessfulAxiosResponse(
+        PaymentCyclesEntities.listPaymentCycles(10, 1, true)
       )
     );
 
@@ -77,7 +89,24 @@ describe("Payment Cycle Tests", () => {
   {
     mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
       TestUtils.createFailedAxiosResponse(
-        PaymentCyclesEntities.listPaymentCycles(10, 1)
+        PaymentCyclesEntities.listPaymentCycles(10, 1, false)
+      )
+    );
+
+    try {
+      var paymentCycles = await sdk.PaymentCycles.getPaymentCycles(10, 1);
+      fail("It didn't throw the exception.");
+    }
+    catch(ex) {
+      expect(ex).toBeInstanceOf(MozaicError);
+    }
+  });
+
+   it("getPaymentCycles should fail when the api returns a non 200 result", async () =>
+  {
+    mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
+      TestUtils.createFailedAxiosResponse(
+        PaymentCyclesEntities.listPaymentCycles(10, 1, false)
       )
     );
 

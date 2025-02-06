@@ -6,7 +6,7 @@
  */
 
 import { Mozaic } from "../..";
-import { Configuration, PaymentCyclesApi, PaymentCycleCreateDeets, FeeDirection } from "../../api";
+import { Configuration, PaymentCyclesApi, PaymentCycleCreateDeets, FeeDirection, PaymentCycleStatus } from "../../api";
 import { MozaicError } from "../MozaicError";
 import { BaseResource } from "../BaseResource";
 import { PaymentCycle } from "./PaymentCycle";
@@ -62,12 +62,13 @@ export class PaymentCycles extends BaseResource {
      * Returns a list of payment cycles using limit for the maximum item count and page to retrieve more than one page. 
      * @param limit An integer number between 1 and 100.
      * @param page An integer number of the page starting at 1.
+     * @param paymentCycleStatus An optional filter to only return payment cycles with a specific status. If not provided, all payment cycles will be returned.
      * @returns A list of PaymentCycle objects.
      */
-    async getPaymentCycles(limit: number, page: number): Promise<PaymentCycleList> {
+    async getPaymentCycles(limit: number, page: number, paymentCycleStatus?: PaymentCycleStatus): Promise<PaymentCycleList> {
         this.throwIfLimitOrPageAreInvalid(limit, page);
 
-        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycles(undefined, undefined, undefined, limit, page, undefined, undefined));
+        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycles(undefined, paymentCycleStatus, undefined, limit, page, undefined, undefined));
 
         const data = result.data?.map((value, index) => new PaymentCycle(this._mozaic, this._paymentCycleApi, value));
 

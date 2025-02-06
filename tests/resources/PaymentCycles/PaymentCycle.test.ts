@@ -296,14 +296,20 @@ describe("Payment Cycle Tests", () => {
             expect((ex as Error).message).toBe("paymentCycle.status is null or undefined");
         }
 
-        try {
-            new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed" });
-            fail("It didn't throw the exception.");
-        }
-        catch (ex) {
-            expect((ex as Error).message).toBe("paymentCycle.name is null or undefined");
-        }
+        // API-711 - SDK: A payment cycle created with the Web cannot be retrieved by the SDK
+        // Test that empty / null name is supported
+        let paymentCycle = new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed" });
+        expect(paymentCycle.name).toBe("");
 
+        paymentCycle = new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { name: undefined, id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed" });
+        expect(paymentCycle.name).toBe("");
+
+        paymentCycle = new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { name: null, id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed" });
+        expect(paymentCycle.name).toBe("");
+
+        paymentCycle = new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { name: "TestName", id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed" });
+        expect(paymentCycle.name).toBe("TestName");
+        
         const testCycle = new PaymentCycle(sdk, sdk.PaymentCycles.PaymentCyclesApi, { id: "paymentCycle_test1223342542", short_id: "1234-TID1", status: "completed", name: "Payment Cycle Name" });
 
         expect(testCycle.accountingFrom?.getTime()).toBeNaN();

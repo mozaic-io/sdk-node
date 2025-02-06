@@ -119,7 +119,7 @@ export class PaymentCycle extends BaseResource {
         if (paymentCycle.accounting_to !== null)
             this.accountingTo = new Date(paymentCycle.accounting_to ?? "");
 
-        this.name = this.throwIfNullOrUndefined("paymentCycle.name", paymentCycle.name);
+        this.name = this.getValueOrDefault(paymentCycle.name, "");
         this.invoiceId = paymentCycle.invoice_id;
     }
 

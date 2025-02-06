@@ -40,13 +40,14 @@ export class PaymentCyclesEntities {
         };
     }
 
-    static listPaymentCycles(limit: number, page: number): PaymentCycleListResponse {
+    static listPaymentCycles(limit: number, page: number, nameIsNull: boolean): PaymentCycleListResponse {
         const data = new Array<PaymentCycle>();
 
         for (let i = 0; i < limit; i++) {
+            let name = nameIsNull ? null : faker.person.fullName();
             data.push(
                 PaymentCyclesEntities.getTestPaymentCycleResponse(
-                    faker.person.fullName(),
+                    name,
                     faker.helpers.arrayElement([FeeDirection.Default, FeeDirection.Payee, FeeDirection.Payer, FeeDirection.Split]),
                     faker.lorem.word(10),
                     faker.date.past(),
@@ -124,7 +125,7 @@ export class PaymentCyclesEntities {
         return returnValue;
     }
 
-    static getTestPaymentCycleResponse(name: string, feeDirection: FeeDirection, memo: string, accountingFromDateUtc: Date, accountingToDateUtc: Date, status: PaymentCycleStatus): PaymentCycle {
+    static getTestPaymentCycleResponse(name: string | null, feeDirection: FeeDirection, memo: string, accountingFromDateUtc: Date, accountingToDateUtc: Date, status: PaymentCycleStatus): PaymentCycle {
 
         let includeInvoiceId = false;
 
