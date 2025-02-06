@@ -1,5 +1,8 @@
+[![Unit Tests](https://github.com/mozaic-io/sdk-node/actions/workflows/test.yml/badge.svg)](https://github.com/mozaic-io/sdk-node/actions/workflows/test.yml)
+
 # Introduction 
 The Mozaic SDK gives users simplified access to the Mozaic API. A Personal Access Token is required to use this SDK. Please contact your Mozaic account representative for details.
+
 
 # Documentation
 
