@@ -1,0 +1,27 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x' # or the version you use
+      - name: Install Dependencies
+        run: npm install  # Or yarn install if you use Yarn
+      - name: Run Tests
+        run: npm test  # Or yarn test if you use Yarn
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: coverage/ # Or the folder where Jest outputs coverage reports
