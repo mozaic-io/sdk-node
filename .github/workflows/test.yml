@@ -21,7 +21,7 @@ jobs:
       - name: Run Tests
         run: npm test  # Or yarn test if you use Yarn
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: coverage/ # Or the folder where Jest outputs coverage reports
