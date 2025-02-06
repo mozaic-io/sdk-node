@@ -35,7 +35,7 @@
     "!dist/examples"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --reporters=jest-junit",
     "build": "tsc && npm run copy && npm run doc",
     "doc": "typedoc",
     "copy": "copyfiles README.md LICENSE.md dist/",
