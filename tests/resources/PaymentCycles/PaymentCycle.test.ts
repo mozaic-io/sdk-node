@@ -1,6 +1,6 @@
 import { RawAxiosRequestConfig } from "axios";
 import { MozaicError, Mozaic } from "../../../src";
-import { InvoicesApi, ListOfSortFieldsForPaymentCycleEntriesListObject, PaymentCycleEntryCreateDeets, PaymentCycleFinalizeDeets, PaymentCyclesApi, PaymentCycleStatus, TransactionStatusEnum, WalletsApi } from "../../../src/api";
+import { InvoicesApi, PaymentCycleEntryCreateDeets, PaymentCycleEntrySortFields, PaymentCycleFinalizeDeets, PaymentCyclesApi, PaymentCycleStatus, TransactionStatusEnum, WalletsApi } from "../../../src/api";
 import { PaymentCycle } from "../../../src/resources/PaymentCycles/PaymentCycle";
 import { TestUtils } from "../../TestUtils";
 import { PaymentCyclesEntities } from "./PaymentCyclesEntities";
@@ -182,7 +182,7 @@ describe("Payment Cycle Tests", () => {
 
     it("getPaymentCycleEntries should get payment cycle entries for the payment cycle", async () => {
         mockPaymentCyclesApi.listPaymentCycleEntries
-            .mockImplementation(async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: ListOfSortFieldsForPaymentCycleEntriesListObject[], limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
+            .mockImplementation(async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: PaymentCycleEntrySortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
                 TestUtils.createSuccessfulAxiosResponse(
                     PaymentCyclesEntities.listPaymentCycleEntries(id, limit ?? 0, page ?? 0))
             );
@@ -196,7 +196,7 @@ describe("Payment Cycle Tests", () => {
 
     it("getPaymentCycleEntries should set data to undefined when the server response is invalid", async () => {
         mockPaymentCyclesApi.listPaymentCycleEntries
-            .mockImplementation(async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: ListOfSortFieldsForPaymentCycleEntriesListObject[], limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
+            .mockImplementation(async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: PaymentCycleEntrySortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
                 TestUtils.createSuccessfulAxiosResponse(
                     {}
                 )
@@ -214,7 +214,7 @@ describe("Payment Cycle Tests", () => {
 
     it("getPaymentCycleEntries should throw an exception when the response is not 200", async () => {
         mockPaymentCyclesApi.listPaymentCycleEntries
-            .mockImplementation(async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: ListOfSortFieldsForPaymentCycleEntriesListObject[], limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
+            .mockImplementation(async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: PaymentCycleEntrySortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) =>
                 TestUtils.createFailedAxiosResponse(
                     PaymentCyclesEntities.listPaymentCycleEntries(id, limit ?? 0, page ?? 0))
             );
