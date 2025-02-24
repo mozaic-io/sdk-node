@@ -31,12 +31,12 @@ const paymentCycle = PaymentCycles.createPaymentCycle(
 ```
 
 ### Add Payment Entries to the Payment Cycles
-Now that a Payment Cycle has been created, you will add Payment Cycle Entries to the Payment Cycle. Each Payment Cycle Entry represents a single, one-time payment that will be made to the email address specified. This information can be uploaded to the API via a CSV file using the below API endpoint, or you can add Payment Cycle Entries via API calls for item-by-item entry.
+Now that a Payment Cycle has been created, you will add Payment Cycle Entries to the Payment Cycle. Each Payment Cycle Entry represents a single, one-time payment that will be made to the email address specified. This information can be uploaded to the API via a CSV file using the below API endpoint, or you can add Payment Cycle Entries via API calls for item-by-item entry. An optional external id can be associated with the payment recipient as well as a memo that will be visible to the recipient for each payment. Note: If your recipient's email changes, but you use the same external id, Mozaic will continue to send payments to the original email address. Your payment recipient will need to update their email address through Mozaic's web or mobile applications if they wish to receive payments to a new email address. You can also add an External ID and Memo to each Payment Cycle Entry. This information will also be attached the payments that the system generates and the Memo field will be visible to the payment recipient. 
 
 ```
-const entry1 = await paymentCycle.addPaymentCycleEntry("Jamie Johnson", "jamie.johnson@noemail.com", 200, "USD");
+const entry1 = await paymentCycle.addPaymentCycleEntry("Jamie Johnson", "jamie.johnson@noemail.com", 200, "USD", "EXT-12345", "This is a payment to Jamie for the mic stand.");
 
-const entry2 = await paymentCycle.addPaymentCycleEntry("Pat Jones", "pat.jones@noemail.com", 100, "AUD");
+const entry2 = await paymentCycle.addPaymentCycleEntry("Pat Jones", "pat.jones@noemail.com", 100, "AUD", "EXT-54321", "This is a payment for the tour bus");
 ```
 
 ### Funding a Payment Cycle with a stored Payment Method

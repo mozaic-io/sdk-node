@@ -1,5 +1,5 @@
 import { Mozaic } from "../..";
-import { Amount, FeeDirection, PaymentCycle as RawPaymentCycle, PaymentCycleStatus, PaymentCyclesApi, PaymentCycleEntryCreateDeets, Wallet, Invoice } from "../../api";
+import { Amount, FeeDirection, PaymentCycle as RawPaymentCycle, PaymentCycleStatus, PaymentCyclesApi, PaymentCycleEntryCreateDeets, Wallet, Invoice, ListOfSortFieldsForPaymentCycleEntriesListObject } from "../../api";
 import { BaseResource } from "../BaseResource";
 import { WalletItem } from "../Wallets/WalletItem";
 import { PaymentCycleEntry } from "./PaymentCycleEntry";
@@ -129,8 +129,10 @@ export class PaymentCycle extends BaseResource {
      * @param email The email address of the user to pay. If the user has not already joined Mozaic, they will be sent an email invite to join.
      * @param amount The amount of money to be paid to the user.
      * @param currency The currency that the amount will be paid in. Foreign exchange rates may apply to cross-boarder payments.
+     * @param externalId An optional external ID that can be used to identify the payment recipient in an external system. This ID will be returned in the PaymentCycleEntry object.
+     * @param memo An optional free text field that can be used to describe the payment. This field has a maximum length of 140 characters.
      */
-    async addPaymentCycleEntry(name: string, email: string, amount: number, currency: string): Promise<PaymentCycleEntry> {
+    async addPaymentCycleEntry(name: string, email: string, amount: number, currency: string, externalId?: string, memo?: string): Promise<PaymentCycleEntry> {
         const deets: PaymentCycleEntryCreateDeets = {
             to: {
                 name: name,
@@ -139,7 +141,9 @@ export class PaymentCycle extends BaseResource {
             original_amount: {
                 currency: currency,
                 quantity: amount
-            }
+            },
+            external_id: externalId,
+            memo: memo
         };
 
         var result = await this.execute(() => this._paymentCycleApi.createPaymentCycleEntry(this.paymentCycleId, deets));
@@ -152,12 +156,13 @@ export class PaymentCycle extends BaseResource {
      * the results for large data sets.
      * @param limit The number of records in a page from 1 - 100
      * @param page The number of the page, starts at 1
+     * @param sortBy The field to sort the results by.
      * @returns 
      */
-    async getPaymentCycleEntries(limit: number, page: number) : Promise<PaymentCycleEntryList> {
+    async getPaymentCycleEntries(limit: number, page: number, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>) : Promise<PaymentCycleEntryList> {
         this.throwIfLimitOrPageAreInvalid(limit, page);
 
-        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycleEntries(this.paymentCycleId, undefined, undefined, undefined, limit, page, undefined, undefined));
+        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycleEntries(this.paymentCycleId, undefined, undefined, undefined, sortBy, limit, page, undefined, undefined));
 
         const data = result.data?.map((value) => new PaymentCycleEntry(value));
 

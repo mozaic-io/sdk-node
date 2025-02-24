@@ -12,6 +12,8 @@ import { Invoices } from "./resources/Invoices/Invoices";
 import { PaymentCycles } from "./resources/PaymentCycles/PaymentCycles";
 import { Permissions } from "./resources/Permissions/Permissions";
 import { Wallets } from "./resources/Wallets/Wallets";
+import { Contacts } from './resources/Contacts/Contacts';
+import { Payments } from './resources/Payments/Payments';
 
 export { MozaicError } from "./resources/MozaicError";
 
@@ -72,6 +74,16 @@ export class Mozaic {
         return (this._sdks[ctor.name] ??= new ctor(this, this._configuration)) as T;
     }
 
+
+    /**
+     * The Contacts resource gives you access to the Contacts API so that you can create and manage contacts.
+     * Contacts are used to represent the recipients of payments and senders of payments that you have received.
+     * @group Resources
+     */
+    get Contacts(): Contacts {
+        return this.getResource(Contacts);
+    }
+
     /**
      * The Invoices resource gives you access to the Invoices API so that you can download invoices related to 
      * payments you have made, including payments for Payment Cycles.
@@ -79,6 +91,15 @@ export class Mozaic {
      */
     get Invoices(): Invoices {
         return this.getResource(Invoices);
+    }
+
+    /**
+     * The Payments resource gives you access to the Payments API so that you can view payments.
+     * 
+     * @group Resources
+     */
+    get Payments(): Payments {
+        return this.getResource(Payments);
     }
 
     /**

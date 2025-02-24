@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="67" failures="0" errors="0" time="23.161">
+  <testsuite name="Wallet Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:33" time="10.769" tests="2">
+    <testcase classname="Wallet Tests Wallet should set id and key to empty if an invalid wallet is passed, then throw an exception for an invalid wallet type" name="Wallet Tests Wallet should set id and key to empty if an invalid wallet is passed, then throw an exception for an invalid wallet type" time="0.01">
+    </testcase>
+    <testcase classname="Wallet Tests Wallet should set payment and payout arrays to [] if they are undefined in the raw data" name="Wallet Tests Wallet should set payment and payout arrays to [] if they are undefined in the raw data" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Wallet Item Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:32" time="12.138" tests="1">
+    <testcase classname="Wallet Item Tests WalletItem should have empty strings for undefined properties" name="Wallet Item Tests WalletItem should have empty strings for undefined properties" time="0.185">
+    </testcase>
+  </testsuite>
+  <testsuite name="Payment Cycle Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:32" time="19.926" tests="2">
+    <testcase classname="Payment Cycle Tests getInvoice should download an invoice" name="Payment Cycle Tests getInvoice should download an invoice" time="0.01">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getInvoice should throw an exception when the response is not 200" name="Payment Cycle Tests getInvoice should throw an exception when the response is not 200" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="ApiError Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:33" time="19.723" tests="5">
+    <testcase classname="ApiError Tests It should preserve the stack" name="ApiError Tests It should preserve the stack" time="0.019">
+    </testcase>
+    <testcase classname="ApiError Tests It should use it&apos;s own stack when no stack is present from an inner error" name="ApiError Tests It should use it&apos;s own stack when no stack is present from an inner error" time="0.005">
+    </testcase>
+    <testcase classname="ApiError Tests It should have status = -1 and statusText = empty string when values are not present in AxiosError" name="ApiError Tests It should have status = -1 and statusText = empty string when values are not present in AxiosError" time="0.001">
+    </testcase>
+    <testcase classname="ApiError Tests It should show all values from data when data is an array" name="ApiError Tests It should show all values from data when data is an array" time="0.001">
+    </testcase>
+    <testcase classname="ApiError Tests It should not break with an invalid type in the data array" name="ApiError Tests It should not break with an invalid type in the data array" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Wallet Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:32" time="19.915" tests="2">
+    <testcase classname="Wallet Tests getWallets should fail if the api returns a wallet with no key" name="Wallet Tests getWallets should fail if the api returns a wallet with no key" time="0.013">
+    </testcase>
+    <testcase classname="Wallet Tests getWallets should return a list of wallets" name="Wallet Tests getWallets should return a list of wallets" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="Mock Permissions Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:32" time="19.828" tests="2">
+    <testcase classname="Mock Permissions Tests should get a list of permissions from the mock" name="Mock Permissions Tests should get a list of permissions from the mock" time="0.009">
+    </testcase>
+    <testcase classname="Mock Permissions Tests should throw an error if the response from the API was not successful" name="Mock Permissions Tests should throw an error if the response from the API was not successful" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="BaseResource Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:33" time="20.302" tests="9">
+    <testcase classname="BaseResource Tests BaseResource should thrown an error if limit or page are invalid" name="BaseResource Tests BaseResource should thrown an error if limit or page are invalid" time="0.014">
+    </testcase>
+    <testcase classname="BaseResource Tests BaseResource should return a value is value is available" name="BaseResource Tests BaseResource should return a value is value is available" time="0">
+    </testcase>
+    <testcase classname="BaseResource Tests BaseResource should throw an exception if value is null" name="BaseResource Tests BaseResource should throw an exception if value is null" time="0.001">
+    </testcase>
+    <testcase classname="BaseResource Tests BaseResource should throw an exception if value is undefined" name="BaseResource Tests BaseResource should throw an exception if value is undefined" time="0">
+    </testcase>
+    <testcase classname="BaseResource Tests BaseResource execute should handle AxiosError" name="BaseResource Tests BaseResource execute should handle AxiosError" time="0.064">
+    </testcase>
+    <testcase classname="BaseResource Tests BaseResource execute should handle Error" name="BaseResource Tests BaseResource execute should handle Error" time="0.001">
+    </testcase>
+    <testcase classname="BaseResource Tests BaseResource execute should handle random string exception" name="BaseResource Tests BaseResource execute should handle random string exception" time="0.001">
+    </testcase>
+    <testcase classname="BaseResource Tests BaseResource execute should handle random object exception" name="BaseResource Tests BaseResource execute should handle random object exception" time="0.001">
+    </testcase>
+    <testcase classname="BaseResource Tests BaseResource execute should handle aggregate axios exception" name="BaseResource Tests BaseResource execute should handle aggregate axios exception" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Contacts Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:32" time="20.728" tests="6">
+    <testcase classname="Contacts Tests contacts API should return a mocked list of contacts" name="Contacts Tests contacts API should return a mocked list of contacts" time="0.036">
+    </testcase>
+    <testcase classname="Contacts Tests contacts should throw an exception when the term is greater than 50 characters" name="Contacts Tests contacts should throw an exception when the term is greater than 50 characters" time="0.014">
+    </testcase>
+    <testcase classname="Contacts Tests getContactByExternalId should return a contact with the specified external ID" name="Contacts Tests getContactByExternalId should return a contact with the specified external ID" time="0">
+    </testcase>
+    <testcase classname="Contacts Tests getContactByExternalId should throw an exception if the contact is not found" name="Contacts Tests getContactByExternalId should throw an exception if the contact is not found" time="0">
+    </testcase>
+    <testcase classname="Contacts Tests searchContacts should throw an error if a contact does not have a primary email address" name="Contacts Tests searchContacts should throw an error if a contact does not have a primary email address" time="0.009">
+    </testcase>
+    <testcase classname="Contacts Tests getContacts should return a an appropriate result when the API returns a null" name="Contacts Tests getContacts should return a an appropriate result when the API returns a null" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Payment Cycle Entry Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:33" time="20.528" tests="3">
+    <testcase classname="Payment Cycle Entry Tests PaymentCycleEntry should ensure the RawPaymentCycleEntry contains correct data during wrapping" name="Payment Cycle Entry Tests PaymentCycleEntry should ensure the RawPaymentCycleEntry contains correct data during wrapping" time="0.014">
+    </testcase>
+    <testcase classname="Payment Cycle Entry Tests PaymentCycleEntry should limit memo to 140 characters" name="Payment Cycle Entry Tests PaymentCycleEntry should limit memo to 140 characters" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Entry Tests PaymentCycleEntry should set externalId when the external_id is set" name="Payment Cycle Entry Tests PaymentCycleEntry should set externalId when the external_id is set" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Payment Cycle Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:32" time="20.891" tests="11">
+    <testcase classname="Payment Cycle Tests createPaymentCycle should attempt to create a payment cycle through the mock" name="Payment Cycle Tests createPaymentCycle should attempt to create a payment cycle through the mock" time="0.011">
+    </testcase>
+    <testcase classname="Payment Cycle Tests createPaymentCycle should throw an exception when it gets an error from the api" name="Payment Cycle Tests createPaymentCycle should throw an exception when it gets an error from the api" time="0.002">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycles should get a list of payment cycles" name="Payment Cycle Tests getPaymentCycles should get a list of payment cycles" time="0.005">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycles should not fail when a list of payment cycles has a payment cycle with name = null" name="Payment Cycle Tests getPaymentCycles should not fail when a list of payment cycles has a payment cycle with name = null" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycles should fail when the api returns a non 200 result" name="Payment Cycle Tests getPaymentCycles should fail when the api returns a non 200 result" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycles should fail when the api returns a non 200 result" name="Payment Cycle Tests getPaymentCycles should fail when the api returns a non 200 result" time="0.002">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycles should fail when the api returns invalid data" name="Payment Cycle Tests getPaymentCycles should fail when the api returns invalid data" time="0">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycle should get a single payment cycle" name="Payment Cycle Tests getPaymentCycle should get a single payment cycle" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycle should throw an exception when the response from the server is invalid" name="Payment Cycle Tests getPaymentCycle should throw an exception when the response from the server is invalid" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests PaymentCycleList should be create-able with optional arguments" name="Payment Cycle Tests PaymentCycleList should be create-able with optional arguments" time="0.002">
+    </testcase>
+    <testcase classname="Payment Cycle Tests PaymentCycles.getPaymentCycleEntry should get a payment cycle entry by its id" name="Payment Cycle Tests PaymentCycles.getPaymentCycleEntry should get a payment cycle entry by its id" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="Payments Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:33" time="20.669" tests="9">
+    <testcase classname="Payments Tests payments API should return a mocked payment" name="Payments Tests payments API should return a mocked payment" time="0.035">
+    </testcase>
+    <testcase classname="Payments Tests getPayment should throw an exception if the payment is not found" name="Payments Tests getPayment should throw an exception if the payment is not found" time="0.011">
+    </testcase>
+    <testcase classname="Payments Tests getPayment should throw an exception if the to element is null" name="Payments Tests getPayment should throw an exception if the to element is null" time="0.001">
+    </testcase>
+    <testcase classname="Payments Tests getPayment should throw an exception if the email is null" name="Payments Tests getPayment should throw an exception if the email is null" time="0.005">
+    </testcase>
+    <testcase classname="Payments Tests getPayment should have a null payment cycle id and payment cycle entry id if payment source is null." name="Payments Tests getPayment should have a null payment cycle id and payment cycle entry id if payment source is null." time="0.002">
+    </testcase>
+    <testcase classname="Payments Tests getPaymentCycle should return a payment cycle if the payment was sent from a payment cycle" name="Payments Tests getPaymentCycle should return a payment cycle if the payment was sent from a payment cycle" time="0.011">
+    </testcase>
+    <testcase classname="Payments Tests getPaymentCycle should return a null if the payment was not sent from a payment cycle" name="Payments Tests getPaymentCycle should return a null if the payment was not sent from a payment cycle" time="0.002">
+    </testcase>
+    <testcase classname="Payments Tests getPaymentCycleEntry should return a payment cycle entry if the payment was sent from a payment cycle" name="Payments Tests getPaymentCycleEntry should return a payment cycle entry if the payment was sent from a payment cycle" time="0.002">
+    </testcase>
+    <testcase classname="Payments Tests getPaymentCycleEntry should return a null if the payment was not sent from a payment cycle" name="Payments Tests getPaymentCycleEntry should return a null if the payment was not sent from a payment cycle" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Contact Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:32" time="21.01" tests="2">
+    <testcase classname="Contact Tests Contact should return a mocked list of payments" name="Contact Tests Contact should return a mocked list of payments" time="0.026">
+    </testcase>
+    <testcase classname="Contact Tests Contact.getPayments should return an appropriate response when the API returns a null result" name="Contact Tests Contact.getPayments should return an appropriate response when the API returns a null result" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Payment Cycle Tests" errors="0" failures="0" skipped="0" timestamp="2025-02-24T19:25:32" time="21.148" tests="13">
+    <testcase classname="Payment Cycle Tests An incomplete payment cycle should not be able to download an invoice" name="Payment Cycle Tests An incomplete payment cycle should not be able to download an invoice" time="0.007">
+    </testcase>
+    <testcase classname="Payment Cycle Tests A completed payment cycle should be able to download an invoice" name="Payment Cycle Tests A completed payment cycle should be able to download an invoice" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests finalize should fail if there are no payment methods in the wallet and the caller tries to fake it" name="Payment Cycle Tests finalize should fail if there are no payment methods in the wallet and the caller tries to fake it" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests finalize should fail if a payout method is chosen instead of a payment method" name="Payment Cycle Tests finalize should fail if a payout method is chosen instead of a payment method" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests finalize should finalize the payment cycle" name="Payment Cycle Tests finalize should finalize the payment cycle" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests finalize should finalize the payment cycle using pay by invoice" name="Payment Cycle Tests finalize should finalize the payment cycle using pay by invoice" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests PaymentCycleEntryList should be create-able with no arguments" name="Payment Cycle Tests PaymentCycleEntryList should be create-able with no arguments" time="0">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycleEntries should get payment cycle entries for the payment cycle" name="Payment Cycle Tests getPaymentCycleEntries should get payment cycle entries for the payment cycle" time="0.005">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycleEntries should set data to undefined when the server response is invalid" name="Payment Cycle Tests getPaymentCycleEntries should set data to undefined when the server response is invalid" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests getPaymentCycleEntries should throw an exception when the response is not 200" name="Payment Cycle Tests getPaymentCycleEntries should throw an exception when the response is not 200" time="0.002">
+    </testcase>
+    <testcase classname="Payment Cycle Tests addPaymentCycleEntry should create a payment cycle entry" name="Payment Cycle Tests addPaymentCycleEntry should create a payment cycle entry" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests addPaymentCycleEntry should throw an exception when the response is not 200" name="Payment Cycle Tests addPaymentCycleEntry should throw an exception when the response is not 200" time="0.001">
+    </testcase>
+    <testcase classname="Payment Cycle Tests PaymentCycle should ensure the RawPaymentCycle contains correct data during wrapping" name="Payment Cycle Tests PaymentCycle should ensure the RawPaymentCycle contains correct data during wrapping" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>

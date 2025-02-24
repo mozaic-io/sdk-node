@@ -49,8 +49,7 @@ describe("Payment Cycle Tests", () => {
     }
   });
 
-  it("getPaymentCycles should get a list of payment cycles", async () =>
-  {
+  it("getPaymentCycles should get a list of payment cycles", async () => {
     mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
       TestUtils.createSuccessfulAxiosResponse(
         PaymentCyclesEntities.listPaymentCycles(10, 1, false)
@@ -85,8 +84,7 @@ describe("Payment Cycle Tests", () => {
     
   // });
 
-  it("getPaymentCycles should fail when the api returns a non 200 result", async () =>
-  {
+  it("getPaymentCycles should fail when the api returns a non 200 result", async () => {
     mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
       TestUtils.createFailedAxiosResponse(
         PaymentCyclesEntities.listPaymentCycles(10, 1, false)
@@ -97,13 +95,12 @@ describe("Payment Cycle Tests", () => {
       var paymentCycles = await sdk.PaymentCycles.getPaymentCycles(10, 1);
       fail("It didn't throw the exception.");
     }
-    catch(ex) {
+    catch (ex) {
       expect(ex).toBeInstanceOf(MozaicError);
     }
   });
 
-   it("getPaymentCycles should fail when the api returns a non 200 result", async () =>
-  {
+  it("getPaymentCycles should fail when the api returns a non 200 result", async () => {
     mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
       TestUtils.createFailedAxiosResponse(
         PaymentCyclesEntities.listPaymentCycles(10, 1, false)
@@ -114,81 +111,94 @@ describe("Payment Cycle Tests", () => {
       var paymentCycles = await sdk.PaymentCycles.getPaymentCycles(10, 1);
       fail("It didn't throw the exception.");
     }
-    catch(ex) {
+    catch (ex) {
       expect(ex).toBeInstanceOf(MozaicError);
     }
   });
 
-  it("getPaymentCycles should fail when the api returns invalid data", async () =>
-    {
-      mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
-        TestUtils.createSuccessfulAxiosResponse(
-          {
-            count: 0,
-            page: 1,
-            data: undefined,
-            total_count: 0
-          } as PaymentCycleListResponse
-        )
-      );
-  
-      try {
-        var paymentCycles = await sdk.PaymentCycles.getPaymentCycles(10, 1);
-        fail("It didn't throw the exception.");
-      }
-      catch(ex) {
-        expect((ex as Error).message).toBe("Data element was undefined, unable to copy the data from the API to the list. Check the map function on the API result handler.");
-      }
-    });
-
-
-    it("getPaymentCycle should get a single payment cycles", async () =>
-      {
-        mockPaymentCyclesApi.getPaymentCycleById.mockResolvedValue(
-          TestUtils.createSuccessfulAxiosResponse(
-            PaymentCyclesEntities.getTestPaymentCycleResponse("test cycle", "default", "This is a memo", new Date("1/1/2024"), new Date("1/31/2024"), "draft")
-          )
-        );
-    
-        var paymentCycle = await sdk.PaymentCycles.getPaymentCycle("payment-cycle_tWB7BiTh-kWIM1__k-tAag");
-    
-        // This is not a great test, it's really just checking that the values in the deets made it into the response
-        // but as that is done in the test helper and not on the server side, we are validating the helper not 
-        // any real code. At least we know the helper is correct.
-        expect(paymentCycle.paymentCycleId).toBe("payment-cycle_tWB7BiTh-kWIM1__k-tAag");
-      });
-
-      it("getPaymentCycle should throw an exception when the response from the server is invalid", async () =>
+  it("getPaymentCycles should fail when the api returns invalid data", async () => {
+    mockPaymentCyclesApi.listPaymentCycles.mockResolvedValue(
+      TestUtils.createSuccessfulAxiosResponse(
         {
-          mockPaymentCyclesApi.getPaymentCycleById.mockResolvedValue(
-            TestUtils.createFailedAxiosResponse(
-              PaymentCyclesEntities.getTestPaymentCycleResponse("test cycle", "default", "This is a memo", new Date("1/1/2024"), new Date("1/31/2024"), "draft")
-            )
-          );
+          count: 0,
+          page: 1,
+          data: undefined,
+          total_count: 0
+        } as PaymentCycleListResponse
+      )
+    );
+  
+    try {
+      var paymentCycles = await sdk.PaymentCycles.getPaymentCycles(10, 1);
+      fail("It didn't throw the exception.");
+    }
+    catch (ex) {
+      expect((ex as Error).message).toBe("Data element was undefined, unable to copy the data from the API to the list. Check the map function on the API result handler.");
+    }
+  });
+
+
+  it("getPaymentCycle should get a single payment cycle", async () => {
+    mockPaymentCyclesApi.getPaymentCycleById.mockResolvedValue(
+      TestUtils.createSuccessfulAxiosResponse(
+        PaymentCyclesEntities.getTestPaymentCycleResponse("test cycle", "default", "This is a memo", new Date("1/1/2024"), new Date("1/31/2024"), "draft")
+      )
+    );
+    
+    var paymentCycle = await sdk.PaymentCycles.getPaymentCycle("payment-cycle_tWB7BiTh-kWIM1__k-tAag");
+    
+    // This is not a great test, it's really just checking that the values in the deets made it into the response
+    // but as that is done in the test helper and not on the server side, we are validating the helper not 
+    // any real code. At least we know the helper is correct.
+    expect(paymentCycle.paymentCycleId).toBe("payment-cycle_tWB7BiTh-kWIM1__k-tAag");
+  });
+
+  it("getPaymentCycle should throw an exception when the response from the server is invalid", async () => {
+    mockPaymentCyclesApi.getPaymentCycleById.mockResolvedValue(
+      TestUtils.createFailedAxiosResponse(
+        PaymentCyclesEntities.getTestPaymentCycleResponse("test cycle", "default", "This is a memo", new Date("1/1/2024"), new Date("1/31/2024"), "draft")
+      )
+    );
       
-          try {
-            var paymentCycle = await sdk.PaymentCycles.getPaymentCycle("payment-cycle_tWB7BiTh-kWIM1__k-tAag");
-            fail("It didn't throw the exception.");
-          }
-          catch(ex) {
-            expect(ex).toBeInstanceOf(MozaicError);
-          }
+    try {
+      var paymentCycle = await sdk.PaymentCycles.getPaymentCycle("payment-cycle_tWB7BiTh-kWIM1__k-tAag");
+      fail("It didn't throw the exception.");
+    }
+    catch (ex) {
+      expect(ex).toBeInstanceOf(MozaicError);
+    }
 
-        });
+  });
 
-      it("PaymentCycleList should be create-able with optional arguments", () => {
-          let paymentCycle = new PaymentCycleList({count: 1, page: 1, total_count: 1}, [new PaymentCycle(sdk, mockPaymentCyclesApi, PaymentCyclesEntities.getTestPaymentCycleResponse("test cycle", "default", "This is a memo", new Date("1/1/2024"), new Date("1/31/2024"), "draft"))]);
+  it("PaymentCycleList should be create-able with optional arguments", () => {
+    let paymentCycle = new PaymentCycleList({ count: 1, page: 1, total_count: 1 }, [new PaymentCycle(sdk, mockPaymentCyclesApi, PaymentCyclesEntities.getTestPaymentCycleResponse("test cycle", "default", "This is a memo", new Date("1/1/2024"), new Date("1/31/2024"), "draft"))]);
 
-          expect(paymentCycle.count).toBe(1);
-          expect(paymentCycle.data.length).toBe(1);
-          expect(paymentCycle.totalCount).toBe(1);
-          expect(paymentCycle.page).toBe(1);
+    expect(paymentCycle.count).toBe(1);
+    expect(paymentCycle.data.length).toBe(1);
+    expect(paymentCycle.totalCount).toBe(1);
+    expect(paymentCycle.page).toBe(1);
 
-          paymentCycle = new PaymentCycleList({}, []);
+    paymentCycle = new PaymentCycleList({}, []);
 
-          expect(paymentCycle.count).toBe(0);
-          expect(paymentCycle.data.length).toBe(0);
-          expect(paymentCycle.totalCount).toBe(0);
-          expect(paymentCycle.page).toBe(0);
-      });
+    expect(paymentCycle.count).toBe(0);
+    expect(paymentCycle.data.length).toBe(0);
+    expect(paymentCycle.totalCount).toBe(0);
+    expect(paymentCycle.page).toBe(0);
+  });
+  
+  it("PaymentCycles.getPaymentCycleEntry should get a payment cycle entry by its id", async () => {
+    const paymentCycleEntryId = "some payment cycle entry id";
+
+    mockPaymentCyclesApi.getPaymentCycleEntryById.mockResolvedValue(
+      TestUtils.createSuccessfulAxiosResponse(
+        PaymentCyclesEntities.getTestPaymentCycleEntryResponse(paymentCycleEntryId, { to: { name: "Test Name", email: "nick.pirocanac@mozaic.io" } })
+      )
+    );
+
+    const testResponse = PaymentCyclesEntities.getTestPaymentCycleEntryResponse(paymentCycleEntryId, undefined);
+
+    var paymentCycleEntry = await sdk.PaymentCycles.getPaymentCycleEntry(paymentCycleEntryId);
+
+    expect(paymentCycleEntry.id).toBe(testResponse.id);
+  });
 });

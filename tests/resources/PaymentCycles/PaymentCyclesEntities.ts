@@ -1,9 +1,9 @@
 import { faker } from '@faker-js/faker';
-import { FeeDirection, PaymentCycle, PaymentCycleEntry, PaymentCycleEntryCreateDeets, PaymentCycleEntryListResponse, PaymentCycleFinalizeDeets, PaymentCycleFinalizeResponse, PaymentCycleListResponse, PaymentCycleStatus } from "../../../src/api";
+import { FeeDirection, PaymentCycle, PaymentCycleEntry, PaymentCycleEntryCreateDeets, PaymentCycleEntryListResponse, PaymentCycleFinalizeDeets, PaymentCycleListResponse, PaymentCycleStatus } from "../../../src/api";
 
 export class PaymentCyclesEntities {
 
-    static finalizePaymentCycleEntry(id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets): PaymentCycleFinalizeResponse {
+    static finalizePaymentCycleEntry(id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets): PaymentCycle {
 
         var paymentCycle = PaymentCyclesEntities.getTestPaymentCycleResponse(
             "test cycle", "default", "This is a memo", new Date("1/1/2024"), new Date("1/31/2024"), "draft");
@@ -90,7 +90,7 @@ export class PaymentCyclesEntities {
                         "currency": "USD",
                         "wallet_id": null,
                         "quantity": 1.0,
-                        "formatted_quantity": "1.00"
+                        "localized_formatted_quantity": "1.00"
                     },
                     "memo": "Fee 1",
                     "external_id": null
@@ -100,19 +100,19 @@ export class PaymentCyclesEntities {
                 "currency": "USD",
                 "wallet_id": null,
                 "quantity": 201.0,
-                "formatted_quantity": "201.00"
+                "localized_formatted_quantity": "201.00"
             },
             "original_amount": {
                 "currency": deets?.original_amount?.currency,
                 "wallet_id": null,
                 "quantity": deets?.original_amount?.quantity,
-                "formatted_quantity": "MOCKED VALUE"
+                "localized_formatted_quantity": "MOCKED VALUE"
             },
             "amount": {
                 "currency": "MOCKED",
                 "wallet_id": null,
                 "quantity": 123.12345,
-                "formatted_quantity": "200.00"
+                "localized_formatted_quantity": "200.00"
             },
             "memo": null,
             "persona_id": "910a2d82-b419-4aeb-aa6e-1d6c1dc5ec10",

@@ -285,24 +285,6 @@ export interface AccountSessionComponents {
     'balances'?: AccountSessionComponentsBalances;
     /**
      * 
-     * @type {AccountSessionComponentsCapitalFinancing}
-     * memberof AccountSessionComponents
-     */
-    'capital_financing'?: AccountSessionComponentsCapitalFinancing;
-    /**
-     * 
-     * @type {AccountSessionComponentsCapitalFinancingApplication}
-     * memberof AccountSessionComponents
-     */
-    'capital_financing_application'?: AccountSessionComponentsCapitalFinancingApplication;
-    /**
-     * 
-     * @type {AccountSessionComponentsCapitalFinancingPromotion}
-     * memberof AccountSessionComponents
-     */
-    'capital_financing_promotion'?: AccountSessionComponentsCapitalFinancingPromotion;
-    /**
-     * 
      * @type {AccountSessionComponentsDocuments}
      * memberof AccountSessionComponents
      */
@@ -481,63 +463,6 @@ export interface AccountSessionComponentsBalancesFeatures {
      * memberof AccountSessionComponentsBalancesFeatures
      */
     'standard_payouts'?: boolean;
-}
-/**
- * 
- * export
- * @interface AccountSessionComponentsCapitalFinancing
- */
-export interface AccountSessionComponentsCapitalFinancing {
-    /**
-     * 
-     * @type {boolean}
-     * memberof AccountSessionComponentsCapitalFinancing
-     */
-    'enabled'?: boolean;
-    /**
-     * 
-     * @type {object}
-     * memberof AccountSessionComponentsCapitalFinancing
-     */
-    'features'?: object;
-}
-/**
- * 
- * export
- * @interface AccountSessionComponentsCapitalFinancingApplication
- */
-export interface AccountSessionComponentsCapitalFinancingApplication {
-    /**
-     * 
-     * @type {boolean}
-     * memberof AccountSessionComponentsCapitalFinancingApplication
-     */
-    'enabled'?: boolean;
-    /**
-     * 
-     * @type {object}
-     * memberof AccountSessionComponentsCapitalFinancingApplication
-     */
-    'features'?: object;
-}
-/**
- * 
- * export
- * @interface AccountSessionComponentsCapitalFinancingPromotion
- */
-export interface AccountSessionComponentsCapitalFinancingPromotion {
-    /**
-     * 
-     * @type {boolean}
-     * memberof AccountSessionComponentsCapitalFinancingPromotion
-     */
-    'enabled'?: boolean;
-    /**
-     * 
-     * @type {object}
-     * memberof AccountSessionComponentsCapitalFinancingPromotion
-     */
-    'features'?: object;
 }
 /**
  * 
@@ -812,6 +737,31 @@ export interface AccountSessionComponentsTaxSettings {
 /**
  * 
  * export
+ * @interface AccountUpdateEmailRequest
+ */
+export interface AccountUpdateEmailRequest {
+    /**
+     * 
+     * @type {string}
+     * memberof AccountUpdateEmailRequest
+     */
+    'Email'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof AccountUpdateEmailRequest
+     */
+    'Name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof AccountUpdateEmailRequest
+     */
+    'UserId'?: string | null;
+}
+/**
+ * Contact
+ * export
  * @interface AccountUserPersona
  */
 export interface AccountUserPersona {
@@ -943,6 +893,12 @@ export interface Activity {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof Activity
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof Activity
@@ -1033,6 +989,12 @@ export interface ActivityTask {
      * memberof ActivityTask
      */
     'short_id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof ActivityTask
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -1196,7 +1158,7 @@ export interface AddressDeets {
      */
     'state_region'?: string | null;
     /**
-     * Two-letter country code <see href=\"https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\">ISO 3166-1 alpha-2</see>
+     * Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
      * @type {string}
      * memberof AddressDeets
      */
@@ -1231,8 +1193,210 @@ export interface Amount {
      * @type {string}
      * memberof Amount
      */
-    'formatted_quantity'?: string | null;
+    'localized_formatted_quantity'?: string | null;
+    /**
+     * The source currency of the amount.
+     * @type {string}
+     * memberof Amount
+     */
+    'source_currency'?: string | null;
+    /**
+     * The source quantity before conversion.
+     * @type {number}
+     * memberof Amount
+     */
+    'source_quantity'?: number;
+    /**
+     * The exchange rate used for the last conversion.
+     * @type {number}
+     * memberof Amount
+     */
+    'exchange_rate'?: number | null;
+    /**
+     * The date the exchange rate was applied.
+     * @type {string}
+     * memberof Amount
+     */
+    'rate_date'?: string | null;
 }
+/**
+ * 
+ * export
+ * @interface ApiKey
+ */
+export interface ApiKey {
+    /**
+     * 
+     * @type {string}
+     * memberof ApiKey
+     */
+    'ClientId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApiKey
+     */
+    'ClientSecret'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface ApplicationUser
+ */
+export interface ApplicationUser {
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'LastActivityDateTime'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'LastLoginDateTime'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * memberof ApplicationUser
+     */
+    'IsAutoRegistered'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof ApplicationUser
+     */
+    'RequiresPassword'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'AuthObjectId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'Id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'UserName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'NormalizedUserName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'Email'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'NormalizedEmail'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * memberof ApplicationUser
+     */
+    'EmailConfirmed'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'PasswordHash'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'SecurityStamp'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'ConcurrencyStamp'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'PhoneNumber'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * memberof ApplicationUser
+     */
+    'PhoneNumberConfirmed'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof ApplicationUser
+     */
+    'TwoFactorEnabled'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * memberof ApplicationUser
+     */
+    'LockoutEnd'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * memberof ApplicationUser
+     */
+    'LockoutEnabled'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * memberof ApplicationUser
+     */
+    'AccessFailedCount'?: number;
+}
+/**
+ *   development  stage  sandbox  demo  production
+ * export
+ * @enum {string}
+ */
+
+export const AspnetCoreEnvironment = {
+    /**
+    * 
+    */
+    Development: 'development',
+    /**
+    * 
+    */
+    Stage: 'stage',
+    /**
+    * 
+    */
+    Sandbox: 'sandbox',
+    /**
+    * 
+    */
+    Demo: 'demo',
+    /**
+    * 
+    */
+    Production: 'production'
+} as const;
+
+export type AspnetCoreEnvironment = typeof AspnetCoreEnvironment[keyof typeof AspnetCoreEnvironment];
+
+
 /**
  * 
  * export
@@ -1251,6 +1415,132 @@ export interface AttributionDeets {
      * memberof AttributionDeets
      */
     'Contact'?: ContactDeets;
+}
+/**
+ * 
+ * export
+ * @interface Auth0OtpGenerateDeets
+ */
+export interface Auth0OtpGenerateDeets {
+    /**
+     * email or phone number or handle
+     * @type {string}
+     * memberof Auth0OtpGenerateDeets
+     */
+    'user_name'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface Auth0OtpGenerateResponse
+ */
+export interface Auth0OtpGenerateResponse {
+    /**
+     * 
+     * @type {string}
+     * memberof Auth0OtpGenerateResponse
+     */
+    '_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Auth0OtpGenerateResponse
+     */
+    'email'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * memberof Auth0OtpGenerateResponse
+     */
+    'email_verified'?: boolean;
+}
+/**
+ * 
+ * export
+ * @interface Auth0OtpVerifyDeets
+ */
+export interface Auth0OtpVerifyDeets {
+    /**
+     * email or phone number or handle
+     * @type {string}
+     * memberof Auth0OtpVerifyDeets
+     */
+    'user_name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Auth0OtpVerifyDeets
+     */
+    'client_assertion'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Auth0OtpVerifyDeets
+     */
+    'verification_code'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface Auth0RefreshTokenRequestDeet
+ */
+export interface Auth0RefreshTokenRequestDeet {
+    /**
+     * 
+     * @type {string}
+     * memberof Auth0RefreshTokenRequestDeet
+     */
+    'refresh_token': string;
+}
+/**
+ * 
+ * export
+ * @interface AuthLinkRequestDeet
+ */
+export interface AuthLinkRequestDeet {
+    /**
+     * 
+     * @type {string}
+     * memberof AuthLinkRequestDeet
+     */
+    'refresh_url'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof AuthLinkRequestDeet
+     */
+    'business_type'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof AuthLinkRequestDeet
+     */
+    'country_code'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof AuthLinkRequestDeet
+     */
+    'redirect_url'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof AuthLinkRequestDeet
+     */
+    'object'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface AuthLinkResponse
+ */
+export interface AuthLinkResponse {
+    /**
+     * 
+     * @type {string}
+     * memberof AuthLinkResponse
+     */
+    'link'?: string | null;
 }
 /**
  * 
@@ -1289,6 +1579,31 @@ export interface AvatarPromptCreateDeets {
      * memberof AvatarPromptCreateDeets
      */
     'object'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface AvatarSize
+ */
+export interface AvatarSize {
+    /**
+     * 
+     * @type {string}
+     * memberof AvatarSize
+     */
+    'small'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof AvatarSize
+     */
+    'medium'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof AvatarSize
+     */
+    'large'?: string | null;
 }
 /**
  *   default  contact  simpleContarct  paymentCycle
@@ -1363,19 +1678,73 @@ export interface Balance {
      * @type {number}
      * memberof Balance
      */
-    'available'?: number;
+    'available_balance'?: number;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * memberof Balance
      */
-    'formatted_available'?: string | null;
+    'pending_balance'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof Balance
+     */
+    'processing_balance'?: number;
+    /**
+     * 
+     * @type {Array<BalanceEntry>}
+     * memberof Balance
+     */
+    'available_balances'?: Array<BalanceEntry> | null;
+    /**
+     * 
+     * @type {Array<BalanceEntry>}
+     * memberof Balance
+     */
+    'processing_balances'?: Array<BalanceEntry> | null;
+    /**
+     * 
+     * @type {Array<BalanceEntry>}
+     * memberof Balance
+     */
+    'pending_balances'?: Array<BalanceEntry> | null;
+    /**
+     * 
+     * @type {Array<BalanceEntry>}
+     * memberof Balance
+     */
+    'suspended_balances'?: Array<BalanceEntry> | null;
+    /**
+     * 
+     * @type {Array<BalanceEntry>}
+     * memberof Balance
+     */
+    'bitcoin_balances'?: Array<BalanceEntry> | null;
     /**
      * 
      * @type {string}
      * memberof Balance
      */
     'currency'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Balance
+     */
+    'localized_formatted_available_balance'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Balance
+     */
+    'localized_formatted_pending_balance'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Balance
+     */
+    'localized_formatted_processing_balance'?: string | null;
     /**
      * 
      * @type {number}
@@ -1387,7 +1756,7 @@ export interface Balance {
      * @type {string}
      * memberof Balance
      */
-    'formatted_money_in'?: string | null;
+    'localized_formatted_money_in'?: string | null;
     /**
      * 
      * @type {number}
@@ -1399,31 +1768,7 @@ export interface Balance {
      * @type {string}
      * memberof Balance
      */
-    'formatted_money_out'?: string | null;
-    /**
-     * 
-     * @type {BalanceEntry}
-     * memberof Balance
-     */
-    'bitcoin_entry'?: BalanceEntry;
-    /**
-     * 
-     * @type {BalanceEntry}
-     * memberof Balance
-     */
-    'platform-us'?: BalanceEntry;
-    /**
-     * 
-     * @type {BalanceEntry}
-     * memberof Balance
-     */
-    'pending_balance'?: BalanceEntry;
-    /**
-     * 
-     * @type {BalanceEntry}
-     * memberof Balance
-     */
-    'suspended_balance'?: BalanceEntry;
+    'localized_formatted_money_out'?: string | null;
     /**
      * 
      * @type {string}
@@ -1443,6 +1788,12 @@ export interface Balance {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof Balance
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof Balance
@@ -1457,30 +1808,6 @@ export interface Balance {
 export interface BalanceEntry {
     /**
      * 
-     * @type {string}
-     * memberof BalanceEntry
-     */
-    'wallet_key'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * memberof BalanceEntry
-     */
-    'currency'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * memberof BalanceEntry
-     */
-    'available'?: number;
-    /**
-     * 
-     * @type {string}
-     * memberof BalanceEntry
-     */
-    'formatted_available'?: string | null;
-    /**
-     * 
      * @type {number}
      * memberof BalanceEntry
      */
@@ -1490,7 +1817,7 @@ export interface BalanceEntry {
      * @type {string}
      * memberof BalanceEntry
      */
-    'formatted_money_in'?: string | null;
+    'localized_formatted_money_in'?: string | null;
     /**
      * 
      * @type {number}
@@ -1502,7 +1829,55 @@ export interface BalanceEntry {
      * @type {string}
      * memberof BalanceEntry
      */
-    'formatted_money_out'?: string | null;
+    'localized_formatted_money_out'?: string | null;
+    /**
+     * The source currency of the amount.
+     * @type {string}
+     * memberof BalanceEntry
+     */
+    'source_currency'?: string | null;
+    /**
+     * The source quantity before conversion.
+     * @type {number}
+     * memberof BalanceEntry
+     */
+    'source_quantity'?: number;
+    /**
+     * The exchange rate used for the last conversion.
+     * @type {number}
+     * memberof BalanceEntry
+     */
+    'exchange_rate'?: number | null;
+    /**
+     * The date the exchange rate was applied.
+     * @type {string}
+     * memberof BalanceEntry
+     */
+    'rate_date'?: string | null;
+    /**
+     * The currency of the amount
+     * @type {string}
+     * memberof BalanceEntry
+     */
+    'currency'?: string | null;
+    /**
+     * The id of the wallet to use.   If an Wallet id is not specified the platform balance is used if  the amount is less than or equal to the balance, otherwise the default  Wallet for the currency will be charged
+     * @type {string}
+     * memberof BalanceEntry
+     */
+    'wallet_id'?: string | null;
+    /**
+     * The quantity of Currency to send  Note that quantity is either base units or fractional depending on the currency and wallet type
+     * @type {number}
+     * memberof BalanceEntry
+     */
+    'quantity'?: number;
+    /**
+     * 
+     * @type {string}
+     * memberof BalanceEntry
+     */
+    'localized_formatted_quantity'?: string | null;
 }
 /**
  * 
@@ -1522,6 +1897,12 @@ export interface BaseError {
      * memberof BaseError
      */
     'code'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof BaseError
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -1639,6 +2020,30 @@ export interface BasicContact {
      */
     'user_account_id'?: string | null;
     /**
+     * Specifies whether this contact is in network or out of network
+     * @type {boolean}
+     * memberof BasicContact
+     */
+    'is_accepted_contact'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * memberof BasicContact
+     */
+    'country_code'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof BasicContact
+     */
+    'external_id'?: string | null;
+    /**
+     * contact avatar
+     * @type {Array<AvatarSize>}
+     * memberof BasicContact
+     */
+    'avatar'?: Array<AvatarSize> | null;
+    /**
      * 
      * @type {string}
      * memberof BasicContact
@@ -1650,6 +2055,12 @@ export interface BasicContact {
      * memberof BasicContact
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof BasicContact
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -1681,6 +2092,18 @@ export interface BasicContactDeets {
      * memberof BasicContactDeets
      */
     'user_account_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof BasicContactDeets
+     */
+    'country_code'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof BasicContactDeets
+     */
+    'external_id'?: string | null;
     /**
      * The user id to operate on their behalf (tenants only)
      * @type {string}
@@ -1724,6 +2147,12 @@ export interface BasicContacts {
      * memberof BasicContacts
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof BasicContacts
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -1814,6 +2243,34 @@ export interface CatalogEntryDeets {
     'ordinal'?: number;
 }
 /**
+ *   system  light  dark  notSet
+ * export
+ * @enum {string}
+ */
+
+export const ColorModeEnum = {
+    /**
+    * 
+    */
+    System: 'system',
+    /**
+    * 
+    */
+    Light: 'light',
+    /**
+    * 
+    */
+    Dark: 'dark',
+    /**
+    * 
+    */
+    NotSet: 'notSet'
+} as const;
+
+export type ColorModeEnum = typeof ColorModeEnum[keyof typeof ColorModeEnum];
+
+
+/**
  * 
  * export
  * @interface Connector
@@ -1856,6 +2313,12 @@ export interface Connector {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof Connector
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof Connector
@@ -1893,6 +2356,12 @@ export interface ConnectorAuth {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof ConnectorAuth
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof ConnectorAuth
@@ -1929,6 +2398,12 @@ export interface ConnectorAuthListResponse {
      * memberof ConnectorAuthListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof ConnectorAuthListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -1954,6 +2429,12 @@ export interface ConnectorAuthUrl {
      * memberof ConnectorAuthUrl
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof ConnectorAuthUrl
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -2004,6 +2485,12 @@ export interface ConnectorDeet {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof ConnectorDeet
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof ConnectorDeet
@@ -2040,6 +2527,12 @@ export interface ConnectorListResponse {
      * memberof ConnectorListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof ConnectorListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -2151,6 +2644,18 @@ export interface ContactCreateDeets {
      */
     'avatar_bytes'?: string | null;
     /**
+     * Contact unique external id
+     * @type {string}
+     * memberof ContactCreateDeets
+     */
+    'external_id'?: string | null;
+    /**
+     * Contact Metadata
+     * @type {{ [key: string]: any | null; }}
+     * memberof ContactCreateDeets
+     */
+    'metadata'?: { [key: string]: any | null; } | null;
+    /**
      * The user id to operate on their behalf (tenants only)
      * @type {string}
      * memberof ContactCreateDeets
@@ -2247,6 +2752,18 @@ export interface ContactDeets {
      * memberof ContactDeets
      */
     'avatar_bytes'?: string | null;
+    /**
+     * Contact unique external id
+     * @type {string}
+     * memberof ContactDeets
+     */
+    'external_id'?: string | null;
+    /**
+     * Contact Metadata
+     * @type {{ [key: string]: any | null; }}
+     * memberof ContactDeets
+     */
+    'metadata'?: { [key: string]: any | null; } | null;
     /**
      * The user id to operate on their behalf (tenants only)
      * @type {string}
@@ -2346,6 +2863,12 @@ export interface ContactInfo {
     'avatar_url'?: string | null;
     /**
      * 
+     * @type {Array<AvatarSize>}
+     * memberof ContactInfo
+     */
+    'avatar'?: Array<AvatarSize> | null;
+    /**
+     * 
      * @type {string}
      * memberof ContactInfo
      */
@@ -2397,6 +2920,12 @@ export interface ContactInfo {
      * @type {string}
      * memberof ContactInfo
      */
+    'external_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ContactInfo
+     */
     'short_id'?: string | null;
     /**
      * 
@@ -2404,6 +2933,12 @@ export interface ContactInfo {
      * memberof ContactInfo
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof ContactInfo
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -2443,6 +2978,12 @@ export interface ContactInfoListResponse {
      * memberof ContactInfoListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof ContactInfoListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -2468,6 +3009,12 @@ export interface ContactInviteCreateDeets {
      * memberof ContactInviteCreateDeets
      */
     'email_message'?: string | null;
+    /**
+     * Contact external identifier
+     * @type {string}
+     * memberof ContactInviteCreateDeets
+     */
+    'external_id'?: string | null;
     /**
      * The user id to operate on their behalf (tenants only)
      * @type {string}
@@ -2505,6 +3052,12 @@ export interface ContactInviteUpdateDeets {
      * memberof ContactInviteUpdateDeets
      */
     'email_message'?: string | null;
+    /**
+     * Contact external identifier
+     * @type {string}
+     * memberof ContactInviteUpdateDeets
+     */
+    'external_id'?: string | null;
     /**
      * The user id to operate on their behalf (tenants only)
      * @type {string}
@@ -2634,6 +3187,30 @@ export interface Contract {
      */
     'header'?: ContractHeader;
     /**
+     * Start date of the contract
+     * @type {string}
+     * memberof Contract
+     */
+    'start_date'?: string;
+    /**
+     * End date of the contract.
+     * @type {string}
+     * memberof Contract
+     */
+    'end_date'?: string | null;
+    /**
+     * Last Payment date.
+     * @type {string}
+     * memberof Contract
+     */
+    'last_payment_date'?: string | null;
+    /**
+     * 
+     * @type {AccountUserPersona}
+     * memberof Contract
+     */
+    'contract_owner'?: AccountUserPersona;
+    /**
      * One ore more Income terms which help provide scope  on how funds flow through the `Contract`
      * @type {Array<Income>}
      * memberof Contract
@@ -2756,6 +3333,86 @@ export interface ContractHeader {
     'ready_to_share'?: boolean;
 }
 /**
+ * 
+ * export
+ * @interface CountriesResponse
+ */
+export interface CountriesResponse {
+    /**
+     * 
+     * @type {Array<CountryResponse>}
+     * memberof CountriesResponse
+     */
+    'data'?: Array<CountryResponse> | null;
+    /**
+     * This is the count of records returned
+     * @type {number}
+     * memberof CountriesResponse
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof CountriesResponse
+     */
+    'page'?: number | null;
+    /**
+     * This is the total count of records available, Needed for pagination
+     * @type {number}
+     * memberof CountriesResponse
+     */
+    'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof CountriesResponse
+     */
+    'object'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface CountryResponse
+ */
+export interface CountryResponse {
+    /**
+     * 
+     * @type {string}
+     * memberof CountryResponse
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof CountryResponse
+     */
+    'iso_code'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof CountryResponse
+     */
+    'phone_code'?: string | null;
+    /**
+     * Flag Image position, to detect image position in a list of flag image
+     * @type {string}
+     * memberof CountryResponse
+     */
+    'flag_image_pos'?: string | null;
+    /**
+     * Is on-boarding enabled for this country
+     * @type {boolean}
+     * memberof CountryResponse
+     */
+    'is_onboarding_enabled'?: boolean;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof CountryResponse
+     */
+    'object'?: string | null;
+}
+/**
  * Date of birth
  * export
  * @interface DOB
@@ -2836,6 +3493,18 @@ export interface DateTimeDecimalDataSeries {
      * memberof DateTimeDecimalDataSeries
      */
     'series'?: Array<DateTimeDecimalSeries> | null;
+    /**
+     * 
+     * @type {string}
+     * memberof DateTimeDecimalDataSeries
+     */
+    'currency_symbol'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof DateTimeDecimalDataSeries
+     */
+    'currency_code'?: string | null;
 }
 /**
  * 
@@ -2864,23 +3533,25 @@ export interface DateTimeDecimalSeries {
 export interface DeviceRegistration {
     /**
      * 
-     * @type {string}
+     * @type {HubNotificationPlatform}
      * memberof DeviceRegistration
      */
-    'Platform'?: string | null;
+    'Platform'?: HubNotificationPlatform;
     /**
-     * 
+     * Device unique token to identify mobiles
      * @type {string}
      * memberof DeviceRegistration
      */
     'Handle'?: string | null;
     /**
-     * 
+     * Define tags to send messages to tags only
      * @type {Array<string>}
      * memberof DeviceRegistration
      */
     'Tags'?: Array<string> | null;
 }
+
+
 /**
  * Enables a contract to be created via the SimpleContract API... more simply.
  * export
@@ -3022,6 +3693,12 @@ export interface EndUser {
      * memberof EndUser
      */
     'is_new'?: boolean;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof EndUser
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -3308,6 +3985,91 @@ export interface ExternalImageDeets {
     'last_imported_at'?: string;
 }
 /**
+ * 
+ * export
+ * @interface FeeBracket
+ */
+export interface FeeBracket {
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'Id'?: number;
+    /**
+     * 
+     * @type {string}
+     * memberof FeeBracket
+     */
+    'AccountId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'Threshold'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'DomesticTransactionRateFee'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'FXTransactionRateFee'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'DomesticMinimumFlatFee'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'FXMiniumFlatFee'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'MaximumFeeAmount'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'FixedFee'?: number;
+    /**
+     * 
+     * @type {string}
+     * memberof FeeBracket
+     */
+    'Currency'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof FeeBracket
+     */
+    'CountryCode'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * memberof FeeBracket
+     */
+    'Take'?: number;
+    /**
+     * 
+     * @type {string}
+     * memberof FeeBracket
+     */
+    'TakeMemo'?: string | null;
+}
+/**
  * Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
  * export
  * @enum {string}
@@ -3360,6 +4122,12 @@ export interface Fees {
      * memberof Fees
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof Fees
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -3434,6 +4202,12 @@ export interface FeesBulk {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof FeesBulk
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof FeesBulk
@@ -3472,6 +4246,12 @@ export interface FeesBulkListResponse {
      * memberof FeesBulkListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof FeesBulkListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -3732,6 +4512,34 @@ export const FundingType = {
 } as const;
 
 export type FundingType = typeof FundingType[keyof typeof FundingType];
+
+
+/**
+ *   apns  fcm  wns  mpns
+ * export
+ * @enum {string}
+ */
+
+export const HubNotificationPlatform = {
+    /**
+    * 
+    */
+    Apns: 'apns',
+    /**
+    * 
+    */
+    Fcm: 'fcm',
+    /**
+    * 
+    */
+    Wns: 'wns',
+    /**
+    * 
+    */
+    Mpns: 'mpns'
+} as const;
+
+export type HubNotificationPlatform = typeof HubNotificationPlatform[keyof typeof HubNotificationPlatform];
 
 
 /**
@@ -4011,6 +4819,12 @@ export interface InviteInfo {
      * memberof InviteInfo
      */
     'primary_phone'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof InviteInfo
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -4118,6 +4932,30 @@ export interface Invoice {
     'receiving_account'?: ReceivingAccountInfo;
     /**
      * 
+     * @type {Amount}
+     * memberof Invoice
+     */
+    'invoice_amount'?: Amount;
+    /**
+     * 
+     * @type {Amount}
+     * memberof Invoice
+     */
+    'utilized_amount'?: Amount;
+    /**
+     * If true, the request is in test mode, and will be processed as a test transaction.  test bank accounts and test debit cards can be used.
+     * @type {boolean}
+     * memberof Invoice
+     */
+    'testmode'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * memberof Invoice
+     */
+    'external_url'?: string | null;
+    /**
+     * 
      * @type {string}
      * memberof Invoice
      */
@@ -4128,6 +4966,12 @@ export interface Invoice {
      * memberof Invoice
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof Invoice
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -4297,6 +5141,120 @@ export interface LineItem {
     'external_id'?: string | null;
 }
 /**
+ *   createdDate  amountSent  amountPaid  status  memo
+ * export
+ * @enum {string}
+ */
+
+export const ListOfSortFieldsForPaymentCycleEntries = {
+    /**
+    * 
+    */
+    CreatedDate: 'createdDate',
+    /**
+    * 
+    */
+    AmountSent: 'amountSent',
+    /**
+    * 
+    */
+    AmountPaid: 'amountPaid',
+    /**
+    * 
+    */
+    Status: 'status',
+    /**
+    * 
+    */
+    Memo: 'memo'
+} as const;
+
+export type ListOfSortFieldsForPaymentCycleEntries = typeof ListOfSortFieldsForPaymentCycleEntries[keyof typeof ListOfSortFieldsForPaymentCycleEntries];
+
+
+/**
+ * 
+ * export
+ * @interface ListOfSortFieldsForPaymentCycleEntriesListObject
+ */
+export interface ListOfSortFieldsForPaymentCycleEntriesListObject {
+    /**
+     * 
+     * @type {ListOfSortFieldsForPaymentCycleEntries}
+     * memberof ListOfSortFieldsForPaymentCycleEntriesListObject
+     */
+    'field_name'?: ListOfSortFieldsForPaymentCycleEntries;
+    /**
+     * 
+     * @type {boolean}
+     * memberof ListOfSortFieldsForPaymentCycleEntriesListObject
+     */
+    'is_ascending'?: boolean;
+}
+
+
+/**
+ *   createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
+ * export
+ * @enum {string}
+ */
+
+export const ListOfSortFieldsForPaymentCycles = {
+    /**
+    * 
+    */
+    CreatedDate: 'createdDate',
+    /**
+    * 
+    */
+    PaymentDate: 'paymentDate',
+    /**
+    * 
+    */
+    RecipientsCount: 'recipientsCount',
+    /**
+    * 
+    */
+    AmountSent: 'amountSent',
+    /**
+    * 
+    */
+    AmountPaid: 'amountPaid',
+    /**
+    * 
+    */
+    Status: 'status',
+    /**
+    * 
+    */
+    Memo: 'memo'
+} as const;
+
+export type ListOfSortFieldsForPaymentCycles = typeof ListOfSortFieldsForPaymentCycles[keyof typeof ListOfSortFieldsForPaymentCycles];
+
+
+/**
+ * 
+ * export
+ * @interface ListOfSortFieldsForPaymentCyclesListObject
+ */
+export interface ListOfSortFieldsForPaymentCyclesListObject {
+    /**
+     * 
+     * @type {ListOfSortFieldsForPaymentCycles}
+     * memberof ListOfSortFieldsForPaymentCyclesListObject
+     */
+    'field_name'?: ListOfSortFieldsForPaymentCycles;
+    /**
+     * 
+     * @type {boolean}
+     * memberof ListOfSortFieldsForPaymentCyclesListObject
+     */
+    'is_ascending'?: boolean;
+}
+
+
+/**
  * 
  * export
  * @interface Location
@@ -4345,7 +5303,7 @@ export interface Location {
      */
     'state_region'?: string | null;
     /**
-     * Two-letter country code <see href=\"https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\">ISO 3166-1 alpha-2</see>
+     * Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
      * @type {string}
      * memberof Location
      */
@@ -4362,6 +5320,12 @@ export interface Location {
      * memberof Location
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof Location
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -4523,6 +5487,12 @@ export interface NotificationAggregate {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof NotificationAggregate
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof NotificationAggregate
@@ -4578,6 +5548,12 @@ export interface NotificationResponse {
      */
     'to_persona_id'?: string | null;
     /**
+     * The display name for the persona this notification is directed towards
+     * @type {string}
+     * memberof NotificationResponse
+     */
+    'to_persona_name'?: string | null;
+    /**
      * A url this notification is linked to. Often this is where to send the client when the notification is clicked.
      * @type {string}
      * memberof NotificationResponse
@@ -4594,7 +5570,7 @@ export interface NotificationResponse {
      * @type {string}
      * memberof NotificationResponse
      */
-    'from_persona_avatar_url'?: string | null;
+    'avatar_url'?: string | null;
     /**
      * 
      * @type {NotificationStyleTypes}
@@ -4602,17 +5578,35 @@ export interface NotificationResponse {
      */
     'style_type'?: NotificationStyleTypes;
     /**
-     * 
+     * A short identifier for the notification
      * @type {string}
      * memberof NotificationResponse
      */
     'short_id'?: string | null;
+    /**
+     * Id of the original data used to fetch relevant details
+     * @type {string}
+     * memberof NotificationResponse
+     */
+    'data_id'?: string | null;
+    /**
+     * The type of data stored in \'data\'
+     * @type {string}
+     * memberof NotificationResponse
+     */
+    'data_type'?: string | null;
     /**
      * 
      * @type {string}
      * memberof NotificationResponse
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof NotificationResponse
+     */
+    'object'?: string | null;
 }
 
 
@@ -4681,6 +5675,43 @@ export interface NotificationsUpdateDeets {
      * memberof NotificationsUpdateDeets
      */
     'Read'?: boolean;
+}
+/**
+ * 
+ * export
+ * @interface OkObjectResult
+ */
+export interface OkObjectResult {
+    /**
+     * 
+     * @type {any}
+     * memberof OkObjectResult
+     */
+    'Value'?: any | null;
+    /**
+     * 
+     * @type {Array<object>}
+     * memberof OkObjectResult
+     */
+    'Formatters'?: Array<object> | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * memberof OkObjectResult
+     */
+    'ContentTypes'?: Array<string> | null;
+    /**
+     * 
+     * @type {string}
+     * memberof OkObjectResult
+     */
+    'DeclaredType'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * memberof OkObjectResult
+     */
+    'StatusCode'?: number | null;
 }
 /**
  * keeping it here just for time being - want to unblock the FE team.
@@ -4800,6 +5831,12 @@ export interface Orchestration {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof Orchestration
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof Orchestration
@@ -4908,6 +5945,12 @@ export interface OrchestrationRun {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof OrchestrationRun
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof OrchestrationRun
@@ -4970,6 +6013,12 @@ export interface PayerInviteProfileResponse {
      * memberof PayerInviteProfileResponse
      */
     'total_sent'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PayerInviteProfileResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -5019,6 +6068,12 @@ export interface PayerInviteResponse {
      * memberof PayerInviteResponse
      */
     'expiration_date'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PayerInviteResponse
+     */
+    'object'?: string | null;
 }
 
 
@@ -5052,6 +6107,12 @@ export interface PayerInviteResponseListResponse {
      * memberof PayerInviteResponseListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PayerInviteResponseListResponse
+     */
+    'object'?: string | null;
 }
 /**
  *   sent  accepted  expired
@@ -5089,6 +6150,12 @@ export interface Payment {
      * memberof Payment
      */
     'acceptance_status'?: string | null;
+    /**
+     * If true, the request is in test mode, and will be processed as a test transaction.  test bank accounts and test debit cards can be used.
+     * @type {boolean}
+     * memberof Payment
+     */
+    'testmode'?: boolean;
     /**
      * Transaction IDs are used internally to group payment objects
      * @type {string}
@@ -5144,11 +6211,17 @@ export interface Payment {
      */
     'status'?: string | null;
     /**
+     * 
+     * @type {TransactionDisplayStatusEnum}
+     * memberof Payment
+     */
+    'payment_display_status'?: TransactionDisplayStatusEnum;
+    /**
      * User Display Status
      * @type {string}
      * memberof Payment
      */
-    'user_status'?: string | null;
+    'status_description'?: string | null;
     /**
      * Id of the initiating user
      * @type {string}
@@ -5172,7 +6245,7 @@ export interface Payment {
      * @type {Array<LineItem>}
      * memberof Payment
      */
-    'Fees'?: Array<LineItem> | null;
+    'fees'?: Array<LineItem> | null;
     /**
      * 
      * @type {string}
@@ -5252,6 +6325,12 @@ export interface Payment {
      */
     'ledger_type'?: LedgerType;
     /**
+     * Transaction summary of each payment’s journey
+     * @type {Array<TransactionUpdates>}
+     * memberof Payment
+     */
+    'updates'?: Array<TransactionUpdates> | null;
+    /**
      * 
      * @type {string}
      * memberof Payment
@@ -5263,6 +6342,12 @@ export interface Payment {
      * memberof Payment
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof Payment
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -5397,6 +6482,19 @@ export interface PaymentBankAccountUpdateDeets {
 /**
  * 
  * export
+ * @interface PaymentBankAccountVerifyDeets
+ */
+export interface PaymentBankAccountVerifyDeets {
+    /**
+     * 
+     * @type {Array<number>}
+     * memberof PaymentBankAccountVerifyDeets
+     */
+    'micro_deposists'?: Array<number> | null;
+}
+/**
+ * 
+ * export
  * @interface PaymentBulkResultResponse
  */
 export interface PaymentBulkResultResponse {
@@ -5424,6 +6522,12 @@ export interface PaymentBulkResultResponse {
      * memberof PaymentBulkResultResponse
      */
     'errors'?: Array<BulkErrorResponse> | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentBulkResultResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -5455,6 +6559,12 @@ export interface PaymentBulkResultResponseListResponse {
      * memberof PaymentBulkResultResponseListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentBulkResultResponseListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -5652,6 +6762,12 @@ export interface PaymentCycle {
      */
     'name'?: string | null;
     /**
+     * If true, the request is in test mode, and will be processed as a test transaction.  test bank accounts and test debit cards can be used.
+     * @type {boolean}
+     * memberof PaymentCycle
+     */
+    'testmode'?: boolean;
+    /**
      * 
      * @type {string}
      * memberof PaymentCycle
@@ -5663,6 +6779,12 @@ export interface PaymentCycle {
      * memberof PaymentCycle
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycle
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -5743,7 +6865,7 @@ export interface PaymentCycleCreateDeets {
 
 
 /**
- * Payment Cycle paymanet entry - for push payment
+ * Payment Cycle payment entry - for push payment
  * export
  * @interface PaymentCycleEntry
  */
@@ -5774,16 +6896,40 @@ export interface PaymentCycleEntry {
     'payment_cycle_id'?: string | null;
     /**
      * 
-     * @type {PaymentCycleEntryStatus}
+     * @type {TransactionStatusEnum}
      * memberof PaymentCycleEntry
      */
-    'status'?: PaymentCycleEntryStatus;
+    'status'?: TransactionStatusEnum;
+    /**
+     * 
+     * @type {TransactionDisplayStatusEnum}
+     * memberof PaymentCycleEntry
+     */
+    'display_status'?: TransactionDisplayStatusEnum;
+    /**
+     * User Display Status
+     * @type {string}
+     * memberof PaymentCycleEntry
+     */
+    'status_description'?: string | null;
     /**
      * 
      * @type {Array<LineItem>}
      * memberof PaymentCycleEntry
      */
     'fees'?: Array<LineItem> | null;
+    /**
+     * The country code for Payment Cycle Entry
+     * @type {string}
+     * memberof PaymentCycleEntry
+     */
+    'country_code'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleEntry
+     */
+    'localized_fee_total'?: string | null;
     /**
      * 
      * @type {Amount}
@@ -5796,6 +6942,12 @@ export interface PaymentCycleEntry {
      * memberof PaymentCycleEntry
      */
     'original_amount'?: Amount;
+    /**
+     * 
+     * @type {Amount}
+     * memberof PaymentCycleEntry
+     */
+    'original_amount_usd'?: Amount;
     /**
      * 
      * @type {Amount}
@@ -5825,6 +6977,18 @@ export interface PaymentCycleEntry {
      * @type {string}
      * memberof PaymentCycleEntry
      */
+    'external_id'?: string | null;
+    /**
+     * If true, the request is in test mode, and will be processed as a test transaction.  test bank accounts and test debit cards can be used.
+     * @type {boolean}
+     * memberof PaymentCycleEntry
+     */
+    'testmode'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleEntry
+     */
     'short_id'?: string | null;
     /**
      * 
@@ -5832,6 +6996,12 @@ export interface PaymentCycleEntry {
      * memberof PaymentCycleEntry
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycleEntry
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -5871,6 +7041,12 @@ export interface PaymentCycleEntryBulkResultResponse {
      * memberof PaymentCycleEntryBulkResultResponse
      */
     'errors'?: Array<BulkErrorResponse> | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycleEntryBulkResultResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -5902,6 +7078,12 @@ export interface PaymentCycleEntryBulkResultResponseListResponse {
      * memberof PaymentCycleEntryBulkResultResponseListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycleEntryBulkResultResponseListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -5935,10 +7117,10 @@ export interface PaymentCycleEntryCreateDeets {
     'payment_cycle_id'?: string | null;
     /**
      * 
-     * @type {PaymentCycleEntryStatus}
+     * @type {TransactionStatusEnum}
      * memberof PaymentCycleEntryCreateDeets
      */
-    'status'?: PaymentCycleEntryStatus;
+    'status'?: TransactionStatusEnum;
     /**
      * 
      * @type {Array<LineItem>}
@@ -5975,6 +7157,24 @@ export interface PaymentCycleEntryCreateDeets {
      * memberof PaymentCycleEntryCreateDeets
      */
     'invoice_id'?: string | null;
+    /**
+     * External primary identifier for user contact
+     * @type {string}
+     * memberof PaymentCycleEntryCreateDeets
+     */
+    'external_id'?: string | null;
+    /**
+     * Payment Cycle entry memo
+     * @type {string}
+     * memberof PaymentCycleEntryCreateDeets
+     */
+    'memo'?: string | null;
+    /**
+     * The country code for Payment Cycle Entry
+     * @type {string}
+     * memberof PaymentCycleEntryCreateDeets
+     */
+    'country_code'?: string | null;
     /**
      * 
      * @type {string}
@@ -6014,39 +7214,13 @@ export interface PaymentCycleEntryListResponse {
      * memberof PaymentCycleEntryListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycleEntryListResponse
+     */
+    'object'?: string | null;
 }
-/**
- *   draft  success  warning  error  processing
- * export
- * @enum {string}
- */
-
-export const PaymentCycleEntryStatus = {
-    /**
-    * 
-    */
-    Draft: 'draft',
-    /**
-    * 
-    */
-    Success: 'success',
-    /**
-    * 
-    */
-    Warning: 'warning',
-    /**
-    * 
-    */
-    Error: 'error',
-    /**
-    * 
-    */
-    Processing: 'processing'
-} as const;
-
-export type PaymentCycleEntryStatus = typeof PaymentCycleEntryStatus[keyof typeof PaymentCycleEntryStatus];
-
-
 /**
  * 
  * export
@@ -6073,10 +7247,10 @@ export interface PaymentCycleEntryUpdateDeets {
     'payment_cycle_id'?: string | null;
     /**
      * 
-     * @type {PaymentCycleEntryStatus}
+     * @type {TransactionStatusEnum}
      * memberof PaymentCycleEntryUpdateDeets
      */
-    'status'?: PaymentCycleEntryStatus;
+    'status'?: TransactionStatusEnum;
     /**
      * 
      * @type {Array<LineItem>}
@@ -6096,6 +7270,24 @@ export interface PaymentCycleEntryUpdateDeets {
      */
     'original_amount'?: Amount;
     /**
+     * External primary identifier for user contact
+     * @type {string}
+     * memberof PaymentCycleEntryUpdateDeets
+     */
+    'external_id'?: string | null;
+    /**
+     * Payment Cycle entry memo
+     * @type {string}
+     * memberof PaymentCycleEntryUpdateDeets
+     */
+    'memo'?: string | null;
+    /**
+     * The country code for Payment Cycle Entry
+     * @type {string}
+     * memberof PaymentCycleEntryUpdateDeets
+     */
+    'country_code'?: string | null;
+    /**
      * The user id to operate on their behalf (tenants only)
      * @type {string}
      * memberof PaymentCycleEntryUpdateDeets
@@ -6111,7 +7303,7 @@ export interface PaymentCycleEntryUpdateDeets {
 
 
 /**
- * payment cycle fields  none  email  amount  phoneNumber  startDate  endDate  startAndEndDate  name  countryCode
+ * payment cycle fields  none  email  amount  phoneNumber  startDate  endDate  startAndEndDate  name  countryCode  currency  externalId
  * export
  * @enum {string}
  */
@@ -6152,7 +7344,15 @@ export const PaymentCycleFieldEnum = {
     /**
     * 
     */
-    CountryCode: 'countryCode'
+    CountryCode: 'countryCode',
+    /**
+    * 
+    */
+    Currency: 'currency',
+    /**
+    * 
+    */
+    ExternalId: 'externalId'
 } as const;
 
 export type PaymentCycleFieldEnum = typeof PaymentCycleFieldEnum[keyof typeof PaymentCycleFieldEnum];
@@ -6195,6 +7395,12 @@ export interface PaymentCycleFile {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycleFile
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof PaymentCycleFile
@@ -6219,6 +7425,18 @@ export interface PaymentCycleFileField {
      * memberof PaymentCycleFileField
      */
     'email'?: string | null;
+    /**
+     * country code
+     * @type {string}
+     * memberof PaymentCycleFileField
+     */
+    'country_code'?: string | null;
+    /**
+     * Amount currency
+     * @type {string}
+     * memberof PaymentCycleFileField
+     */
+    'currency'?: string | null;
     /**
      * amoount to be send
      * @type {number}
@@ -6249,6 +7467,12 @@ export interface PaymentCycleFileField {
      * memberof PaymentCycleFileField
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycleFileField
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -6324,123 +7548,6 @@ export interface PaymentCycleFinalizeDeets {
 /**
  * 
  * export
- * @interface PaymentCycleFinalizeResponse
- */
-export interface PaymentCycleFinalizeResponse {
-    /**
-     * 
-     * @type {Invoice}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'invoice'?: Invoice;
-    /**
-     * 
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'account_id'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'invoice_id'?: string | null;
-    /**
-     * 
-     * @type {FeeDirection}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'fee_direction'?: FeeDirection;
-    /**
-     * 
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'memo'?: string | null;
-    /**
-     * 
-     * @type {PaymentCycleStatus}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'status'?: PaymentCycleStatus;
-    /**
-     * 
-     * @type {Amount}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'amount'?: Amount;
-    /**
-     * 
-     * @type {Amount}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'original_amount'?: Amount;
-    /**
-     * 
-     * @type {Amount}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'fees'?: Amount;
-    /**
-     * Accounting start date
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'accounting_from'?: string | null;
-    /**
-     * Accounting end date
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'accounting_to'?: string | null;
-    /**
-     * 
-     * @type {BasicContact}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'from'?: BasicContact;
-    /**
-     * 
-     * @type {number}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'total_entries'?: number;
-    /**
-     * 
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'payment_date'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'short_id'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'id'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * memberof PaymentCycleFinalizeResponse
-     */
-    'created_at'?: string;
-}
-
-
-/**
- * 
- * export
  * @interface PaymentCycleListResponse
  */
 export interface PaymentCycleListResponse {
@@ -6468,7 +7575,142 @@ export interface PaymentCycleListResponse {
      * memberof PaymentCycleListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycleListResponse
+     */
+    'object'?: string | null;
 }
+/**
+ * 
+ * export
+ * @interface PaymentCycleResponse
+ */
+export interface PaymentCycleResponse {
+    /**
+     * 
+     * @type {Invoice}
+     * memberof PaymentCycleResponse
+     */
+    'invoice'?: Invoice;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'account_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'invoice_id'?: string | null;
+    /**
+     * 
+     * @type {FeeDirection}
+     * memberof PaymentCycleResponse
+     */
+    'fee_direction'?: FeeDirection;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'memo'?: string | null;
+    /**
+     * 
+     * @type {PaymentCycleStatus}
+     * memberof PaymentCycleResponse
+     */
+    'status'?: PaymentCycleStatus;
+    /**
+     * 
+     * @type {Amount}
+     * memberof PaymentCycleResponse
+     */
+    'amount'?: Amount;
+    /**
+     * 
+     * @type {Amount}
+     * memberof PaymentCycleResponse
+     */
+    'original_amount'?: Amount;
+    /**
+     * 
+     * @type {Amount}
+     * memberof PaymentCycleResponse
+     */
+    'fees'?: Amount;
+    /**
+     * Accounting start date
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'accounting_from'?: string | null;
+    /**
+     * Accounting end date
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'accounting_to'?: string | null;
+    /**
+     * 
+     * @type {BasicContact}
+     * memberof PaymentCycleResponse
+     */
+    'from'?: BasicContact;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycleResponse
+     */
+    'total_entries'?: number;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'payment_date'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'name'?: string | null;
+    /**
+     * If true, the request is in test mode, and will be processed as a test transaction.  test bank accounts and test debit cards can be used.
+     * @type {boolean}
+     * memberof PaymentCycleResponse
+     */
+    'testmode'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'short_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'object'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentCycleResponse
+     */
+    'created_at'?: string;
+}
+
+
 /**
  *   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
  * export
@@ -6619,26 +7861,6 @@ export type PaymentCycleValidationType = typeof PaymentCycleValidationType[keyof
 
 
 /**
- *   in  out
- * export
- * @enum {string}
- */
-
-export const PaymentDetailsDirection = {
-    /**
-    * 
-    */
-    In: 'in',
-    /**
-    * 
-    */
-    Out: 'out'
-} as const;
-
-export type PaymentDetailsDirection = typeof PaymentDetailsDirection[keyof typeof PaymentDetailsDirection];
-
-
-/**
  * PaymentDetails_UpdateDeets used for updating payment processing details
  * export
  * @interface PaymentDetailsUpdateDeets
@@ -6676,7 +7898,7 @@ export interface PaymentDetailsUpdateDeets {
     'object'?: string | null;
 }
 /**
- *   push  request  smartContract  paymentCycle  transfer
+ *   push  request  smartContract  paymentCycle  transfer  payout
  * export
  * @enum {string}
  */
@@ -6701,7 +7923,11 @@ export const PaymentDirection = {
     /**
     * 
     */
-    Transfer: 'transfer'
+    Transfer: 'transfer',
+    /**
+    * 
+    */
+    Payout: 'payout'
 } as const;
 
 export type PaymentDirection = typeof PaymentDirection[keyof typeof PaymentDirection];
@@ -6806,6 +8032,12 @@ export interface PaymentListResponse {
      * memberof PaymentListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -6869,6 +8101,12 @@ export interface PaymentMethod {
     'default_for_currency'?: boolean;
     /**
      * 
+     * @type {VerificationStatus}
+     * memberof PaymentMethod
+     */
+    'verification_status'?: VerificationStatus;
+    /**
+     * 
      * @type {string}
      * memberof PaymentMethod
      */
@@ -6880,12 +8118,20 @@ export interface PaymentMethod {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentMethod
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof PaymentMethod
      */
     'created_at'?: string;
 }
+
+
 /**
  * 
  * export
@@ -6969,6 +8215,25 @@ export interface PaymentMethodUpdateDeets {
 /**
  * 
  * export
+ * @interface PaymentMethodVerifyDeets
+ */
+export interface PaymentMethodVerifyDeets {
+    /**
+     * 
+     * @type {PaymentBankAccountVerifyDeets}
+     * memberof PaymentMethodVerifyDeets
+     */
+    'bank_account'?: PaymentBankAccountVerifyDeets;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentMethodVerifyDeets
+     */
+    'object'?: string | null;
+}
+/**
+ * 
+ * export
  * @interface PaymentPayoutMethodCreateDeets
  */
 export interface PaymentPayoutMethodCreateDeets {
@@ -7027,31 +8292,31 @@ export interface PaymentProcessingDetails {
      * @type {Amount}
      * memberof PaymentProcessingDetails
      */
-    'amount_submitted'?: Amount;
+    'sender_fee'?: Amount;
     /**
      * 
      * @type {Amount}
      * memberof PaymentProcessingDetails
      */
-    'payee_transaction_fee'?: Amount;
+    'receiver_fee'?: Amount;
     /**
      * 
      * @type {Amount}
      * memberof PaymentProcessingDetails
      */
-    'net_amount'?: Amount;
+    'sender_net_pay'?: Amount;
     /**
      * 
      * @type {Amount}
      * memberof PaymentProcessingDetails
      */
-    'amount_paid'?: Amount;
+    'receiver_net_pay'?: Amount;
     /**
      * Last 4 card digits in case of PaymentMethod = card
      * @type {string}
      * memberof PaymentProcessingDetails
      */
-    'Last4CardDigits'?: string | null;
+    'last_4_digits'?: string | null;
     /**
      * Account number
      * @type {string}
@@ -7083,23 +8348,11 @@ export interface PaymentProcessingDetails {
      */
     'clearing_date'?: string | null;
     /**
-     * Value date
-     * @type {string}
-     * memberof PaymentProcessingDetails
-     */
-    'value_date'?: string | null;
-    /**
      * Payment method
      * @type {string}
      * memberof PaymentProcessingDetails
      */
     'payment_method'?: string | null;
-    /**
-     * 
-     * @type {PaymentDetailsDirection}
-     * memberof PaymentProcessingDetails
-     */
-    'direction'?: PaymentDetailsDirection;
     /**
      * Provider account
      * @type {string}
@@ -7129,7 +8382,7 @@ export interface PaymentProcessingDetails {
      * @type {string}
      * memberof PaymentProcessingDetails
      */
-    'status'?: string | null;
+    'external_status'?: string | null;
     /**
      * 
      * @type {string}
@@ -7161,14 +8414,18 @@ export interface PaymentProcessingDetails {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentProcessingDetails
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof PaymentProcessingDetails
      */
     'created_at'?: string;
 }
-
-
 /**
  * 
  * export
@@ -7399,6 +8656,12 @@ export interface PaymentPushResponse {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentPushResponse
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof PaymentPushResponse
@@ -7472,13 +8735,33 @@ export interface PaymentSource {
     'id'?: string | null;
     /**
      * 
+     * @type {PaymentSourceEnum}
+     * memberof PaymentSource
+     */
+    'payment_source'?: PaymentSourceEnum;
+    /**
+     * 
      * @type {string}
      * memberof PaymentSource
      */
-    'payment_source'?: string | null;
+    'payment_cycle_entry_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentSource
+     */
+    'short_id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentSource
+     */
+    'object'?: string | null;
 }
+
+
 /**
- *   contract  simpleContract  paymentCycle  tipLink
+ *   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
  * export
  * @enum {string}
  */
@@ -7487,19 +8770,27 @@ export const PaymentSourceEnum = {
     /**
     * 
     */
+    PushPayment: 'push-payment',
+    /**
+    * 
+    */
     Contract: 'contract',
     /**
     * 
     */
-    SimpleContract: 'simpleContract',
+    SimpleContract: 'simple-contract',
     /**
     * 
     */
-    PaymentCycle: 'paymentCycle',
+    PaymentCycle: 'payment-cycle',
     /**
     * 
     */
-    TipLink: 'tipLink'
+    TipLink: 'tip-link',
+    /**
+    * 
+    */
+    Transfer: 'transfer'
 } as const;
 
 export type PaymentSourceEnum = typeof PaymentSourceEnum[keyof typeof PaymentSourceEnum];
@@ -7523,6 +8814,12 @@ export interface PaymentTransfer {
      * memberof PaymentTransfer
      */
     'transfer_amount'?: Amount;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentTransfer
+     */
+    'exchange_rate'?: number | null;
     /**
      * Transaction IDs are used internally to group payment objects
      * @type {string}
@@ -7578,11 +8875,17 @@ export interface PaymentTransfer {
      */
     'status'?: string | null;
     /**
+     * 
+     * @type {TransactionDisplayStatusEnum}
+     * memberof PaymentTransfer
+     */
+    'payment_display_status'?: TransactionDisplayStatusEnum;
+    /**
      * User Display Status
      * @type {string}
      * memberof PaymentTransfer
      */
-    'user_status'?: string | null;
+    'status_description'?: string | null;
     /**
      * Id of the initiating user
      * @type {string}
@@ -7606,7 +8909,7 @@ export interface PaymentTransfer {
      * @type {Array<LineItem>}
      * memberof PaymentTransfer
      */
-    'Fees'?: Array<LineItem> | null;
+    'fees'?: Array<LineItem> | null;
     /**
      * 
      * @type {string}
@@ -7686,6 +8989,12 @@ export interface PaymentTransfer {
      */
     'ledger_type'?: LedgerType;
     /**
+     * Transaction summary of each payment’s journey
+     * @type {Array<TransactionUpdates>}
+     * memberof PaymentTransfer
+     */
+    'updates'?: Array<TransactionUpdates> | null;
+    /**
      * 
      * @type {string}
      * memberof PaymentTransfer
@@ -7697,6 +9006,12 @@ export interface PaymentTransfer {
      * memberof PaymentTransfer
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentTransfer
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -7767,6 +9082,12 @@ export interface PaymentTransferListResponse {
      * memberof PaymentTransferListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PaymentTransferListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -7784,6 +9105,31 @@ export interface PaymentTransferReadDeets {
      * 
      * @type {string}
      * memberof PaymentTransferReadDeets
+     */
+    'object'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface PaymentTransferRetryDeets
+ */
+export interface PaymentTransferRetryDeets {
+    /**
+     * Wwallet Key e.g \"stripe-us\"
+     * @type {string}
+     * memberof PaymentTransferRetryDeets
+     */
+    'wallet_key'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentTransferRetryDeets
+     */
+    'external_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof PaymentTransferRetryDeets
      */
     'object'?: string | null;
 }
@@ -7997,6 +9343,56 @@ export interface PayoutTerm {
 /**
  * 
  * export
+ * @interface PermissionsCreateDeets
+ */
+export interface PermissionsCreateDeets {
+    /**
+     * email of receiving user
+     * @type {string}
+     * memberof PermissionsCreateDeets
+     */
+    'email': string;
+    /**
+     * add resource paths that need to assign   for example: [\"Jammber.RainCloud.Payments.Invite.\",\"Jammber.RainCloud.Payments.Create.\"]
+     * @type {Array<string>}
+     * memberof PermissionsCreateDeets
+     */
+    'resource_paths': Array<string>;
+    /**
+     * 
+     * @type {string}
+     * memberof PermissionsCreateDeets
+     */
+    'object'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface PermissionsRemoveDeets
+ */
+export interface PermissionsRemoveDeets {
+    /**
+     * email of the user
+     * @type {string}
+     * memberof PermissionsRemoveDeets
+     */
+    'email': string;
+    /**
+     * add resource paths that need to remove  for example: [\"Jammber.RainCloud.Payments.Invite.\",\"Jammber.RainCloud.Payments.Create.\"]
+     * @type {Array<string>}
+     * memberof PermissionsRemoveDeets
+     */
+    'resource_paths': Array<string>;
+    /**
+     * 
+     * @type {string}
+     * memberof PermissionsRemoveDeets
+     */
+    'object'?: string | null;
+}
+/**
+ * 
+ * export
  * @interface Person
  */
 export interface Person {
@@ -8108,7 +9504,7 @@ export interface PersonaPendingPaymentsResponse {
      * @type {string}
      * memberof PersonaPendingPaymentsResponse
      */
-    'formatted_amount'?: string | null;
+    'localized_formatted_amount'?: string | null;
     /**
      * sender account id
      * @type {string}
@@ -8133,6 +9529,12 @@ export interface PersonaPendingPaymentsResponse {
      * memberof PersonaPendingPaymentsResponse
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PersonaPendingPaymentsResponse
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -8170,56 +9572,144 @@ export interface PersonaPendingPaymentsResponseListResponse {
      * memberof PersonaPendingPaymentsResponseListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PersonaPendingPaymentsResponseListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
  * export
- * @interface PersonaSetting
+ * @interface PersonaSettingResponse
  */
-export interface PersonaSetting {
+export interface PersonaSettingResponse {
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingResponse
+     */
+    'notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingResponse
+     */
+    'web_notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingResponse
+     */
+    'sms_notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingResponse
+     */
+    'email_notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingResponse
+     */
+    'mobile_app_notifications_enabled'?: boolean;
     /**
      * 
      * @type {string}
-     * memberof PersonaSetting
+     * memberof PersonaSettingResponse
      */
-    'PersonaId'?: string | null;
+    'language_culture'?: string | null;
     /**
      * 
-     * @type {boolean}
-     * memberof PersonaSetting
+     * @type {PersonaSettingsAppearance}
+     * memberof PersonaSettingResponse
      */
-    'NotificationsEnabled'?: boolean;
+    'appearance'?: PersonaSettingsAppearance;
     /**
-     * 
-     * @type {boolean}
-     * memberof PersonaSetting
-     */
-    'WebNotificationsEnabled'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * memberof PersonaSetting
-     */
-    'SMSNotificationsEnabled'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * memberof PersonaSetting
-     */
-    'EmailNotificationsEnabled'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * memberof PersonaSetting
-     */
-    'MobileAppNotificationsEnabled'?: boolean;
-    /**
-     * 
+     * The name of this object
      * @type {string}
-     * memberof PersonaSetting
+     * memberof PersonaSettingResponse
      */
-    'LanguageCulture'?: string | null;
+    'object'?: string | null;
 }
+/**
+ * 
+ * export
+ * @interface PersonaSettingUpdateDeets
+ */
+export interface PersonaSettingUpdateDeets {
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingUpdateDeets
+     */
+    'notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingUpdateDeets
+     */
+    'web_notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingUpdateDeets
+     */
+    'sms_notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingUpdateDeets
+     */
+    'email_notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof PersonaSettingUpdateDeets
+     */
+    'mobile_app_notifications_enabled'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * memberof PersonaSettingUpdateDeets
+     */
+    'language_culture'?: string | null;
+    /**
+     * 
+     * @type {PersonaSettingsAppearance}
+     * memberof PersonaSettingUpdateDeets
+     */
+    'appearance': PersonaSettingsAppearance;
+    /**
+     * 
+     * @type {string}
+     * memberof PersonaSettingUpdateDeets
+     */
+    'object'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface PersonaSettingsAppearance
+ */
+export interface PersonaSettingsAppearance {
+    /**
+     * 
+     * @type {ColorModeEnum}
+     * memberof PersonaSettingsAppearance
+     */
+    'color_mode'?: ColorModeEnum;
+    /**
+     * 
+     * @type {string}
+     * memberof PersonaSettingsAppearance
+     */
+    'theme'?: string | null;
+}
+
+
 /**
  * 
  * export
@@ -8476,6 +9966,12 @@ export interface PortfolioCatalog {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof PortfolioCatalog
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof PortfolioCatalog
@@ -8512,6 +10008,12 @@ export interface PortfolioCatalogListResponse {
      * memberof PortfolioCatalogListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PortfolioCatalogListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * Projects are in a tenants portfolio and are often a part of splits
@@ -8640,6 +10142,12 @@ export interface PortfolioItem {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof PortfolioItem
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof PortfolioItem
@@ -8676,6 +10184,12 @@ export interface PortfolioItemListResponse {
      * memberof PortfolioItemListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof PortfolioItemListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -8715,10 +10229,10 @@ export interface ProblemDetails {
     'Instance'?: string | null;
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {{ [key: string]: any | null; }}
      * memberof ProblemDetails
      */
-    'Extensions'?: { [key: string]: any; } | null;
+    'Extensions'?: { [key: string]: any | null; } | null;
 }
 /**
  * 
@@ -8738,6 +10252,12 @@ export interface ProviderAccount {
      * memberof ProviderAccount
      */
     'provider_account_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ProviderAccount
+     */
+    'provider_last_updated_at'?: string | null;
 }
 
 
@@ -8846,6 +10366,18 @@ export interface ReceivingAccountInfo {
      * memberof ReceivingAccountInfo
      */
     'source_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ReceivingAccountInfo
+     */
+    'account_holder_name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof ReceivingAccountInfo
+     */
+    'account_type'?: string | null;
 }
 /**
  * 
@@ -8896,6 +10428,8 @@ export interface RecoupableTerm extends BaseTerms {
      */
     'to'?: AccountUserPersona;
 }
+
+
 /**
  * 
  * export
@@ -9037,11 +10571,59 @@ export interface SimpleContract {
      */
     'is_active'?: boolean;
     /**
+     * Start date of the contract
+     * @type {string}
+     * memberof SimpleContract
+     */
+    'start_date'?: string;
+    /**
+     * End date of the contract.
+     * @type {string}
+     * memberof SimpleContract
+     */
+    'end_date'?: string | null;
+    /**
+     * Last Payment date.
+     * @type {string}
+     * memberof SimpleContract
+     */
+    'last_payment_date'?: string | null;
+    /**
+     * 
+     * @type {AccountUserPersona}
+     * memberof SimpleContract
+     */
+    'contract_owner'?: AccountUserPersona;
+    /**
+     * avatar image of contract
+     * @type {string}
+     * memberof SimpleContract
+     */
+    'private_avatar_image'?: string | null;
+    /**
+     * avatar image of contract
+     * @type {boolean}
+     * memberof SimpleContract
+     */
+    'has_private_avatar_image'?: boolean;
+    /**
+     * contract avatar
+     * @type {Array<AvatarSize>}
+     * memberof SimpleContract
+     */
+    'avatar'?: Array<AvatarSize> | null;
+    /**
      * 
      * @type {string}
      * memberof SimpleContract
      */
     'short_id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof SimpleContract
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -9104,6 +10686,12 @@ export interface SimpleContractListResponse {
      * memberof SimpleContractListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof SimpleContractListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -9129,6 +10717,135 @@ export interface SimpleContractUpdateDeets {
      * memberof SimpleContractUpdateDeets
      */
     'object'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface SlackAlertCreateDeets
+ */
+export interface SlackAlertCreateDeets {
+    /**
+     * 
+     * @type {string}
+     * memberof SlackAlertCreateDeets
+     */
+    'channel'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof SlackAlertCreateDeets
+     */
+    'alert_type'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof SlackAlertCreateDeets
+     */
+    'subject'?: string | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * memberof SlackAlertCreateDeets
+     */
+    'errors'?: Array<string> | null;
+}
+/**
+ * 
+ * export
+ * @interface SlackMessageCreateDeets
+ */
+export interface SlackMessageCreateDeets {
+    /**
+     * 
+     * @type {string}
+     * memberof SlackMessageCreateDeets
+     */
+    'channel'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof SlackMessageCreateDeets
+     */
+    'message'?: string | null;
+}
+/**
+ * 
+ * export
+ * @interface SvixWebhook
+ */
+export interface SvixWebhook {
+    /**
+     * 
+     * @type {string}
+     * memberof SvixWebhook
+     */
+    'description'?: string | null;
+    /**
+     * 
+     * @type {any}
+     * memberof SvixWebhook
+     */
+    'rateLimit'?: any | null;
+    /**
+     * 
+     * @type {any}
+     * memberof SvixWebhook
+     */
+    'uid'?: any | null;
+    /**
+     * 
+     * @type {string}
+     * memberof SvixWebhook
+     */
+    'url'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * memberof SvixWebhook
+     */
+    'version'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * memberof SvixWebhook
+     */
+    'disabled'?: boolean;
+    /**
+     * 
+     * @type {any}
+     * memberof SvixWebhook
+     */
+    'filterTypes'?: any | null;
+    /**
+     * 
+     * @type {any}
+     * memberof SvixWebhook
+     */
+    'channels'?: any | null;
+    /**
+     * 
+     * @type {string}
+     * memberof SvixWebhook
+     */
+    'createdAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * memberof SvixWebhook
+     */
+    'updatedAt'?: string;
+    /**
+     * 
+     * @type {string}
+     * memberof SvixWebhook
+     */
+    'id'?: string | null;
+    /**
+     * 
+     * @type {object}
+     * memberof SvixWebhook
+     */
+    'metadata'?: object;
 }
 /**
  *   asRate (TAKE_RATE)  asFlatFee (TAKE_FEE)
@@ -9328,6 +11045,12 @@ export interface Tenant {
      * memberof Tenant
      */
     'provider_accounts'?: Array<ProviderAccount> | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof Tenant
+     */
+    'object'?: string | null;
 }
 
 
@@ -9343,6 +11066,12 @@ export interface TenantCapabilities {
      * memberof TenantCapabilities
      */
     'PaymentsEnabled'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * memberof TenantCapabilities
+     */
+    'is_payment_method_verified'?: boolean | null;
     /**
      * 
      * @type {boolean}
@@ -9669,32 +11398,32 @@ export interface TermScope {
      */
     'end_at'?: string | null;
     /**
-     * 
+     * A list of ISO 3166-1 alpha-3 codes are three-letter country codes defined in ISO 3166-1,   part of the ISO 3166 standard published by the International Organization for Standardization (ISO),   to represent countries, dependent territories, and special areas of geographical interest.  In the case the scope applies to All territories use [ALL] (including brackets) or leave null.
      * @type {Array<string>}
      * memberof TermScope
      */
     'territories'?: Array<string> | null;
     /**
-     * 
+     * The type of royalty calculation to use. Valid options are:  Music-All  Music-Composition  Music-Recording  Book-Publishing  Digital-Content  Mining  Design-Royalties  AI-Training  Franchise
      * @type {Array<string>}
      * memberof TermScope
      */
     'royalty_types'?: Array<string> | null;
     /**
-     * 
+     * A Project Catalog associated with   the income source whose income should be processed  with this contract. If set 0 the item_id\'s are used.  If set to a Project Catalog ID that project entire Project Catalog  will be used unless a subset of Project Items are specified using the   item_ids property.
      * @type {number}
      * memberof TermScope
      */
     'catalog_id'?: number;
     /**
-     * 
+     * A list of Project item id\'s associated with   the income source whose income should be processed  with this contract. If Project Catalog Id is set these  ItemIds must existing in the specified Project Catalog
      * @type {Array<string>}
      * memberof TermScope
      */
     'item_ids'?: Array<string> | null;
 }
 /**
- * 
+ * Tiered Split Collection ofr FlatRateTerms
  * export
  * @interface TieredSplit
  */
@@ -9840,7 +11569,7 @@ export interface TieredSplitTieredGroupTerm {
     'previous_balance'?: TermBalance;
 }
 /**
- * 
+ * Tiered Terms of Generic BaseTerms
  * export
  * @interface TieredTerm
  */
@@ -9853,10 +11582,10 @@ export interface TieredTerm extends BaseTerms {
     '$entity'?: string | null;
     /**
      * 
-     * @type {Array<BaseTerms | Income | FlatRateTerm | FlatAmountTerm | RecoupableTerm | TieredTermTieredGroupTerm | TieredTerm>}
+     * @type {Array<TieredTermAllOfChildTerms>}
      * memberof TieredTerm
      */
-    'child_terms'?: Array<BaseTerms | Income | FlatRateTerm | FlatAmountTerm | RecoupableTerm | TieredTermTieredGroupTerm | TieredTerm> | null;
+    'child_terms'?: Array<TieredTermAllOfChildTerms> | null;
     /**
      * 
      * @type {number}
@@ -9864,6 +11593,12 @@ export interface TieredTerm extends BaseTerms {
      */
     'ceiling'?: number;
 }
+/**
+ * @type TieredTermAllOfChildTerms
+ * export
+ */
+export type TieredTermAllOfChildTerms = BaseTerms | FlatAmountTerm | FlatRateTerm | Income | RecoupableTerm | TieredTerm | TieredTermTieredGroupTerm;
+
 /**
  * 
  * export
@@ -9986,6 +11721,12 @@ export interface TipLink {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof TipLink
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof TipLink
@@ -10071,6 +11812,12 @@ export interface TipLinkListResponse {
      * memberof TipLinkListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof TipLinkListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -10177,11 +11924,60 @@ export interface TipLinksImage {
      */
     'short_id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof TipLinksImage
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof TipLinksImage
      */
     'created_at'?: string;
+}
+/**
+ * 
+ * export
+ * @interface TokenResponse
+ */
+export interface TokenResponse {
+    /**
+     * 
+     * @type {string}
+     * memberof TokenResponse
+     */
+    'access_token'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof TokenResponse
+     */
+    'refresh_token'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof TokenResponse
+     */
+    'id_token'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof TokenResponse
+     */
+    'scope'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * memberof TokenResponse
+     */
+    'expires_in'?: number;
+    /**
+     * 
+     * @type {string}
+     * memberof TokenResponse
+     */
+    'token_type'?: string | null;
 }
 /**
  * 
@@ -10196,6 +11992,483 @@ export interface TokenizedAccountDeets {
      */
     'token'?: string | null;
 }
+/**
+ * 
+ * export
+ * @interface Transaction
+ */
+export interface Transaction {
+    /**
+     * Transaction IDs are used internally to group payment objects
+     * @type {string}
+     * memberof Transaction
+     */
+    'transaction_id'?: string | null;
+    /**
+     * 
+     * @type {BasicContact}
+     * memberof Transaction
+     */
+    'from'?: BasicContact;
+    /**
+     * 
+     * @type {BasicContact}
+     * memberof Transaction
+     */
+    'to'?: BasicContact;
+    /**
+     * A memo to include with the payment
+     * @type {string}
+     * memberof Transaction
+     */
+    'memo'?: string | null;
+    /**
+     * 
+     * @type {Amount}
+     * memberof Transaction
+     */
+    'amount'?: Amount;
+    /**
+     * 
+     * @type {Amount}
+     * memberof Transaction
+     */
+    'original_amount'?: Amount;
+    /**
+     * 
+     * @type {FeeDirection}
+     * memberof Transaction
+     */
+    'fee_direction'?: FeeDirection;
+    /**
+     * 
+     * @type {PaymentDirection}
+     * memberof Transaction
+     */
+    'direction'?: PaymentDirection;
+    /**
+     * The status of the payment
+     * @type {string}
+     * memberof Transaction
+     */
+    'status'?: string | null;
+    /**
+     * 
+     * @type {TransactionDisplayStatusEnum}
+     * memberof Transaction
+     */
+    'payment_display_status'?: TransactionDisplayStatusEnum;
+    /**
+     * User Display Status
+     * @type {string}
+     * memberof Transaction
+     */
+    'status_description'?: string | null;
+    /**
+     * Id of the initiating user
+     * @type {string}
+     * memberof Transaction
+     */
+    'user_id'?: string | null;
+    /**
+     * Id of the account authorized to send payments
+     * @type {string}
+     * memberof Transaction
+     */
+    'tenant_id'?: string | null;
+    /**
+     * The transaction identifier from the wallet provider (external id)
+     * @type {string}
+     * memberof Transaction
+     */
+    'wallet_transaction_id'?: string | null;
+    /**
+     * 
+     * @type {Array<LineItem>}
+     * memberof Transaction
+     */
+    'fees'?: Array<LineItem> | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Transaction
+     */
+    'funding_id'?: string | null;
+    /**
+     * 
+     * @type {FundingType}
+     * memberof Transaction
+     */
+    'funding_type'?: FundingType;
+    /**
+     * To store various payment-related information
+     * @type {string}
+     * memberof Transaction
+     */
+    'messsage'?: string | null;
+    /**
+     * 
+     * @type {PaymentProcessingDetails}
+     * memberof Transaction
+     */
+    'payment_processing_details'?: PaymentProcessingDetails;
+    /**
+     * Payment transfer id
+     * @type {string}
+     * memberof Transaction
+     */
+    'transfer_id'?: string | null;
+    /**
+     * <p>Payment Cycle identifier.</p>
+     * @type {string}
+     * memberof Transaction
+     */
+    'payment_cycle_id'?: string | null;
+    /**
+     * 
+     * @type {PaymentSource}
+     * memberof Transaction
+     */
+    'payment_source'?: PaymentSource;
+    /**
+     * <p>Invoice External ID for Payment Cycle Invoice Funding Source </p>
+     * @type {string}
+     * memberof Transaction
+     */
+    'invoice_id'?: string | null;
+    /**
+     * 
+     * @type {Amount}
+     * memberof Transaction
+     */
+    'total_fees'?: Amount;
+    /**
+     * 
+     * @type {PaymentRecordDirection}
+     * memberof Transaction
+     */
+    'payment_direction'?: PaymentRecordDirection;
+    /**
+     * Wallet id
+     * @type {string}
+     * memberof Transaction
+     */
+    'wallet_key'?: string | null;
+    /**
+     * Payment payout id
+     * @type {string}
+     * memberof Transaction
+     */
+    'payout_id'?: string | null;
+    /**
+     * 
+     * @type {LedgerType}
+     * memberof Transaction
+     */
+    'ledger_type'?: LedgerType;
+    /**
+     * Transaction summary of each payment’s journey
+     * @type {Array<TransactionUpdates>}
+     * memberof Transaction
+     */
+    'updates'?: Array<TransactionUpdates> | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Transaction
+     */
+    'short_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Transaction
+     */
+    'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof Transaction
+     */
+    'object'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof Transaction
+     */
+    'created_at'?: string;
+}
+
+
+/**
+ *   paymentSetupConfirmed  fundsReceived  paymentProcessingOffNetwork  paymentProcessing  paymentCompleted  paymentFailed  paymentPartiallyReversed  reversed
+ * export
+ * @enum {string}
+ */
+
+export const TransactionActivityEnum = {
+    /**
+    * 
+    */
+    PaymentSetupConfirmed: 'paymentSetupConfirmed',
+    /**
+    * 
+    */
+    FundsReceived: 'fundsReceived',
+    /**
+    * 
+    */
+    PaymentProcessingOffNetwork: 'paymentProcessingOffNetwork',
+    /**
+    * 
+    */
+    PaymentProcessing: 'paymentProcessing',
+    /**
+    * 
+    */
+    PaymentCompleted: 'paymentCompleted',
+    /**
+    * 
+    */
+    PaymentFailed: 'paymentFailed',
+    /**
+    * 
+    */
+    PaymentPartiallyReversed: 'paymentPartiallyReversed',
+    /**
+    * 
+    */
+    Reversed: 'reversed'
+} as const;
+
+export type TransactionActivityEnum = typeof TransactionActivityEnum[keyof typeof TransactionActivityEnum];
+
+
+/**
+ *   draft  pending  posted  processing  adjusted  returned  completed  failed
+ * export
+ * @enum {string}
+ */
+
+export const TransactionDisplayStatusEnum = {
+    /**
+    * 
+    */
+    Draft: 'draft',
+    /**
+    * 
+    */
+    Pending: 'pending',
+    /**
+    * 
+    */
+    Posted: 'posted',
+    /**
+    * 
+    */
+    Processing: 'processing',
+    /**
+    * 
+    */
+    Adjusted: 'adjusted',
+    /**
+    * 
+    */
+    Returned: 'returned',
+    /**
+    * 
+    */
+    Completed: 'completed',
+    /**
+    * 
+    */
+    Failed: 'failed'
+} as const;
+
+export type TransactionDisplayStatusEnum = typeof TransactionDisplayStatusEnum[keyof typeof TransactionDisplayStatusEnum];
+
+
+/**
+ * 
+ * export
+ * @interface TransactionListResponse
+ */
+export interface TransactionListResponse {
+    /**
+     * 
+     * @type {Array<Transaction>}
+     * memberof TransactionListResponse
+     */
+    'data'?: Array<Transaction> | null;
+    /**
+     * This is the count of records returned
+     * @type {number}
+     * memberof TransactionListResponse
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof TransactionListResponse
+     */
+    'page'?: number | null;
+    /**
+     * This is the total count of records available, Needed for pagination
+     * @type {number}
+     * memberof TransactionListResponse
+     */
+    'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof TransactionListResponse
+     */
+    'object'?: string | null;
+}
+/**
+ * Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
+ * export
+ * @enum {string}
+ */
+
+export const TransactionStatusEnum = {
+    /**
+    * 
+    */
+    Draft: 'draft',
+    /**
+    * 
+    */
+    Pending: 'pending',
+    /**
+    * 
+    */
+    Posted: 'posted',
+    /**
+    * 
+    */
+    Processing: 'processing',
+    /**
+    * 
+    */
+    Sent: 'sent',
+    /**
+    * 
+    */
+    Accepted: 'accepted',
+    /**
+    * 
+    */
+    Declined: 'declined',
+    /**
+    * 
+    */
+    PublicHold: 'publicHold',
+    /**
+    * 
+    */
+    Levied: 'levied',
+    /**
+    * 
+    */
+    Adjusted: 'adjusted',
+    /**
+    * 
+    */
+    Returned: 'returned',
+    /**
+    * 
+    */
+    PostedUnderThreshold: 'postedUnderThreshold',
+    /**
+    * 
+    */
+    PaymentAssigned: 'paymentAssigned',
+    /**
+    * 
+    */
+    InsufficentFunds: 'insufficentFunds',
+    /**
+    * 
+    */
+    OffPlatform: 'offPlatform',
+    /**
+    * 
+    */
+    Suspended: 'suspended',
+    /**
+    * 
+    */
+    PayoutFailed: 'payoutFailed',
+    /**
+    * 
+    */
+    AwaitingPayout: 'awaitingPayout',
+    /**
+    * 
+    */
+    Received: 'received',
+    /**
+    * 
+    */
+    PayoutCompleted: 'payoutCompleted',
+    /**
+    * 
+    */
+    Failed: 'failed',
+    /**
+    * 
+    */
+    PendingBalance: 'pendingBalance'
+} as const;
+
+export type TransactionStatusEnum = typeof TransactionStatusEnum[keyof typeof TransactionStatusEnum];
+
+
+/**
+ * 
+ * export
+ * @interface TransactionUpdates
+ */
+export interface TransactionUpdates {
+    /**
+     * 
+     * @type {TransactionActivityEnum}
+     * memberof TransactionUpdates
+     */
+    'activity'?: TransactionActivityEnum;
+    /**
+     * 
+     * @type {string}
+     * memberof TransactionUpdates
+     */
+    'message'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof TransactionUpdates
+     */
+    'short_id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof TransactionUpdates
+     */
+    'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof TransactionUpdates
+     */
+    'object'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * memberof TransactionUpdates
+     */
+    'created_at'?: string;
+}
+
+
 /**
  * 
  * export
@@ -10226,6 +12499,12 @@ export interface UserApplication {
      * memberof UserApplication
      */
     'client_secret'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof UserApplication
+     */
+    'object'?: string | null;
 }
 /**
  * Create an application for calling the Mozaic API
@@ -10288,6 +12567,12 @@ export interface UserApplicationListResponse {
      * memberof UserApplicationListResponse
      */
     'total_count'?: number;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof UserApplicationListResponse
+     */
+    'object'?: string | null;
 }
 /**
  * 
@@ -10349,6 +12634,12 @@ export interface UserStatus {
      * memberof UserStatus
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof UserStatus
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -10423,6 +12714,12 @@ export interface UserStatusOnboarding {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof UserStatusOnboarding
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof UserStatusOnboarding
@@ -10443,6 +12740,12 @@ export interface UserStatusPayments {
     'is_enabled'?: boolean;
     /**
      * 
+     * @type {boolean}
+     * memberof UserStatusPayments
+     */
+    'is_payment_method_verified'?: boolean | null;
+    /**
+     * 
      * @type {string}
      * memberof UserStatusPayments
      */
@@ -10453,6 +12756,12 @@ export interface UserStatusPayments {
      * memberof UserStatusPayments
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof UserStatusPayments
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -10485,6 +12794,12 @@ export interface UserStatusPayouts {
      */
     'id'?: string | null;
     /**
+     * The name of this object
+     * @type {string}
+     * memberof UserStatusPayouts
+     */
+    'object'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof UserStatusPayouts
@@ -10515,6 +12830,12 @@ export interface UserStatusVerification {
      * memberof UserStatusVerification
      */
     'errors'?: Array<UserStatusVerificationErrors> | null;
+    /**
+     * 
+     * @type {string}
+     * memberof UserStatusVerification
+     */
+    'details'?: string | null;
 }
 /**
  * 
@@ -10717,6 +13038,38 @@ export interface ValidationError {
 
 
 /**
+ *   created  validated  verified  verificationFailed  errored
+ * export
+ * @enum {string}
+ */
+
+export const VerificationStatus = {
+    /**
+    * 
+    */
+    created: 'created',
+    /**
+    * 
+    */
+    validated: 'validated',
+    /**
+    * 
+    */
+    verified: 'verified',
+    /**
+    * 
+    */
+    verificationFailed: 'verificationFailed',
+    /**
+    * 
+    */
+    errored: 'errored'
+} as const;
+
+export type VerificationStatus = typeof VerificationStatus[keyof typeof VerificationStatus];
+
+
+/**
  * 
  * export
  * @interface VirtualReceivingAccountInfo
@@ -10877,6 +13230,12 @@ export interface Wallet {
      */
     'payment_methods'?: Array<PaymentMethod> | null;
     /**
+     * If true, the request is in test mode, and will be processed as a test transaction.  test bank accounts and test debit cards can be used.
+     * @type {boolean}
+     * memberof Wallet
+     */
+    'testmode'?: boolean;
+    /**
      * 
      * @type {string}
      * memberof Wallet
@@ -10888,6 +13247,12 @@ export interface Wallet {
      * memberof Wallet
      */
     'id'?: string | null;
+    /**
+     * The name of this object
+     * @type {string}
+     * memberof Wallet
+     */
+    'object'?: string | null;
     /**
      * 
      * @type {string}
@@ -10968,6 +13333,186 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * summary Refresh Auth Access Token
+         * @param {Auth0RefreshTokenRequestDeet} [auth0RefreshTokenRequestDeet] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refreshAccessToken: async (auth0RefreshTokenRequestDeet?: Auth0RefreshTokenRequestDeet, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/account/auth/refresh-token`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(auth0RefreshTokenRequestDeet, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Generate Authorized Link
+         * @param {AuthLinkRequestDeet} [authLinkRequestDeet] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        requestAuthLink: async (authLinkRequestDeet?: AuthLinkRequestDeet, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/account/auth/request-link`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(authLinkRequestDeet, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Generate Auth OTP
+         * @param {Auth0OtpGenerateDeets} [auth0OtpGenerateDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        requestOtp: async (auth0OtpGenerateDeets?: Auth0OtpGenerateDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/account/auth/otp`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(auth0OtpGenerateDeets, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Verify Auth OTP
+         * @param {Auth0OtpVerifyDeets} [auth0OtpVerifyDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        verifyOtp: async (auth0OtpVerifyDeets?: Auth0OtpVerifyDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/account/auth/otp-verify`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(auth0OtpVerifyDeets, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -10990,6 +13535,58 @@ export const AccountApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['AccountApi.apiAccountDelete']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * summary Refresh Auth Access Token
+         * @param {Auth0RefreshTokenRequestDeet} [auth0RefreshTokenRequestDeet] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async refreshAccessToken(auth0RefreshTokenRequestDeet?: Auth0RefreshTokenRequestDeet, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.refreshAccessToken(auth0RefreshTokenRequestDeet, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccountApi.refreshAccessToken']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Generate Authorized Link
+         * @param {AuthLinkRequestDeet} [authLinkRequestDeet] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async requestAuthLink(authLinkRequestDeet?: AuthLinkRequestDeet, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthLinkResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.requestAuthLink(authLinkRequestDeet, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccountApi.requestAuthLink']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Generate Auth OTP
+         * @param {Auth0OtpGenerateDeets} [auth0OtpGenerateDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async requestOtp(auth0OtpGenerateDeets?: Auth0OtpGenerateDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Auth0OtpGenerateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.requestOtp(auth0OtpGenerateDeets, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccountApi.requestOtp']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Verify Auth OTP
+         * @param {Auth0OtpVerifyDeets} [auth0OtpVerifyDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async verifyOtp(auth0OtpVerifyDeets?: Auth0OtpVerifyDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.verifyOtp(auth0OtpVerifyDeets, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccountApi.verifyOtp']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -11008,6 +13605,46 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          */
         apiAccountDelete(options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.apiAccountDelete(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Refresh Auth Access Token
+         * @param {Auth0RefreshTokenRequestDeet} [auth0RefreshTokenRequestDeet] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refreshAccessToken(auth0RefreshTokenRequestDeet?: Auth0RefreshTokenRequestDeet, options?: RawAxiosRequestConfig): AxiosPromise<TokenResponse> {
+            return localVarFp.refreshAccessToken(auth0RefreshTokenRequestDeet, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Generate Authorized Link
+         * @param {AuthLinkRequestDeet} [authLinkRequestDeet] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        requestAuthLink(authLinkRequestDeet?: AuthLinkRequestDeet, options?: RawAxiosRequestConfig): AxiosPromise<AuthLinkResponse> {
+            return localVarFp.requestAuthLink(authLinkRequestDeet, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Generate Auth OTP
+         * @param {Auth0OtpGenerateDeets} [auth0OtpGenerateDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        requestOtp(auth0OtpGenerateDeets?: Auth0OtpGenerateDeets, options?: RawAxiosRequestConfig): AxiosPromise<Auth0OtpGenerateResponse> {
+            return localVarFp.requestOtp(auth0OtpGenerateDeets, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Verify Auth OTP
+         * @param {Auth0OtpVerifyDeets} [auth0OtpVerifyDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        verifyOtp(auth0OtpVerifyDeets?: Auth0OtpVerifyDeets, options?: RawAxiosRequestConfig): AxiosPromise<TokenResponse> {
+            return localVarFp.verifyOtp(auth0OtpVerifyDeets, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -11028,6 +13665,54 @@ export class AccountApi extends BaseAPI {
      */
     public apiAccountDelete(options?: RawAxiosRequestConfig) {
         return AccountApiFp(this.configuration).apiAccountDelete(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Refresh Auth Access Token
+     * @param {Auth0RefreshTokenRequestDeet} [auth0RefreshTokenRequestDeet] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof AccountApi
+     */
+    public refreshAccessToken(auth0RefreshTokenRequestDeet?: Auth0RefreshTokenRequestDeet, options?: RawAxiosRequestConfig) {
+        return AccountApiFp(this.configuration).refreshAccessToken(auth0RefreshTokenRequestDeet, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Generate Authorized Link
+     * @param {AuthLinkRequestDeet} [authLinkRequestDeet] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof AccountApi
+     */
+    public requestAuthLink(authLinkRequestDeet?: AuthLinkRequestDeet, options?: RawAxiosRequestConfig) {
+        return AccountApiFp(this.configuration).requestAuthLink(authLinkRequestDeet, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Generate Auth OTP
+     * @param {Auth0OtpGenerateDeets} [auth0OtpGenerateDeets] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof AccountApi
+     */
+    public requestOtp(auth0OtpGenerateDeets?: Auth0OtpGenerateDeets, options?: RawAxiosRequestConfig) {
+        return AccountApiFp(this.configuration).requestOtp(auth0OtpGenerateDeets, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Verify Auth OTP
+     * @param {Auth0OtpVerifyDeets} [auth0OtpVerifyDeets] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof AccountApi
+     */
+    public verifyOtp(auth0OtpVerifyDeets?: Auth0OtpVerifyDeets, options?: RawAxiosRequestConfig) {
+        return AccountApiFp(this.configuration).verifyOtp(auth0OtpVerifyDeets, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -11513,6 +14198,10 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} [toPersonaId] Specifies the persona associated with this contact record
          * @param {string} [toUserId] Specifies the user associated with this contact record
          * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
          * @param {string} [toId] 
          * @param {string} [toCreated] 
          * @param {string} [toShortId] 
@@ -11523,7 +14212,7 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAnalyticsGet: async (minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiAnalyticsGet: async (minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/analytics`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11584,49 +14273,65 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
             }
 
             if (toHandle !== undefined) {
-                localVarQueryParameter['To.Handle'] = toHandle;
+                localVarQueryParameter['to.Handle'] = toHandle;
             }
 
             if (toEmail !== undefined) {
-                localVarQueryParameter['To.Email'] = toEmail;
+                localVarQueryParameter['to.Email'] = toEmail;
             }
 
             if (toPhone !== undefined) {
-                localVarQueryParameter['To.Phone'] = toPhone;
+                localVarQueryParameter['to.Phone'] = toPhone;
             }
 
             if (toName !== undefined) {
-                localVarQueryParameter['To.Name'] = toName;
+                localVarQueryParameter['to.Name'] = toName;
             }
 
             if (toPersonaId !== undefined) {
-                localVarQueryParameter['To.PersonaId'] = toPersonaId;
+                localVarQueryParameter['to.persona_id'] = toPersonaId;
             }
 
             if (toUserId !== undefined) {
-                localVarQueryParameter['To.UserId'] = toUserId;
+                localVarQueryParameter['to.UserId'] = toUserId;
             }
 
             if (toUserAccountId !== undefined) {
-                localVarQueryParameter['To.UserAccountId'] = toUserAccountId;
+                localVarQueryParameter['to.UserAccountId'] = toUserAccountId;
+            }
+
+            if (toIsAcceptedContact !== undefined) {
+                localVarQueryParameter['to.IsAcceptedContact'] = toIsAcceptedContact;
+            }
+
+            if (toCountryCode !== undefined) {
+                localVarQueryParameter['to.CountryCode'] = toCountryCode;
+            }
+
+            if (toExternalId !== undefined) {
+                localVarQueryParameter['to.ExternalId'] = toExternalId;
+            }
+
+            if (toAvatar) {
+                localVarQueryParameter['to.Avatar'] = toAvatar;
             }
 
             if (toId !== undefined) {
-                localVarQueryParameter['To.Id'] = toId;
+                localVarQueryParameter['to.id'] = toId;
             }
 
             if (toCreated !== undefined) {
-                localVarQueryParameter['To.Created'] = (toCreated as any instanceof Date) ?
+                localVarQueryParameter['to.Created'] = (toCreated as any instanceof Date) ?
                     (toCreated as any).toISOString() :
                     toCreated;
             }
 
             if (toShortId !== undefined) {
-                localVarQueryParameter['To.ShortId'] = toShortId;
+                localVarQueryParameter['to.ShortId'] = toShortId;
             }
 
             if (toObjectName !== undefined) {
-                localVarQueryParameter['To.ObjectName'] = toObjectName;
+                localVarQueryParameter['to.ObjectName'] = toObjectName;
             }
 
             if (limit !== undefined) {
@@ -11680,6 +14385,10 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {string} [toPersonaId] Specifies the persona associated with this contact record
          * @param {string} [toUserId] Specifies the user associated with this contact record
          * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
          * @param {string} [toId] 
          * @param {string} [toCreated] 
          * @param {string} [toShortId] 
@@ -11690,8 +14399,8 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAnalyticsGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DateTimeDecimalDataSeries>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAnalyticsGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toId, toCreated, toShortId, toObjectName, limit, page, userId, options);
+        async apiAnalyticsGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DateTimeDecimalDataSeries>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAnalyticsGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.apiAnalyticsGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -11724,6 +14433,10 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @param {string} [toPersonaId] Specifies the persona associated with this contact record
          * @param {string} [toUserId] Specifies the user associated with this contact record
          * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
          * @param {string} [toId] 
          * @param {string} [toCreated] 
          * @param {string} [toShortId] 
@@ -11734,8 +14447,8 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAnalyticsGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<DateTimeDecimalDataSeries> {
-            return localVarFp.apiAnalyticsGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(axios, basePath));
+        apiAnalyticsGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<DateTimeDecimalDataSeries> {
+            return localVarFp.apiAnalyticsGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -11765,6 +14478,10 @@ export class AnalyticsApi extends BaseAPI {
      * @param {string} [toPersonaId] Specifies the persona associated with this contact record
      * @param {string} [toUserId] Specifies the user associated with this contact record
      * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+     * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+     * @param {string} [toCountryCode] 
+     * @param {string} [toExternalId] 
+     * @param {Array<AvatarSize>} [toAvatar] contact avatar
      * @param {string} [toId] 
      * @param {string} [toCreated] 
      * @param {string} [toShortId] 
@@ -11776,8 +14493,8 @@ export class AnalyticsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof AnalyticsApi
      */
-    public apiAnalyticsGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return AnalyticsApiFp(this.configuration).apiAnalyticsGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public apiAnalyticsGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return AnalyticsApiFp(this.configuration).apiAnalyticsGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -11887,7 +14604,7 @@ export const ApiKeyApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiKeyDelete(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiKeyDelete(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OkObjectResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiKeyDelete(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ApiKeyApi.apiKeyDelete']?.[localVarOperationServerIndex]?.url;
@@ -11899,7 +14616,7 @@ export const ApiKeyApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiKeyGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiKeyGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ApiKey>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiKeyGet(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ApiKeyApi.apiKeyGet']?.[localVarOperationServerIndex]?.url;
@@ -11921,7 +14638,7 @@ export const ApiKeyApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiKeyDelete(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiKeyDelete(options?: RawAxiosRequestConfig): AxiosPromise<OkObjectResult> {
             return localVarFp.apiKeyDelete(options).then((request) => request(axios, basePath));
         },
         /**
@@ -11930,7 +14647,7 @@ export const ApiKeyApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiKeyGet(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiKeyGet(options?: RawAxiosRequestConfig): AxiosPromise<ApiKey> {
             return localVarFp.apiKeyGet(options).then((request) => request(axios, basePath));
         },
     };
@@ -13615,13 +16332,14 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * summary List contacts
+         * @param {boolean} [includeSelf] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contactsGETList: async (limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contactsGETList: async (includeSelf?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/contacts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13644,6 +16362,10 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
             // authentication bearerAuth required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (includeSelf !== undefined) {
+                localVarQueryParameter['include_self'] = includeSelf;
+            }
 
             if (limit !== undefined) {
                 localVarQueryParameter['Limit'] = limit;
@@ -13927,13 +16649,22 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
          * <p>Search contacts in the network based on Name, KnownName, Business name or Handle              Returns a list of <span class=\"jmbr term\">EndUser_Deets</span>.</p>
          * summary Search contacts
          * @param {string} [term] The search term or keyword
+         * @param {string} [externalId] 
+         * @param {string} [sinceUTC] 
+         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook
+         * @param {boolean} [includeAlias] 
+         * @param {boolean} [includeContacts] 
+         * @param {boolean} [includeRequest] 
+         * @param {Array<ContactStatusPersona>} [contactStatus] 
+         * @param {Array<string>} [roles] 
+         * @param {boolean} [includeCounts] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contactsSearch: async (term?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contactsSearch: async (term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/contacts/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13959,6 +16690,44 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
 
             if (term !== undefined) {
                 localVarQueryParameter['Term'] = term;
+            }
+
+            if (externalId !== undefined) {
+                localVarQueryParameter['ExternalId'] = externalId;
+            }
+
+            if (sinceUTC !== undefined) {
+                localVarQueryParameter['SinceUTC'] = (sinceUTC as any instanceof Date) ?
+                    (sinceUTC as any).toISOString() :
+                    sinceUTC;
+            }
+
+            if (accessPerspective !== undefined) {
+                localVarQueryParameter['AccessPerspective'] = accessPerspective;
+            }
+
+            if (includeAlias !== undefined) {
+                localVarQueryParameter['IncludeAlias'] = includeAlias;
+            }
+
+            if (includeContacts !== undefined) {
+                localVarQueryParameter['IncludeContacts'] = includeContacts;
+            }
+
+            if (includeRequest !== undefined) {
+                localVarQueryParameter['IncludeRequest'] = includeRequest;
+            }
+
+            if (contactStatus) {
+                localVarQueryParameter['ContactStatus'] = contactStatus;
+            }
+
+            if (roles) {
+                localVarQueryParameter['Roles'] = roles;
+            }
+
+            if (includeCounts !== undefined) {
+                localVarQueryParameter['IncludeCounts'] = includeCounts;
             }
 
             if (limit !== undefined) {
@@ -13988,7 +16757,7 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
          * avatar_id could be tenant.id, contact.id, work.id, project.id, team.id, etc
          * summary Upload avatar image via file
          * @param {string} id contact id
-         * @param {File} [file] 
+         * @param {File} [file] The avatar image for this contact
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -14194,6 +16963,187 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * summary Retrieve a list of payments for a contact. The payments can also be linked back to payment cycles (mass payments).
+         * @param {string} id The contact id (PersonaId) of the contact
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
+         * @param {string} [id2] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPayments: async (id: string, minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id2?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getPayments', 'id', id)
+            const localVarPath = `/api/contacts/{id}/payments`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (minAmount !== undefined) {
+                localVarQueryParameter['MinAmount'] = minAmount;
+            }
+
+            if (maxAmount !== undefined) {
+                localVarQueryParameter['MaxAmount'] = maxAmount;
+            }
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['FromDate'] = (fromDate as any instanceof Date) ?
+                    (fromDate as any).toISOString() :
+                    fromDate;
+            }
+
+            if (toDate !== undefined) {
+                localVarQueryParameter['ToDate'] = (toDate as any instanceof Date) ?
+                    (toDate as any).toISOString() :
+                    toDate;
+            }
+
+            if (statuses) {
+                localVarQueryParameter['Statuses'] = statuses;
+            }
+
+            if (paymentTypes) {
+                localVarQueryParameter['PaymentTypes'] = paymentTypes;
+            }
+
+            if (id2 !== undefined) {
+                localVarQueryParameter['Id'] = id2;
+            }
+
+            if (shortId !== undefined) {
+                localVarQueryParameter['ShortId'] = shortId;
+            }
+
+            if (toHandle !== undefined) {
+                localVarQueryParameter['to.Handle'] = toHandle;
+            }
+
+            if (toEmail !== undefined) {
+                localVarQueryParameter['to.Email'] = toEmail;
+            }
+
+            if (toPhone !== undefined) {
+                localVarQueryParameter['to.Phone'] = toPhone;
+            }
+
+            if (toName !== undefined) {
+                localVarQueryParameter['to.Name'] = toName;
+            }
+
+            if (toPersonaId !== undefined) {
+                localVarQueryParameter['to.persona_id'] = toPersonaId;
+            }
+
+            if (toUserId !== undefined) {
+                localVarQueryParameter['to.UserId'] = toUserId;
+            }
+
+            if (toUserAccountId !== undefined) {
+                localVarQueryParameter['to.UserAccountId'] = toUserAccountId;
+            }
+
+            if (toIsAcceptedContact !== undefined) {
+                localVarQueryParameter['to.IsAcceptedContact'] = toIsAcceptedContact;
+            }
+
+            if (toCountryCode !== undefined) {
+                localVarQueryParameter['to.CountryCode'] = toCountryCode;
+            }
+
+            if (toExternalId !== undefined) {
+                localVarQueryParameter['to.ExternalId'] = toExternalId;
+            }
+
+            if (toAvatar) {
+                localVarQueryParameter['to.Avatar'] = toAvatar;
+            }
+
+            if (toId !== undefined) {
+                localVarQueryParameter['to.id'] = toId;
+            }
+
+            if (toCreated !== undefined) {
+                localVarQueryParameter['to.Created'] = (toCreated as any instanceof Date) ?
+                    (toCreated as any).toISOString() :
+                    toCreated;
+            }
+
+            if (toShortId !== undefined) {
+                localVarQueryParameter['to.ShortId'] = toShortId;
+            }
+
+            if (toObjectName !== undefined) {
+                localVarQueryParameter['to.ObjectName'] = toObjectName;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['Limit'] = limit;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['Page'] = page;
+            }
+
+            if (userId != null) {
+                localVarHeaderParameter['user_id'] = String(userId);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * summary Reject the contact invitation
          * @param {string} id 
          * @param {ContactStatusUpdateDeets} [contactStatusUpdateDeets] 
@@ -14244,13 +17194,14 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * summary List requests
+         * @param {boolean} [includeSelf] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        requestsGETList: async (limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        requestsGETList: async (includeSelf?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/contacts/request`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -14273,6 +17224,10 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
             // authentication bearerAuth required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (includeSelf !== undefined) {
+                localVarQueryParameter['include_self'] = includeSelf;
+            }
 
             if (limit !== undefined) {
                 localVarQueryParameter['Limit'] = limit;
@@ -14377,14 +17332,15 @@ export const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * summary List contacts
+         * @param {boolean} [includeSelf] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contactsGETList(limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contactsGETList(limit, page, userId, options);
+        async contactsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.contactsGETList(includeSelf, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContactsApi.contactsGETList']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -14464,14 +17420,23 @@ export const ContactsApiFp = function(configuration?: Configuration) {
          * <p>Search contacts in the network based on Name, KnownName, Business name or Handle              Returns a list of <span class=\"jmbr term\">EndUser_Deets</span>.</p>
          * summary Search contacts
          * @param {string} [term] The search term or keyword
+         * @param {string} [externalId] 
+         * @param {string} [sinceUTC] 
+         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook
+         * @param {boolean} [includeAlias] 
+         * @param {boolean} [includeContacts] 
+         * @param {boolean} [includeRequest] 
+         * @param {Array<ContactStatusPersona>} [contactStatus] 
+         * @param {Array<string>} [roles] 
+         * @param {boolean} [includeCounts] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contactsSearch(term?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contactsSearch(term, limit, page, userId, options);
+        async contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContactsApi.contactsSearch']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -14480,7 +17445,7 @@ export const ContactsApiFp = function(configuration?: Configuration) {
          * avatar_id could be tenant.id, contact.id, work.id, project.id, team.id, etc
          * summary Upload avatar image via file
          * @param {string} id contact id
-         * @param {File} [file] 
+         * @param {File} [file] The avatar image for this contact
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -14535,6 +17500,45 @@ export const ContactsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * summary Retrieve a list of payments for a contact. The payments can also be linked back to payment cycles (mass payments).
+         * @param {string} id The contact id (PersonaId) of the contact
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
+         * @param {string} [id2] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPayments(id: string, minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id2?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPayments(id, minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id2, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ContactsApi.getPayments']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * summary Reject the contact invitation
          * @param {string} id 
          * @param {ContactStatusUpdateDeets} [contactStatusUpdateDeets] 
@@ -14550,14 +17554,15 @@ export const ContactsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * summary List requests
+         * @param {boolean} [includeSelf] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async requestsGETList(limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.requestsGETList(limit, page, userId, options);
+        async requestsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.requestsGETList(includeSelf, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContactsApi.requestsGETList']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -14627,14 +17632,15 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * summary List contacts
+         * @param {boolean} [includeSelf] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contactsGETList(limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
-            return localVarFp.contactsGETList(limit, page, userId, options).then((request) => request(axios, basePath));
+        contactsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
+            return localVarFp.contactsGETList(includeSelf, limit, page, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -14696,20 +17702,29 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
          * <p>Search contacts in the network based on Name, KnownName, Business name or Handle              Returns a list of <span class=\"jmbr term\">EndUser_Deets</span>.</p>
          * summary Search contacts
          * @param {string} [term] The search term or keyword
+         * @param {string} [externalId] 
+         * @param {string} [sinceUTC] 
+         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook
+         * @param {boolean} [includeAlias] 
+         * @param {boolean} [includeContacts] 
+         * @param {boolean} [includeRequest] 
+         * @param {Array<ContactStatusPersona>} [contactStatus] 
+         * @param {Array<string>} [roles] 
+         * @param {boolean} [includeCounts] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contactsSearch(term?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
-            return localVarFp.contactsSearch(term, limit, page, userId, options).then((request) => request(axios, basePath));
+        contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
+            return localVarFp.contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, limit, page, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * avatar_id could be tenant.id, contact.id, work.id, project.id, team.id, etc
          * summary Upload avatar image via file
          * @param {string} id contact id
-         * @param {File} [file] 
+         * @param {File} [file] The avatar image for this contact
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -14752,6 +17767,42 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
+         * summary Retrieve a list of payments for a contact. The payments can also be linked back to payment cycles (mass payments).
+         * @param {string} id The contact id (PersonaId) of the contact
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
+         * @param {string} [id2] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPayments(id: string, minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id2?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentListResponse> {
+            return localVarFp.getPayments(id, minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id2, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * summary Reject the contact invitation
          * @param {string} id 
          * @param {ContactStatusUpdateDeets} [contactStatusUpdateDeets] 
@@ -14764,14 +17815,15 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * summary List requests
+         * @param {boolean} [includeSelf] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        requestsGETList(limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
-            return localVarFp.requestsGETList(limit, page, userId, options).then((request) => request(axios, basePath));
+        requestsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
+            return localVarFp.requestsGETList(includeSelf, limit, page, userId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -14848,6 +17900,7 @@ export class ContactsApi extends BaseAPI {
     /**
      * 
      * summary List contacts
+     * @param {boolean} [includeSelf] 
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -14855,8 +17908,8 @@ export class ContactsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof ContactsApi
      */
-    public contactsGETList(limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return ContactsApiFp(this.configuration).contactsGETList(limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public contactsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).contactsGETList(includeSelf, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14929,6 +17982,15 @@ export class ContactsApi extends BaseAPI {
      * <p>Search contacts in the network based on Name, KnownName, Business name or Handle              Returns a list of <span class=\"jmbr term\">EndUser_Deets</span>.</p>
      * summary Search contacts
      * @param {string} [term] The search term or keyword
+     * @param {string} [externalId] 
+     * @param {string} [sinceUTC] 
+     * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook
+     * @param {boolean} [includeAlias] 
+     * @param {boolean} [includeContacts] 
+     * @param {boolean} [includeRequest] 
+     * @param {Array<ContactStatusPersona>} [contactStatus] 
+     * @param {Array<string>} [roles] 
+     * @param {boolean} [includeCounts] 
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -14936,15 +17998,15 @@ export class ContactsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof ContactsApi
      */
-    public contactsSearch(term?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return ContactsApiFp(this.configuration).contactsSearch(term, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * avatar_id could be tenant.id, contact.id, work.id, project.id, team.id, etc
      * summary Upload avatar image via file
      * @param {string} id contact id
-     * @param {File} [file] 
+     * @param {File} [file] The avatar image for this contact
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof ContactsApi
@@ -14995,6 +18057,44 @@ export class ContactsApi extends BaseAPI {
 
     /**
      * 
+     * summary Retrieve a list of payments for a contact. The payments can also be linked back to payment cycles (mass payments).
+     * @param {string} id The contact id (PersonaId) of the contact
+     * @param {number} [minAmount] The minimum amount for filtering
+     * @param {number} [maxAmount] The maximum amount for filtering
+     * @param {string} [fromDate] The starting date for filtering
+     * @param {string} [toDate] The end date for filtering
+     * @param {Array<string>} [statuses] A list of statuses for filtering
+     * @param {Array<string>} [paymentTypes] A list of payment types for filtering
+     * @param {string} [id2] 
+     * @param {string} [shortId] 
+     * @param {string} [toHandle] The Mozaic handle for a contact
+     * @param {string} [toEmail] The email address of the contact
+     * @param {string} [toPhone] The fully qualified phone number of the contact
+     * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+     * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+     * @param {string} [toUserId] Specifies the user associated with this contact record
+     * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+     * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+     * @param {string} [toCountryCode] 
+     * @param {string} [toExternalId] 
+     * @param {Array<AvatarSize>} [toAvatar] contact avatar
+     * @param {string} [toId] 
+     * @param {string} [toCreated] 
+     * @param {string} [toShortId] 
+     * @param {string} [toObjectName] The name of this object
+     * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+     * @param {number} [page] 1-based page index for paginated results
+     * @param {string} [userId] The user id to operate on their behalf (tenants only)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof ContactsApi
+     */
+    public getPayments(id: string, minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id2?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).getPayments(id, minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id2, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * summary Reject the contact invitation
      * @param {string} id 
      * @param {ContactStatusUpdateDeets} [contactStatusUpdateDeets] 
@@ -15009,6 +18109,7 @@ export class ContactsApi extends BaseAPI {
     /**
      * 
      * summary List requests
+     * @param {boolean} [includeSelf] 
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -15016,8 +18117,8 @@ export class ContactsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof ContactsApi
      */
-    public requestsGETList(limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return ContactsApiFp(this.configuration).requestsGETList(limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public requestsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).requestsGETList(includeSelf, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -15329,10 +18430,11 @@ export const ContractsApiAxiosParamCreator = function (configuration?: Configura
          * <p>Contracts are core to the Splits API, they contain Income              objects which have child terms used to specify the rules              of how income should be split or sent to payees.</p>
          * summary List all contracts
          * @param {boolean} [activeOnly] If set to true, then this only returns active contracts
+         * @param {boolean} [latestOnly] If set to true, then only the latest revision is sent. Defaults to true.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contractsGetAll: async (activeOnly?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contractsGetAll: async (activeOnly?: boolean, latestOnly?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/contracts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -15358,6 +18460,10 @@ export const ContractsApiAxiosParamCreator = function (configuration?: Configura
 
             if (activeOnly !== undefined) {
                 localVarQueryParameter['activeOnly'] = activeOnly;
+            }
+
+            if (latestOnly !== undefined) {
+                localVarQueryParameter['latestOnly'] = latestOnly;
             }
 
 
@@ -15468,11 +18574,12 @@ export const ContractsApiFp = function(configuration?: Configuration) {
          * <p>Contracts are core to the Splits API, they contain Income              objects which have child terms used to specify the rules              of how income should be split or sent to payees.</p>
          * summary List all contracts
          * @param {boolean} [activeOnly] If set to true, then this only returns active contracts
+         * @param {boolean} [latestOnly] If set to true, then only the latest revision is sent. Defaults to true.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contractsGetAll(activeOnly?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Contract>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractsGetAll(activeOnly, options);
+        async contractsGetAll(activeOnly?: boolean, latestOnly?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Contract>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.contractsGetAll(activeOnly, latestOnly, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContractsApi.contractsGetAll']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -15556,11 +18663,12 @@ export const ContractsApiFactory = function (configuration?: Configuration, base
          * <p>Contracts are core to the Splits API, they contain Income              objects which have child terms used to specify the rules              of how income should be split or sent to payees.</p>
          * summary List all contracts
          * @param {boolean} [activeOnly] If set to true, then this only returns active contracts
+         * @param {boolean} [latestOnly] If set to true, then only the latest revision is sent. Defaults to true.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contractsGetAll(activeOnly?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Array<Contract>> {
-            return localVarFp.contractsGetAll(activeOnly, options).then((request) => request(axios, basePath));
+        contractsGetAll(activeOnly?: boolean, latestOnly?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Array<Contract>> {
+            return localVarFp.contractsGetAll(activeOnly, latestOnly, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -15653,12 +18761,125 @@ export class ContractsApi extends BaseAPI {
      * <p>Contracts are core to the Splits API, they contain Income              objects which have child terms used to specify the rules              of how income should be split or sent to payees.</p>
      * summary List all contracts
      * @param {boolean} [activeOnly] If set to true, then this only returns active contracts
+     * @param {boolean} [latestOnly] If set to true, then only the latest revision is sent. Defaults to true.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof ContractsApi
      */
-    public contractsGetAll(activeOnly?: boolean, options?: RawAxiosRequestConfig) {
-        return ContractsApiFp(this.configuration).contractsGetAll(activeOnly, options).then((request) => request(this.axios, this.basePath));
+    public contractsGetAll(activeOnly?: boolean, latestOnly?: boolean, options?: RawAxiosRequestConfig) {
+        return ContractsApiFp(this.configuration).contractsGetAll(activeOnly, latestOnly, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * CountriesApi - axios parameter creator
+ * export
+ */
+export const CountriesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * summary Get list of countries
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiCountriesGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/countries`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * CountriesApi - functional programming interface
+ * export
+ */
+export const CountriesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = CountriesApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * summary Get list of countries
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiCountriesGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CountriesResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiCountriesGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CountriesApi.apiCountriesGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * CountriesApi - factory interface
+ * export
+ */
+export const CountriesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = CountriesApiFp(configuration)
+    return {
+        /**
+         * 
+         * summary Get list of countries
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiCountriesGet(options?: RawAxiosRequestConfig): AxiosPromise<CountriesResponse> {
+            return localVarFp.apiCountriesGet(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * CountriesApi - object-oriented interface
+ * export
+ * @class CountriesApi
+ * @extends {BaseAPI}
+ */
+export class CountriesApi extends BaseAPI {
+    /**
+     * 
+     * summary Get list of countries
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof CountriesApi
+     */
+    public apiCountriesGet(options?: RawAxiosRequestConfig) {
+        return CountriesApiFp(this.configuration).apiCountriesGet(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -15870,6 +19091,46 @@ export class DeadLetterQueueApi extends BaseAPI {
 export const DiagnosticsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiDiagnosticsAccountsTestGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/diagnostics/accounts-test`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * The API ping is the simplest way to test availbility and authentcation of the Mozaic API
          * summary Simple ping test call
          * @param {*} [options] Override http request option.
@@ -15990,6 +19251,92 @@ export const DiagnosticsApiAxiosParamCreator = function (configuration?: Configu
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * summary Returns the current environment of the API\'s service host
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCurrentEnvironment: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/environment`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Returns the an AspnetCoreEnvironment Enum based on the environment string provided
+         * @param {string} environment dev, development, stage, staging, prod, production, sandbox, demo
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        parseEnvironment: async (environment: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'environment' is not null or undefined
+            assertParamExists('parseEnvironment', 'environment', environment)
+            const localVarPath = `/api/environment/{environment}`
+                .replace(`{${"environment"}}`, encodeURIComponent(String(environment)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -16000,6 +19347,17 @@ export const DiagnosticsApiAxiosParamCreator = function (configuration?: Configu
 export const DiagnosticsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DiagnosticsApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiDiagnosticsAccountsTestGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ApplicationUser>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDiagnosticsAccountsTestGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DiagnosticsApi.apiDiagnosticsAccountsTestGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          * The API ping is the simplest way to test availbility and authentcation of the Mozaic API
          * summary Simple ping test call
@@ -16034,6 +19392,31 @@ export const DiagnosticsApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['DiagnosticsApi.apiDiagnosticsSignalRExample2Get']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * summary Returns the current environment of the API\'s service host
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCurrentEnvironment(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AspnetCoreEnvironment>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCurrentEnvironment(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DiagnosticsApi.getCurrentEnvironment']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Returns the an AspnetCoreEnvironment Enum based on the environment string provided
+         * @param {string} environment dev, development, stage, staging, prod, production, sandbox, demo
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async parseEnvironment(environment: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AspnetCoreEnvironment>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.parseEnvironment(environment, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DiagnosticsApi.parseEnvironment']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -16044,6 +19427,14 @@ export const DiagnosticsApiFp = function(configuration?: Configuration) {
 export const DiagnosticsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = DiagnosticsApiFp(configuration)
     return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiDiagnosticsAccountsTestGet(options?: RawAxiosRequestConfig): AxiosPromise<ApplicationUser> {
+            return localVarFp.apiDiagnosticsAccountsTestGet(options).then((request) => request(axios, basePath));
+        },
         /**
          * The API ping is the simplest way to test availbility and authentcation of the Mozaic API
          * summary Simple ping test call
@@ -16069,6 +19460,25 @@ export const DiagnosticsApiFactory = function (configuration?: Configuration, ba
         apiDiagnosticsSignalRExample2Get(options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.apiDiagnosticsSignalRExample2Get(options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * summary Returns the current environment of the API\'s service host
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCurrentEnvironment(options?: RawAxiosRequestConfig): AxiosPromise<AspnetCoreEnvironment> {
+            return localVarFp.getCurrentEnvironment(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Returns the an AspnetCoreEnvironment Enum based on the environment string provided
+         * @param {string} environment dev, development, stage, staging, prod, production, sandbox, demo
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        parseEnvironment(environment: string, options?: RawAxiosRequestConfig): AxiosPromise<AspnetCoreEnvironment> {
+            return localVarFp.parseEnvironment(environment, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -16079,6 +19489,16 @@ export const DiagnosticsApiFactory = function (configuration?: Configuration, ba
  * @extends {BaseAPI}
  */
 export class DiagnosticsApi extends BaseAPI {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof DiagnosticsApi
+     */
+    public apiDiagnosticsAccountsTestGet(options?: RawAxiosRequestConfig) {
+        return DiagnosticsApiFp(this.configuration).apiDiagnosticsAccountsTestGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * The API ping is the simplest way to test availbility and authentcation of the Mozaic API
      * summary Simple ping test call
@@ -16108,6 +19528,29 @@ export class DiagnosticsApi extends BaseAPI {
      */
     public apiDiagnosticsSignalRExample2Get(options?: RawAxiosRequestConfig) {
         return DiagnosticsApiFp(this.configuration).apiDiagnosticsSignalRExample2Get(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Returns the current environment of the API\'s service host
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof DiagnosticsApi
+     */
+    public getCurrentEnvironment(options?: RawAxiosRequestConfig) {
+        return DiagnosticsApiFp(this.configuration).getCurrentEnvironment(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Returns the an AspnetCoreEnvironment Enum based on the environment string provided
+     * @param {string} environment dev, development, stage, staging, prod, production, sandbox, demo
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof DiagnosticsApi
+     */
+    public parseEnvironment(environment: string, options?: RawAxiosRequestConfig) {
+        return DiagnosticsApiFp(this.configuration).parseEnvironment(environment, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -18765,10 +22208,11 @@ export const OtpApiAxiosParamCreator = function (configuration?: Configuration) 
         /**
          * 
          * summary Sends a one-time passcode (OTP) to the provided email address.
+         * @param {Auth0OtpGenerateDeets} [auth0OtpGenerateDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiOtpSendPost: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiOtpSendPost: async (auth0OtpGenerateDeets?: Auth0OtpGenerateDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/otp/send`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -18794,9 +22238,12 @@ export const OtpApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(auth0OtpGenerateDeets, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -18816,11 +22263,12 @@ export const OtpApiFp = function(configuration?: Configuration) {
         /**
          * 
          * summary Sends a one-time passcode (OTP) to the provided email address.
+         * @param {Auth0OtpGenerateDeets} [auth0OtpGenerateDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiOtpSendPost(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiOtpSendPost(options);
+        async apiOtpSendPost(auth0OtpGenerateDeets?: Auth0OtpGenerateDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiOtpSendPost(auth0OtpGenerateDeets, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OtpApi.apiOtpSendPost']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -18838,11 +22286,12 @@ export const OtpApiFactory = function (configuration?: Configuration, basePath?:
         /**
          * 
          * summary Sends a one-time passcode (OTP) to the provided email address.
+         * @param {Auth0OtpGenerateDeets} [auth0OtpGenerateDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiOtpSendPost(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.apiOtpSendPost(options).then((request) => request(axios, basePath));
+        apiOtpSendPost(auth0OtpGenerateDeets?: Auth0OtpGenerateDeets, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.apiOtpSendPost(auth0OtpGenerateDeets, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -18857,12 +22306,13 @@ export class OtpApi extends BaseAPI {
     /**
      * 
      * summary Sends a one-time passcode (OTP) to the provided email address.
+     * @param {Auth0OtpGenerateDeets} [auth0OtpGenerateDeets] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof OtpApi
      */
-    public apiOtpSendPost(options?: RawAxiosRequestConfig) {
-        return OtpApiFp(this.configuration).apiOtpSendPost(options).then((request) => request(this.axios, this.basePath));
+    public apiOtpSendPost(auth0OtpGenerateDeets?: Auth0OtpGenerateDeets, options?: RawAxiosRequestConfig) {
+        return OtpApiFp(this.configuration).apiOtpSendPost(auth0OtpGenerateDeets, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -19723,16 +23173,17 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
          * 
          * summary Retrieve a list of payment entries for a cycles
          * @param {string} id 
-         * @param {PaymentCycleEntryStatus} [status]   draft  success  warning  error  processing
+         * @param {TransactionStatusEnum} [status] Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
          * @param {string} [name] 
          * @param {string} [email] 
+         * @param {Array<ListOfSortFieldsForPaymentCycleEntriesListObject>} [sortBy] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentCycleEntries: async (id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listPaymentCycleEntries: async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('listPaymentCycleEntries', 'id', id)
             const localVarPath = `/api/payment-cycles/{id}/entry`
@@ -19771,6 +23222,10 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['Email'] = email;
             }
 
+            if (sortBy) {
+                localVarQueryParameter['sort_by'] = sortBy;
+            }
+
             if (limit !== undefined) {
                 localVarQueryParameter['Limit'] = limit;
             }
@@ -19797,16 +23252,18 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * summary Retrieve a list of payments cycles
-         * @param {FeeDirection} [feeDirection]   default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
+         * @param {FeeDirection} [feeDirection] Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
          * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
          * @param {string} [name] 
+         * @param {string} [greaterThanPaymentDate] 
+         * @param {Array<ListOfSortFieldsForPaymentCyclesListObject>} [sortBy] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentCycles: async (feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listPaymentCycles: async (feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/payment-cycles`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -19840,6 +23297,16 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
 
             if (name !== undefined) {
                 localVarQueryParameter['Name'] = name;
+            }
+
+            if (greaterThanPaymentDate !== undefined) {
+                localVarQueryParameter['GreaterThanPaymentDate'] = (greaterThanPaymentDate as any instanceof Date) ?
+                    (greaterThanPaymentDate as any).toISOString() :
+                    greaterThanPaymentDate;
+            }
+
+            if (sortBy) {
+                localVarQueryParameter['sort_by'] = sortBy;
             }
 
             if (limit !== undefined) {
@@ -19927,7 +23394,7 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * summary Delete a payment entry for a payment cycle
+         * summary Get avatar of payment entry for a payment cycle
          * @param {string} id 
          * @param {string} entryId 
          * @param {*} [options] Override http request option.
@@ -20162,7 +23629,7 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async finalizePaymentCycleEntry(id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleFinalizeResponse>> {
+        async finalizePaymentCycleEntry(id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaymentCyclesApi.finalizePaymentCycleEntry']?.[localVarOperationServerIndex]?.url;
@@ -20175,7 +23642,7 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPaymentCycleById(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycle>> {
+        async getPaymentCycleById(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPaymentCycleById(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaymentCyclesApi.getPaymentCycleById']?.[localVarOperationServerIndex]?.url;
@@ -20199,17 +23666,18 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
          * 
          * summary Retrieve a list of payment entries for a cycles
          * @param {string} id 
-         * @param {PaymentCycleEntryStatus} [status]   draft  success  warning  error  processing
+         * @param {TransactionStatusEnum} [status] Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
          * @param {string} [name] 
          * @param {string} [email] 
+         * @param {Array<ListOfSortFieldsForPaymentCycleEntriesListObject>} [sortBy] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listPaymentCycleEntries(id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleEntryListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentCycleEntries(id, status, name, email, limit, page, userId, options);
+        async listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleEntryListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentCycleEntries(id, status, name, email, sortBy, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaymentCyclesApi.listPaymentCycleEntries']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -20217,17 +23685,19 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * summary Retrieve a list of payments cycles
-         * @param {FeeDirection} [feeDirection]   default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
+         * @param {FeeDirection} [feeDirection] Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
          * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
          * @param {string} [name] 
+         * @param {string} [greaterThanPaymentDate] 
+         * @param {Array<ListOfSortFieldsForPaymentCyclesListObject>} [sortBy] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentCycles(feeDirection, status, name, limit, page, userId, options);
+        async listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortBy, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaymentCyclesApi.listPaymentCycles']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -20250,7 +23720,7 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * summary Delete a payment entry for a payment cycle
+         * summary Get avatar of payment entry for a payment cycle
          * @param {string} id 
          * @param {string} entryId 
          * @param {*} [options] Override http request option.
@@ -20270,7 +23740,7 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updatePaymentCycle(id: string, paymentCycleUpdateDeets?: PaymentCycleUpdateDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycle>> {
+        async updatePaymentCycle(id: string, paymentCycleUpdateDeets?: PaymentCycleUpdateDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updatePaymentCycle(id, paymentCycleUpdateDeets, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaymentCyclesApi.updatePaymentCycle']?.[localVarOperationServerIndex]?.url;
@@ -20362,7 +23832,7 @@ export const PaymentCyclesApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        finalizePaymentCycleEntry(id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleFinalizeResponse> {
+        finalizePaymentCycleEntry(id: string, paymentCycleFinalizeDeets?: PaymentCycleFinalizeDeets, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleResponse> {
             return localVarFp.finalizePaymentCycleEntry(id, paymentCycleFinalizeDeets, options).then((request) => request(axios, basePath));
         },
         /**
@@ -20372,7 +23842,7 @@ export const PaymentCyclesApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPaymentCycleById(id: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycle> {
+        getPaymentCycleById(id: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleResponse> {
             return localVarFp.getPaymentCycleById(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -20390,32 +23860,35 @@ export const PaymentCyclesApiFactory = function (configuration?: Configuration, 
          * 
          * summary Retrieve a list of payment entries for a cycles
          * @param {string} id 
-         * @param {PaymentCycleEntryStatus} [status]   draft  success  warning  error  processing
+         * @param {TransactionStatusEnum} [status] Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
          * @param {string} [name] 
          * @param {string} [email] 
+         * @param {Array<ListOfSortFieldsForPaymentCycleEntriesListObject>} [sortBy] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentCycleEntries(id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleEntryListResponse> {
-            return localVarFp.listPaymentCycleEntries(id, status, name, email, limit, page, userId, options).then((request) => request(axios, basePath));
+        listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleEntryListResponse> {
+            return localVarFp.listPaymentCycleEntries(id, status, name, email, sortBy, limit, page, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * summary Retrieve a list of payments cycles
-         * @param {FeeDirection} [feeDirection]   default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
+         * @param {FeeDirection} [feeDirection] Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
          * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
          * @param {string} [name] 
+         * @param {string} [greaterThanPaymentDate] 
+         * @param {Array<ListOfSortFieldsForPaymentCyclesListObject>} [sortBy] 
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleListResponse> {
-            return localVarFp.listPaymentCycles(feeDirection, status, name, limit, page, userId, options).then((request) => request(axios, basePath));
+        listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleListResponse> {
+            return localVarFp.listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortBy, limit, page, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -20432,7 +23905,7 @@ export const PaymentCyclesApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * summary Delete a payment entry for a payment cycle
+         * summary Get avatar of payment entry for a payment cycle
          * @param {string} id 
          * @param {string} entryId 
          * @param {*} [options] Override http request option.
@@ -20449,7 +23922,7 @@ export const PaymentCyclesApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePaymentCycle(id: string, paymentCycleUpdateDeets?: PaymentCycleUpdateDeets, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycle> {
+        updatePaymentCycle(id: string, paymentCycleUpdateDeets?: PaymentCycleUpdateDeets, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleResponse> {
             return localVarFp.updatePaymentCycle(id, paymentCycleUpdateDeets, options).then((request) => request(axios, basePath));
         },
         /**
@@ -20579,9 +24052,10 @@ export class PaymentCyclesApi extends BaseAPI {
      * 
      * summary Retrieve a list of payment entries for a cycles
      * @param {string} id 
-     * @param {PaymentCycleEntryStatus} [status]   draft  success  warning  error  processing
+     * @param {TransactionStatusEnum} [status] Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
      * @param {string} [name] 
      * @param {string} [email] 
+     * @param {Array<ListOfSortFieldsForPaymentCycleEntriesListObject>} [sortBy] 
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -20589,16 +24063,18 @@ export class PaymentCyclesApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof PaymentCyclesApi
      */
-    public listPaymentCycleEntries(id: string, status?: PaymentCycleEntryStatus, name?: string, email?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return PaymentCyclesApiFp(this.configuration).listPaymentCycleEntries(id, status, name, email, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return PaymentCyclesApiFp(this.configuration).listPaymentCycleEntries(id, status, name, email, sortBy, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * summary Retrieve a list of payments cycles
-     * @param {FeeDirection} [feeDirection]   default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
+     * @param {FeeDirection} [feeDirection] Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
      * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
      * @param {string} [name] 
+     * @param {string} [greaterThanPaymentDate] 
+     * @param {Array<ListOfSortFieldsForPaymentCyclesListObject>} [sortBy] 
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -20606,8 +24082,8 @@ export class PaymentCyclesApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof PaymentCyclesApi
      */
-    public listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return PaymentCyclesApiFp(this.configuration).listPaymentCycles(feeDirection, status, name, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return PaymentCyclesApiFp(this.configuration).listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortBy, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20627,7 +24103,7 @@ export class PaymentCyclesApi extends BaseAPI {
 
     /**
      * 
-     * summary Delete a payment entry for a payment cycle
+     * summary Get avatar of payment entry for a payment cycle
      * @param {string} id 
      * @param {string} entryId 
      * @param {*} [options] Override http request option.
@@ -20675,7 +24151,7 @@ export class PaymentCyclesApi extends BaseAPI {
 export const PaymentPushesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * <p>Creates <span class=\"jmbr term\">PaymentPushes</span> in bulk, which send payments              to the specified recipients. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see <see href=\"\">Understanding Payments in Mozaic</see></p>
+         * <p>Creates <span class=\"jmbr term\">PaymentPushes</span> in bulk, which send payments              to the specified recipients. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see [Understanding Payments in Mozaic]()</p>
          * summary Create payment pushes in bulk
          * @param {PaymentPushBulkCreateDeets} [paymentPushBulkCreateDeets] PaymentPushBulk_CreateDeets
          * @param {*} [options] Override http request option.
@@ -20764,7 +24240,7 @@ export const PaymentPushesApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * <p>Creates a <span class=\"jmbr term\">PaymentPush</span> which sends a payment              to the specified recipient. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see <see href=\"\">Understanding Payments in Mozaic</see></p>
+         * <p>Creates a <span class=\"jmbr term\">PaymentPush</span> which sends a payment              to the specified recipient. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see [Understanding Payments in Mozaic]()</p>
          * summary Create a PaymentPush
          * @param {PaymentPushCreateDeets} [paymentPushCreateDeets] PaymentPush_CreateDeets
          * @param {*} [options] Override http request option.
@@ -20958,7 +24434,7 @@ export const PaymentPushesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PaymentPushesApiAxiosParamCreator(configuration)
     return {
         /**
-         * <p>Creates <span class=\"jmbr term\">PaymentPushes</span> in bulk, which send payments              to the specified recipients. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see <see href=\"\">Understanding Payments in Mozaic</see></p>
+         * <p>Creates <span class=\"jmbr term\">PaymentPushes</span> in bulk, which send payments              to the specified recipients. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see [Understanding Payments in Mozaic]()</p>
          * summary Create payment pushes in bulk
          * @param {PaymentPushBulkCreateDeets} [paymentPushBulkCreateDeets] PaymentPushBulk_CreateDeets
          * @param {*} [options] Override http request option.
@@ -20983,7 +24459,7 @@ export const PaymentPushesApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * <p>Creates a <span class=\"jmbr term\">PaymentPush</span> which sends a payment              to the specified recipient. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see <see href=\"\">Understanding Payments in Mozaic</see></p>
+         * <p>Creates a <span class=\"jmbr term\">PaymentPush</span> which sends a payment              to the specified recipient. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see [Understanding Payments in Mozaic]()</p>
          * summary Create a PaymentPush
          * @param {PaymentPushCreateDeets} [paymentPushCreateDeets] PaymentPush_CreateDeets
          * @param {*} [options] Override http request option.
@@ -21046,7 +24522,7 @@ export const PaymentPushesApiFactory = function (configuration?: Configuration, 
     const localVarFp = PaymentPushesApiFp(configuration)
     return {
         /**
-         * <p>Creates <span class=\"jmbr term\">PaymentPushes</span> in bulk, which send payments              to the specified recipients. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see <see href=\"\">Understanding Payments in Mozaic</see></p>
+         * <p>Creates <span class=\"jmbr term\">PaymentPushes</span> in bulk, which send payments              to the specified recipients. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see [Understanding Payments in Mozaic]()</p>
          * summary Create payment pushes in bulk
          * @param {PaymentPushBulkCreateDeets} [paymentPushBulkCreateDeets] PaymentPushBulk_CreateDeets
          * @param {*} [options] Override http request option.
@@ -21065,7 +24541,7 @@ export const PaymentPushesApiFactory = function (configuration?: Configuration, 
             return localVarFp.apiPaymentPushesFeesPost(paymentPushCreateDeets, options).then((request) => request(axios, basePath));
         },
         /**
-         * <p>Creates a <span class=\"jmbr term\">PaymentPush</span> which sends a payment              to the specified recipient. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see <see href=\"\">Understanding Payments in Mozaic</see></p>
+         * <p>Creates a <span class=\"jmbr term\">PaymentPush</span> which sends a payment              to the specified recipient. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see [Understanding Payments in Mozaic]()</p>
          * summary Create a PaymentPush
          * @param {PaymentPushCreateDeets} [paymentPushCreateDeets] PaymentPush_CreateDeets
          * @param {*} [options] Override http request option.
@@ -21116,7 +24592,7 @@ export const PaymentPushesApiFactory = function (configuration?: Configuration, 
  */
 export class PaymentPushesApi extends BaseAPI {
     /**
-     * <p>Creates <span class=\"jmbr term\">PaymentPushes</span> in bulk, which send payments              to the specified recipients. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see <see href=\"\">Understanding Payments in Mozaic</see></p>
+     * <p>Creates <span class=\"jmbr term\">PaymentPushes</span> in bulk, which send payments              to the specified recipients. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see [Understanding Payments in Mozaic]()</p>
      * summary Create payment pushes in bulk
      * @param {PaymentPushBulkCreateDeets} [paymentPushBulkCreateDeets] PaymentPushBulk_CreateDeets
      * @param {*} [options] Override http request option.
@@ -21139,7 +24615,7 @@ export class PaymentPushesApi extends BaseAPI {
     }
 
     /**
-     * <p>Creates a <span class=\"jmbr term\">PaymentPush</span> which sends a payment              to the specified recipient. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see <see href=\"\">Understanding Payments in Mozaic</see></p>
+     * <p>Creates a <span class=\"jmbr term\">PaymentPush</span> which sends a payment              to the specified recipient. In order to create <strong>PaymentPushes</strong> on behalf of someone other              than the logged in account the sender must be registered as a Tenant and have PaymentPush create scope.</p>  <p>Create scope permissions<c ref=\"\"></c>              for the sending user. The PaymentPush workflow is high-level payment api abstracting many details about how              The funds are flowing. For more information see [Understanding Payments in Mozaic]()</p>
      * summary Create a PaymentPush
      * @param {PaymentPushCreateDeets} [paymentPushCreateDeets] PaymentPush_CreateDeets
      * @param {*} [options] Override http request option.
@@ -21203,8 +24679,8 @@ export const PaymentTransferApiAxiosParamCreator = function (configuration?: Con
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentTransferCancelPut: async (paymentTransferReadDeets?: PaymentTransferReadDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/payment-transfer/cancel`;
+        apiPaymentTransfersCancelPut: async (paymentTransferReadDeets?: PaymentTransferReadDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/payment-transfers/cancel`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -21252,7 +24728,7 @@ export const PaymentTransferApiAxiosParamCreator = function (configuration?: Con
         getTransferDetails: async (id: string, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getTransferDetails', 'id', id)
-            const localVarPath = `/api/payment-transfer/{id}`
+            const localVarPath = `/api/payment-transfers/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -21299,7 +24775,7 @@ export const PaymentTransferApiAxiosParamCreator = function (configuration?: Con
          * @throws {RequiredError}
          */
         initiateTransfer: async (paymentTransferCreateDeets?: PaymentTransferCreateDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/payment-transfer`;
+            const localVarPath = `/api/payment-transfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -21340,14 +24816,15 @@ export const PaymentTransferApiAxiosParamCreator = function (configuration?: Con
          * 
          * summary Retrieve a list of payment transfers
          * @param {string} [status] 
+         * @param {PaymentDirection} [direction]   push  request  smartContract  paymentCycle  transfer  payout
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentTransfers: async (status?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/payment-transfer`;
+        listPaymentTransfers: async (status?: string, direction?: PaymentDirection, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/payment-transfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -21374,6 +24851,10 @@ export const PaymentTransferApiAxiosParamCreator = function (configuration?: Con
                 localVarQueryParameter['Status'] = status;
             }
 
+            if (direction !== undefined) {
+                localVarQueryParameter['Direction'] = direction;
+            }
+
             if (limit !== undefined) {
                 localVarQueryParameter['Limit'] = limit;
             }
@@ -21397,6 +24878,55 @@ export const PaymentTransferApiAxiosParamCreator = function (configuration?: Con
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * summary Retry Failed Payout Transfers
+         * @param {string} id 
+         * @param {PaymentTransferRetryDeets} [paymentTransferRetryDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retryPayout: async (id: string, paymentTransferRetryDeets?: PaymentTransferRetryDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('retryPayout', 'id', id)
+            const localVarPath = `/api/payment-transfers/{id}/retry`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(paymentTransferRetryDeets, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -21414,10 +24944,10 @@ export const PaymentTransferApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPaymentTransferCancelPut(paymentTransferReadDeets?: PaymentTransferReadDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentTransfer>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentTransferCancelPut(paymentTransferReadDeets, options);
+        async apiPaymentTransfersCancelPut(paymentTransferReadDeets?: PaymentTransferReadDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentTransfer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentTransfersCancelPut(paymentTransferReadDeets, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentTransferApi.apiPaymentTransferCancelPut']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PaymentTransferApi.apiPaymentTransfersCancelPut']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -21451,16 +24981,31 @@ export const PaymentTransferApiFp = function(configuration?: Configuration) {
          * 
          * summary Retrieve a list of payment transfers
          * @param {string} [status] 
+         * @param {PaymentDirection} [direction]   push  request  smartContract  paymentCycle  transfer  payout
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listPaymentTransfers(status?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentTransferListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentTransfers(status, limit, page, userId, options);
+        async listPaymentTransfers(status?: string, direction?: PaymentDirection, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentTransferListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentTransfers(status, direction, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaymentTransferApi.listPaymentTransfers']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Retry Failed Payout Transfers
+         * @param {string} id 
+         * @param {PaymentTransferRetryDeets} [paymentTransferRetryDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retryPayout(id: string, paymentTransferRetryDeets?: PaymentTransferRetryDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentTransfer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retryPayout(id, paymentTransferRetryDeets, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaymentTransferApi.retryPayout']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -21480,8 +25025,8 @@ export const PaymentTransferApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentTransferCancelPut(paymentTransferReadDeets?: PaymentTransferReadDeets, options?: RawAxiosRequestConfig): AxiosPromise<PaymentTransfer> {
-            return localVarFp.apiPaymentTransferCancelPut(paymentTransferReadDeets, options).then((request) => request(axios, basePath));
+        apiPaymentTransfersCancelPut(paymentTransferReadDeets?: PaymentTransferReadDeets, options?: RawAxiosRequestConfig): AxiosPromise<PaymentTransfer> {
+            return localVarFp.apiPaymentTransfersCancelPut(paymentTransferReadDeets, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -21508,14 +25053,26 @@ export const PaymentTransferApiFactory = function (configuration?: Configuration
          * 
          * summary Retrieve a list of payment transfers
          * @param {string} [status] 
+         * @param {PaymentDirection} [direction]   push  request  smartContract  paymentCycle  transfer  payout
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentTransfers(status?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentTransferListResponse> {
-            return localVarFp.listPaymentTransfers(status, limit, page, userId, options).then((request) => request(axios, basePath));
+        listPaymentTransfers(status?: string, direction?: PaymentDirection, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentTransferListResponse> {
+            return localVarFp.listPaymentTransfers(status, direction, limit, page, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Retry Failed Payout Transfers
+         * @param {string} id 
+         * @param {PaymentTransferRetryDeets} [paymentTransferRetryDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retryPayout(id: string, paymentTransferRetryDeets?: PaymentTransferRetryDeets, options?: RawAxiosRequestConfig): AxiosPromise<PaymentTransfer> {
+            return localVarFp.retryPayout(id, paymentTransferRetryDeets, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -21535,8 +25092,8 @@ export class PaymentTransferApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof PaymentTransferApi
      */
-    public apiPaymentTransferCancelPut(paymentTransferReadDeets?: PaymentTransferReadDeets, options?: RawAxiosRequestConfig) {
-        return PaymentTransferApiFp(this.configuration).apiPaymentTransferCancelPut(paymentTransferReadDeets, options).then((request) => request(this.axios, this.basePath));
+    public apiPaymentTransfersCancelPut(paymentTransferReadDeets?: PaymentTransferReadDeets, options?: RawAxiosRequestConfig) {
+        return PaymentTransferApiFp(this.configuration).apiPaymentTransfersCancelPut(paymentTransferReadDeets, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -21568,6 +25125,7 @@ export class PaymentTransferApi extends BaseAPI {
      * 
      * summary Retrieve a list of payment transfers
      * @param {string} [status] 
+     * @param {PaymentDirection} [direction]   push  request  smartContract  paymentCycle  transfer  payout
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -21575,8 +25133,21 @@ export class PaymentTransferApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof PaymentTransferApi
      */
-    public listPaymentTransfers(status?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return PaymentTransferApiFp(this.configuration).listPaymentTransfers(status, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public listPaymentTransfers(status?: string, direction?: PaymentDirection, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return PaymentTransferApiFp(this.configuration).listPaymentTransfers(status, direction, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Retry Failed Payout Transfers
+     * @param {string} id 
+     * @param {PaymentTransferRetryDeets} [paymentTransferRetryDeets] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof PaymentTransferApi
+     */
+    public retryPayout(id: string, paymentTransferRetryDeets?: PaymentTransferRetryDeets, options?: RawAxiosRequestConfig) {
+        return PaymentTransferApiFp(this.configuration).retryPayout(id, paymentTransferRetryDeets, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -21588,51 +25159,6 @@ export class PaymentTransferApi extends BaseAPI {
  */
 export const PaymentsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
-        /**
-         * 
-         * summary Cancel a payment
-         * @param {PaymentCancelDeets} [paymentCancelDeets] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiPaymentsCancelPut: async (paymentCancelDeets?: PaymentCancelDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/payments/cancel`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(paymentCancelDeets, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         /**
          * 
          * summary Test method for invoice payment intent generation
@@ -21680,133 +25206,16 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * summary Retrieve a list of payments
-         * @param {string} [orchestrationId] The id of the payment cycle for which to list the payments
-         * @param {string} [paymentSource] 
-         * @param {string} [paymentSourceId] 
-         * @param {AcceptPaymentStatusEnum} [paymentAcceptStatus]   pending  accepted  suspended
-         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
-         * @param {number} [page] 1-based page index for paginated results
-         * @param {string} [userId] The user id to operate on their behalf (tenants only)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiPaymentsGet: async (orchestrationId?: string, paymentSource?: string, paymentSourceId?: string, paymentAcceptStatus?: AcceptPaymentStatusEnum, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/payments`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (orchestrationId !== undefined) {
-                localVarQueryParameter['OrchestrationId'] = orchestrationId;
-            }
-
-            if (paymentSource !== undefined) {
-                localVarQueryParameter['payment_source'] = paymentSource;
-            }
-
-            if (paymentSourceId !== undefined) {
-                localVarQueryParameter['payment_source_id'] = paymentSourceId;
-            }
-
-            if (paymentAcceptStatus !== undefined) {
-                localVarQueryParameter['payment_accept_status'] = paymentAcceptStatus;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['Limit'] = limit;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['Page'] = page;
-            }
-
-            if (userId != null) {
-                localVarHeaderParameter['user_id'] = String(userId);
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Returns a true/false for any payment or contact if found
-         * summary Retrieve if has any payment or contact
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiPaymentsHasPaymentsOrContactsGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/payments/has-payments-or-contacts`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * <p>Updates a <span class=\"jmbr term\">Payment </span></p>
-         * summary Update a Payment Details
+         * summary Cancel a payment
          * @param {string} id 
-         * @param {PaymentDetailsUpdateDeets} [paymentDetailsUpdateDeets] PaymentDetails_UpdateDeets
+         * @param {PaymentCancelDeets} [paymentCancelDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsIdDetailsPut: async (id: string, paymentDetailsUpdateDeets?: PaymentDetailsUpdateDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        cancelPayment: async (id: string, paymentCancelDeets?: PaymentCancelDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiPaymentsIdDetailsPut', 'id', id)
-            const localVarPath = `/api/payments/{id}/details`
+            assertParamExists('cancelPayment', 'id', id)
+            const localVarPath = `/api/payments/{id}/cancel`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -21837,7 +25246,7 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(paymentDetailsUpdateDeets, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(paymentCancelDeets, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -21852,9 +25261,9 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsIdGet: async (id: string, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getPayment: async (id: string, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('apiPaymentsIdGet', 'id', id)
+            assertParamExists('getPayment', 'id', id)
             const localVarPath = `/api/payments/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -21895,35 +25304,17 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * 
-         * summary Search payments (e.g. between dates, amounts, etc.)
-         * @param {number} [minAmount] The minimum amount for filtering
-         * @param {number} [maxAmount] The maximum amount for filtering
-         * @param {string} [fromDate] The starting date for filtering
-         * @param {string} [toDate] The end date for filtering
-         * @param {Array<string>} [statuses] A list of statuses for filtering
-         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
-         * @param {string} [id] 
-         * @param {string} [shortId] 
-         * @param {string} [toHandle] The Mozaic handle for a contact
-         * @param {string} [toEmail] The email address of the contact
-         * @param {string} [toPhone] The fully qualified phone number of the contact
-         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
-         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
-         * @param {string} [toUserId] Specifies the user associated with this contact record
-         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
-         * @param {string} [toId] 
-         * @param {string} [toCreated] 
-         * @param {string} [toShortId] 
-         * @param {string} [toObjectName] The name of this object
-         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
-         * @param {number} [page] 1-based page index for paginated results
-         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * Returns a list of payments if found
+         * summary Retrieves all payments for a transaction id
+         * @param {string} transactionId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsSearchGet: async (minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/payments/search`;
+        getPaymentsByTransactionId: async (transactionId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'transactionId' is not null or undefined
+            assertParamExists('getPaymentsByTransactionId', 'transactionId', transactionId)
+            const localVarPath = `/api/transactions/{transactionId}/payments`
+                .replace(`{${"transactionId"}}`, encodeURIComponent(String(transactionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -21945,100 +25336,6 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // authentication bearerAuth required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (minAmount !== undefined) {
-                localVarQueryParameter['MinAmount'] = minAmount;
-            }
-
-            if (maxAmount !== undefined) {
-                localVarQueryParameter['MaxAmount'] = maxAmount;
-            }
-
-            if (fromDate !== undefined) {
-                localVarQueryParameter['FromDate'] = (fromDate as any instanceof Date) ?
-                    (fromDate as any).toISOString() :
-                    fromDate;
-            }
-
-            if (toDate !== undefined) {
-                localVarQueryParameter['ToDate'] = (toDate as any instanceof Date) ?
-                    (toDate as any).toISOString() :
-                    toDate;
-            }
-
-            if (statuses) {
-                localVarQueryParameter['Statuses'] = statuses;
-            }
-
-            if (paymentTypes) {
-                localVarQueryParameter['PaymentTypes'] = paymentTypes;
-            }
-
-            if (id !== undefined) {
-                localVarQueryParameter['Id'] = id;
-            }
-
-            if (shortId !== undefined) {
-                localVarQueryParameter['ShortId'] = shortId;
-            }
-
-            if (toHandle !== undefined) {
-                localVarQueryParameter['To.Handle'] = toHandle;
-            }
-
-            if (toEmail !== undefined) {
-                localVarQueryParameter['To.Email'] = toEmail;
-            }
-
-            if (toPhone !== undefined) {
-                localVarQueryParameter['To.Phone'] = toPhone;
-            }
-
-            if (toName !== undefined) {
-                localVarQueryParameter['To.Name'] = toName;
-            }
-
-            if (toPersonaId !== undefined) {
-                localVarQueryParameter['To.PersonaId'] = toPersonaId;
-            }
-
-            if (toUserId !== undefined) {
-                localVarQueryParameter['To.UserId'] = toUserId;
-            }
-
-            if (toUserAccountId !== undefined) {
-                localVarQueryParameter['To.UserAccountId'] = toUserAccountId;
-            }
-
-            if (toId !== undefined) {
-                localVarQueryParameter['To.Id'] = toId;
-            }
-
-            if (toCreated !== undefined) {
-                localVarQueryParameter['To.Created'] = (toCreated as any instanceof Date) ?
-                    (toCreated as any).toISOString() :
-                    toCreated;
-            }
-
-            if (toShortId !== undefined) {
-                localVarQueryParameter['To.ShortId'] = toShortId;
-            }
-
-            if (toObjectName !== undefined) {
-                localVarQueryParameter['To.ObjectName'] = toObjectName;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['Limit'] = limit;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['Page'] = page;
-            }
-
-            if (userId != null) {
-                localVarHeaderParameter['user_id'] = String(userId);
-            }
 
 
     
@@ -22195,6 +25492,354 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
+         * Returns a true/false for any payment or contact if found
+         * summary Retrieve if has any payment or contact. Only use this to detect if the user   should be sent to the waitlist. Do not use it to check if the user currently has  payments or contacts as the results are cached in AccountSettings.
+         * @param {string} [xCaller] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hasPaymentsOrContacts: async (xCaller?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/payments/has-payments-or-contacts`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (xCaller != null) {
+                localVarHeaderParameter['x-caller'] = String(xCaller);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Retrieve a list of payments
+         * @param {string} [orchestrationId] The id of the payment cycle for which to list the payments
+         * @param {PaymentSourceEnum} [paymentSource]   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
+         * @param {string} [paymentSourceId] 
+         * @param {Array<AcceptPaymentStatusEnum>} [paymentAcceptStatuses] 
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPayments: async (orchestrationId?: string, paymentSource?: PaymentSourceEnum, paymentSourceId?: string, paymentAcceptStatuses?: Array<AcceptPaymentStatusEnum>, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/payments`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (orchestrationId !== undefined) {
+                localVarQueryParameter['OrchestrationId'] = orchestrationId;
+            }
+
+            if (paymentSource !== undefined) {
+                localVarQueryParameter['payment_source'] = paymentSource;
+            }
+
+            if (paymentSourceId !== undefined) {
+                localVarQueryParameter['payment_source_id'] = paymentSourceId;
+            }
+
+            if (paymentAcceptStatuses) {
+                localVarQueryParameter['payment_accept_statuses'] = paymentAcceptStatuses;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['Limit'] = limit;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['Page'] = page;
+            }
+
+            if (userId != null) {
+                localVarHeaderParameter['user_id'] = String(userId);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Search payments (e.g. between dates, amounts, etc.)
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
+         * @param {string} [id] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchPayments: async (minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/payments/search`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (minAmount !== undefined) {
+                localVarQueryParameter['MinAmount'] = minAmount;
+            }
+
+            if (maxAmount !== undefined) {
+                localVarQueryParameter['MaxAmount'] = maxAmount;
+            }
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['FromDate'] = (fromDate as any instanceof Date) ?
+                    (fromDate as any).toISOString() :
+                    fromDate;
+            }
+
+            if (toDate !== undefined) {
+                localVarQueryParameter['ToDate'] = (toDate as any instanceof Date) ?
+                    (toDate as any).toISOString() :
+                    toDate;
+            }
+
+            if (statuses) {
+                localVarQueryParameter['Statuses'] = statuses;
+            }
+
+            if (paymentTypes) {
+                localVarQueryParameter['PaymentTypes'] = paymentTypes;
+            }
+
+            if (id !== undefined) {
+                localVarQueryParameter['Id'] = id;
+            }
+
+            if (shortId !== undefined) {
+                localVarQueryParameter['ShortId'] = shortId;
+            }
+
+            if (toHandle !== undefined) {
+                localVarQueryParameter['to.Handle'] = toHandle;
+            }
+
+            if (toEmail !== undefined) {
+                localVarQueryParameter['to.Email'] = toEmail;
+            }
+
+            if (toPhone !== undefined) {
+                localVarQueryParameter['to.Phone'] = toPhone;
+            }
+
+            if (toName !== undefined) {
+                localVarQueryParameter['to.Name'] = toName;
+            }
+
+            if (toPersonaId !== undefined) {
+                localVarQueryParameter['to.persona_id'] = toPersonaId;
+            }
+
+            if (toUserId !== undefined) {
+                localVarQueryParameter['to.UserId'] = toUserId;
+            }
+
+            if (toUserAccountId !== undefined) {
+                localVarQueryParameter['to.UserAccountId'] = toUserAccountId;
+            }
+
+            if (toIsAcceptedContact !== undefined) {
+                localVarQueryParameter['to.IsAcceptedContact'] = toIsAcceptedContact;
+            }
+
+            if (toCountryCode !== undefined) {
+                localVarQueryParameter['to.CountryCode'] = toCountryCode;
+            }
+
+            if (toExternalId !== undefined) {
+                localVarQueryParameter['to.ExternalId'] = toExternalId;
+            }
+
+            if (toAvatar) {
+                localVarQueryParameter['to.Avatar'] = toAvatar;
+            }
+
+            if (toId !== undefined) {
+                localVarQueryParameter['to.id'] = toId;
+            }
+
+            if (toCreated !== undefined) {
+                localVarQueryParameter['to.Created'] = (toCreated as any instanceof Date) ?
+                    (toCreated as any).toISOString() :
+                    toCreated;
+            }
+
+            if (toShortId !== undefined) {
+                localVarQueryParameter['to.ShortId'] = toShortId;
+            }
+
+            if (toObjectName !== undefined) {
+                localVarQueryParameter['to.ObjectName'] = toObjectName;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['Limit'] = limit;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['Page'] = page;
+            }
+
+            if (userId != null) {
+                localVarHeaderParameter['user_id'] = String(userId);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * <p>Updates a <span class=\"jmbr term\">Payment </span></p>
+         * summary Update a Payment Details
+         * @param {string} id 
+         * @param {PaymentDetailsUpdateDeets} [paymentDetailsUpdateDeets] PaymentDetails_UpdateDeets
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePaymentDetails: async (id: string, paymentDetailsUpdateDeets?: PaymentDetailsUpdateDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updatePaymentDetails', 'id', id)
+            const localVarPath = `/api/payments/{id}/details`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(paymentDetailsUpdateDeets, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 
          * summary Accept or Suspend payments from an account.
          * @param {PaymentAcceptDeets} [paymentAcceptDeets] 
@@ -22251,19 +25896,6 @@ export const PaymentsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * summary Cancel a payment
-         * @param {PaymentCancelDeets} [paymentCancelDeets] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiPaymentsCancelPut(paymentCancelDeets?: PaymentCancelDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsCancelPut(paymentCancelDeets, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.apiPaymentsCancelPut']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * summary Test method for invoice payment intent generation
          * @param {PaymentIntentRequestDeets} [paymentIntentRequestDeets] 
          * @param {*} [options] Override http request option.
@@ -22277,47 +25909,16 @@ export const PaymentsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * summary Retrieve a list of payments
-         * @param {string} [orchestrationId] The id of the payment cycle for which to list the payments
-         * @param {string} [paymentSource] 
-         * @param {string} [paymentSourceId] 
-         * @param {AcceptPaymentStatusEnum} [paymentAcceptStatus]   pending  accepted  suspended
-         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
-         * @param {number} [page] 1-based page index for paginated results
-         * @param {string} [userId] The user id to operate on their behalf (tenants only)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiPaymentsGet(orchestrationId?: string, paymentSource?: string, paymentSourceId?: string, paymentAcceptStatus?: AcceptPaymentStatusEnum, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsGet(orchestrationId, paymentSource, paymentSourceId, paymentAcceptStatus, limit, page, userId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.apiPaymentsGet']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Returns a true/false for any payment or contact if found
-         * summary Retrieve if has any payment or contact
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiPaymentsHasPaymentsOrContactsGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsHasPaymentsOrContactsGet(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.apiPaymentsHasPaymentsOrContactsGet']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * <p>Updates a <span class=\"jmbr term\">Payment </span></p>
-         * summary Update a Payment Details
+         * summary Cancel a payment
          * @param {string} id 
-         * @param {PaymentDetailsUpdateDeets} [paymentDetailsUpdateDeets] PaymentDetails_UpdateDeets
+         * @param {PaymentCancelDeets} [paymentCancelDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPaymentsIdDetailsPut(id: string, paymentDetailsUpdateDeets?: PaymentDetailsUpdateDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsIdDetailsPut(id, paymentDetailsUpdateDeets, options);
+        async cancelPayment(id: string, paymentCancelDeets?: PaymentCancelDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelPayment(id, paymentCancelDeets, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.apiPaymentsIdDetailsPut']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.cancelPayment']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -22328,44 +25929,23 @@ export const PaymentsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPaymentsIdGet(id: string, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsIdGet(id, userId, options);
+        async getPayment(id: string, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPayment(id, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.apiPaymentsIdGet']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.getPayment']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * summary Search payments (e.g. between dates, amounts, etc.)
-         * @param {number} [minAmount] The minimum amount for filtering
-         * @param {number} [maxAmount] The maximum amount for filtering
-         * @param {string} [fromDate] The starting date for filtering
-         * @param {string} [toDate] The end date for filtering
-         * @param {Array<string>} [statuses] A list of statuses for filtering
-         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
-         * @param {string} [id] 
-         * @param {string} [shortId] 
-         * @param {string} [toHandle] The Mozaic handle for a contact
-         * @param {string} [toEmail] The email address of the contact
-         * @param {string} [toPhone] The fully qualified phone number of the contact
-         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
-         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
-         * @param {string} [toUserId] Specifies the user associated with this contact record
-         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
-         * @param {string} [toId] 
-         * @param {string} [toCreated] 
-         * @param {string} [toShortId] 
-         * @param {string} [toObjectName] The name of this object
-         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
-         * @param {number} [page] 1-based page index for paginated results
-         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * Returns a list of payments if found
+         * summary Retrieves all payments for a transaction id
+         * @param {string} transactionId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPaymentsSearchGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsSearchGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toId, toCreated, toShortId, toObjectName, limit, page, userId, options);
+        async getPaymentsByTransactionId(transactionId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Payment>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPaymentsByTransactionId(transactionId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.apiPaymentsSearchGet']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.getPaymentsByTransactionId']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -22409,6 +25989,90 @@ export const PaymentsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Returns a true/false for any payment or contact if found
+         * summary Retrieve if has any payment or contact. Only use this to detect if the user   should be sent to the waitlist. Do not use it to check if the user currently has  payments or contacts as the results are cached in AccountSettings.
+         * @param {string} [xCaller] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hasPaymentsOrContacts(xCaller?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.hasPaymentsOrContacts(xCaller, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.hasPaymentsOrContacts']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Retrieve a list of payments
+         * @param {string} [orchestrationId] The id of the payment cycle for which to list the payments
+         * @param {PaymentSourceEnum} [paymentSource]   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
+         * @param {string} [paymentSourceId] 
+         * @param {Array<AcceptPaymentStatusEnum>} [paymentAcceptStatuses] 
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listPayments(orchestrationId?: string, paymentSource?: PaymentSourceEnum, paymentSourceId?: string, paymentAcceptStatuses?: Array<AcceptPaymentStatusEnum>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPayments(orchestrationId, paymentSource, paymentSourceId, paymentAcceptStatuses, limit, page, userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.listPayments']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Search payments (e.g. between dates, amounts, etc.)
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
+         * @param {string} [id] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchPayments(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchPayments(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.searchPayments']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * <p>Updates a <span class=\"jmbr term\">Payment </span></p>
+         * summary Update a Payment Details
+         * @param {string} id 
+         * @param {PaymentDetailsUpdateDeets} [paymentDetailsUpdateDeets] PaymentDetails_UpdateDeets
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updatePaymentDetails(id: string, paymentDetailsUpdateDeets?: PaymentDetailsUpdateDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Payment>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updatePaymentDetails(id, paymentDetailsUpdateDeets, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaymentsApi.updatePaymentDetails']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * 
          * summary Accept or Suspend payments from an account.
          * @param {PaymentAcceptDeets} [paymentAcceptDeets] 
@@ -22433,16 +26097,6 @@ export const PaymentsApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
-         * summary Cancel a payment
-         * @param {PaymentCancelDeets} [paymentCancelDeets] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiPaymentsCancelPut(paymentCancelDeets?: PaymentCancelDeets, options?: RawAxiosRequestConfig): AxiosPromise<Payment> {
-            return localVarFp.apiPaymentsCancelPut(paymentCancelDeets, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * summary Test method for invoice payment intent generation
          * @param {PaymentIntentRequestDeets} [paymentIntentRequestDeets] 
          * @param {*} [options] Override http request option.
@@ -22453,39 +26107,14 @@ export const PaymentsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * summary Retrieve a list of payments
-         * @param {string} [orchestrationId] The id of the payment cycle for which to list the payments
-         * @param {string} [paymentSource] 
-         * @param {string} [paymentSourceId] 
-         * @param {AcceptPaymentStatusEnum} [paymentAcceptStatus]   pending  accepted  suspended
-         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
-         * @param {number} [page] 1-based page index for paginated results
-         * @param {string} [userId] The user id to operate on their behalf (tenants only)
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiPaymentsGet(orchestrationId?: string, paymentSource?: string, paymentSourceId?: string, paymentAcceptStatus?: AcceptPaymentStatusEnum, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentListResponse> {
-            return localVarFp.apiPaymentsGet(orchestrationId, paymentSource, paymentSourceId, paymentAcceptStatus, limit, page, userId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Returns a true/false for any payment or contact if found
-         * summary Retrieve if has any payment or contact
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiPaymentsHasPaymentsOrContactsGet(options?: RawAxiosRequestConfig): AxiosPromise<boolean> {
-            return localVarFp.apiPaymentsHasPaymentsOrContactsGet(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * <p>Updates a <span class=\"jmbr term\">Payment </span></p>
-         * summary Update a Payment Details
+         * summary Cancel a payment
          * @param {string} id 
-         * @param {PaymentDetailsUpdateDeets} [paymentDetailsUpdateDeets] PaymentDetails_UpdateDeets
+         * @param {PaymentCancelDeets} [paymentCancelDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsIdDetailsPut(id: string, paymentDetailsUpdateDeets?: PaymentDetailsUpdateDeets, options?: RawAxiosRequestConfig): AxiosPromise<Payment> {
-            return localVarFp.apiPaymentsIdDetailsPut(id, paymentDetailsUpdateDeets, options).then((request) => request(axios, basePath));
+        cancelPayment(id: string, paymentCancelDeets?: PaymentCancelDeets, options?: RawAxiosRequestConfig): AxiosPromise<Payment> {
+            return localVarFp.cancelPayment(id, paymentCancelDeets, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a single payment if found
@@ -22495,39 +26124,18 @@ export const PaymentsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsIdGet(id: string, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Payment> {
-            return localVarFp.apiPaymentsIdGet(id, userId, options).then((request) => request(axios, basePath));
+        getPayment(id: string, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Payment> {
+            return localVarFp.getPayment(id, userId, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * summary Search payments (e.g. between dates, amounts, etc.)
-         * @param {number} [minAmount] The minimum amount for filtering
-         * @param {number} [maxAmount] The maximum amount for filtering
-         * @param {string} [fromDate] The starting date for filtering
-         * @param {string} [toDate] The end date for filtering
-         * @param {Array<string>} [statuses] A list of statuses for filtering
-         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
-         * @param {string} [id] 
-         * @param {string} [shortId] 
-         * @param {string} [toHandle] The Mozaic handle for a contact
-         * @param {string} [toEmail] The email address of the contact
-         * @param {string} [toPhone] The fully qualified phone number of the contact
-         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
-         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
-         * @param {string} [toUserId] Specifies the user associated with this contact record
-         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
-         * @param {string} [toId] 
-         * @param {string} [toCreated] 
-         * @param {string} [toShortId] 
-         * @param {string} [toObjectName] The name of this object
-         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
-         * @param {number} [page] 1-based page index for paginated results
-         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * Returns a list of payments if found
+         * summary Retrieves all payments for a transaction id
+         * @param {string} transactionId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsSearchGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentListResponse> {
-            return localVarFp.apiPaymentsSearchGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(axios, basePath));
+        getPaymentsByTransactionId(transactionId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Payment>> {
+            return localVarFp.getPaymentsByTransactionId(transactionId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -22561,6 +26169,78 @@ export const PaymentsApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.getVirtualReceivingAccount(options).then((request) => request(axios, basePath));
         },
         /**
+         * Returns a true/false for any payment or contact if found
+         * summary Retrieve if has any payment or contact. Only use this to detect if the user   should be sent to the waitlist. Do not use it to check if the user currently has  payments or contacts as the results are cached in AccountSettings.
+         * @param {string} [xCaller] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hasPaymentsOrContacts(xCaller?: string, options?: RawAxiosRequestConfig): AxiosPromise<boolean> {
+            return localVarFp.hasPaymentsOrContacts(xCaller, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Retrieve a list of payments
+         * @param {string} [orchestrationId] The id of the payment cycle for which to list the payments
+         * @param {PaymentSourceEnum} [paymentSource]   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
+         * @param {string} [paymentSourceId] 
+         * @param {Array<AcceptPaymentStatusEnum>} [paymentAcceptStatuses] 
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPayments(orchestrationId?: string, paymentSource?: PaymentSourceEnum, paymentSourceId?: string, paymentAcceptStatuses?: Array<AcceptPaymentStatusEnum>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentListResponse> {
+            return localVarFp.listPayments(orchestrationId, paymentSource, paymentSourceId, paymentAcceptStatuses, limit, page, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Search payments (e.g. between dates, amounts, etc.)
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {Array<string>} [paymentTypes] A list of payment types for filtering
+         * @param {string} [id] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchPayments(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentListResponse> {
+            return localVarFp.searchPayments(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * <p>Updates a <span class=\"jmbr term\">Payment </span></p>
+         * summary Update a Payment Details
+         * @param {string} id 
+         * @param {PaymentDetailsUpdateDeets} [paymentDetailsUpdateDeets] PaymentDetails_UpdateDeets
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePaymentDetails(id: string, paymentDetailsUpdateDeets?: PaymentDetailsUpdateDeets, options?: RawAxiosRequestConfig): AxiosPromise<Payment> {
+            return localVarFp.updatePaymentDetails(id, paymentDetailsUpdateDeets, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 
          * summary Accept or Suspend payments from an account.
          * @param {PaymentAcceptDeets} [paymentAcceptDeets] 
@@ -22582,18 +26262,6 @@ export const PaymentsApiFactory = function (configuration?: Configuration, baseP
 export class PaymentsApi extends BaseAPI {
     /**
      * 
-     * summary Cancel a payment
-     * @param {PaymentCancelDeets} [paymentCancelDeets] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof PaymentsApi
-     */
-    public apiPaymentsCancelPut(paymentCancelDeets?: PaymentCancelDeets, options?: RawAxiosRequestConfig) {
-        return PaymentsApiFp(this.configuration).apiPaymentsCancelPut(paymentCancelDeets, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * summary Test method for invoice payment intent generation
      * @param {PaymentIntentRequestDeets} [paymentIntentRequestDeets] 
      * @param {*} [options] Override http request option.
@@ -22606,44 +26274,15 @@ export class PaymentsApi extends BaseAPI {
 
     /**
      * 
-     * summary Retrieve a list of payments
-     * @param {string} [orchestrationId] The id of the payment cycle for which to list the payments
-     * @param {string} [paymentSource] 
-     * @param {string} [paymentSourceId] 
-     * @param {AcceptPaymentStatusEnum} [paymentAcceptStatus]   pending  accepted  suspended
-     * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
-     * @param {number} [page] 1-based page index for paginated results
-     * @param {string} [userId] The user id to operate on their behalf (tenants only)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof PaymentsApi
-     */
-    public apiPaymentsGet(orchestrationId?: string, paymentSource?: string, paymentSourceId?: string, paymentAcceptStatus?: AcceptPaymentStatusEnum, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return PaymentsApiFp(this.configuration).apiPaymentsGet(orchestrationId, paymentSource, paymentSourceId, paymentAcceptStatus, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Returns a true/false for any payment or contact if found
-     * summary Retrieve if has any payment or contact
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof PaymentsApi
-     */
-    public apiPaymentsHasPaymentsOrContactsGet(options?: RawAxiosRequestConfig) {
-        return PaymentsApiFp(this.configuration).apiPaymentsHasPaymentsOrContactsGet(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * <p>Updates a <span class=\"jmbr term\">Payment </span></p>
-     * summary Update a Payment Details
+     * summary Cancel a payment
      * @param {string} id 
-     * @param {PaymentDetailsUpdateDeets} [paymentDetailsUpdateDeets] PaymentDetails_UpdateDeets
+     * @param {PaymentCancelDeets} [paymentCancelDeets] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof PaymentsApi
      */
-    public apiPaymentsIdDetailsPut(id: string, paymentDetailsUpdateDeets?: PaymentDetailsUpdateDeets, options?: RawAxiosRequestConfig) {
-        return PaymentsApiFp(this.configuration).apiPaymentsIdDetailsPut(id, paymentDetailsUpdateDeets, options).then((request) => request(this.axios, this.basePath));
+    public cancelPayment(id: string, paymentCancelDeets?: PaymentCancelDeets, options?: RawAxiosRequestConfig) {
+        return PaymentsApiFp(this.configuration).cancelPayment(id, paymentCancelDeets, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -22655,41 +26294,20 @@ export class PaymentsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof PaymentsApi
      */
-    public apiPaymentsIdGet(id: string, userId?: string, options?: RawAxiosRequestConfig) {
-        return PaymentsApiFp(this.configuration).apiPaymentsIdGet(id, userId, options).then((request) => request(this.axios, this.basePath));
+    public getPayment(id: string, userId?: string, options?: RawAxiosRequestConfig) {
+        return PaymentsApiFp(this.configuration).getPayment(id, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * summary Search payments (e.g. between dates, amounts, etc.)
-     * @param {number} [minAmount] The minimum amount for filtering
-     * @param {number} [maxAmount] The maximum amount for filtering
-     * @param {string} [fromDate] The starting date for filtering
-     * @param {string} [toDate] The end date for filtering
-     * @param {Array<string>} [statuses] A list of statuses for filtering
-     * @param {Array<string>} [paymentTypes] A list of payment types for filtering
-     * @param {string} [id] 
-     * @param {string} [shortId] 
-     * @param {string} [toHandle] The Mozaic handle for a contact
-     * @param {string} [toEmail] The email address of the contact
-     * @param {string} [toPhone] The fully qualified phone number of the contact
-     * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
-     * @param {string} [toPersonaId] Specifies the persona associated with this contact record
-     * @param {string} [toUserId] Specifies the user associated with this contact record
-     * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
-     * @param {string} [toId] 
-     * @param {string} [toCreated] 
-     * @param {string} [toShortId] 
-     * @param {string} [toObjectName] The name of this object
-     * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
-     * @param {number} [page] 1-based page index for paginated results
-     * @param {string} [userId] The user id to operate on their behalf (tenants only)
+     * Returns a list of payments if found
+     * summary Retrieves all payments for a transaction id
+     * @param {string} transactionId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof PaymentsApi
      */
-    public apiPaymentsSearchGet(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return PaymentsApiFp(this.configuration).apiPaymentsSearchGet(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public getPaymentsByTransactionId(transactionId: string, options?: RawAxiosRequestConfig) {
+        return PaymentsApiFp(this.configuration).getPaymentsByTransactionId(transactionId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -22727,6 +26345,86 @@ export class PaymentsApi extends BaseAPI {
      */
     public getVirtualReceivingAccount(options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).getVirtualReceivingAccount(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Returns a true/false for any payment or contact if found
+     * summary Retrieve if has any payment or contact. Only use this to detect if the user   should be sent to the waitlist. Do not use it to check if the user currently has  payments or contacts as the results are cached in AccountSettings.
+     * @param {string} [xCaller] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof PaymentsApi
+     */
+    public hasPaymentsOrContacts(xCaller?: string, options?: RawAxiosRequestConfig) {
+        return PaymentsApiFp(this.configuration).hasPaymentsOrContacts(xCaller, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Retrieve a list of payments
+     * @param {string} [orchestrationId] The id of the payment cycle for which to list the payments
+     * @param {PaymentSourceEnum} [paymentSource]   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
+     * @param {string} [paymentSourceId] 
+     * @param {Array<AcceptPaymentStatusEnum>} [paymentAcceptStatuses] 
+     * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+     * @param {number} [page] 1-based page index for paginated results
+     * @param {string} [userId] The user id to operate on their behalf (tenants only)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof PaymentsApi
+     */
+    public listPayments(orchestrationId?: string, paymentSource?: PaymentSourceEnum, paymentSourceId?: string, paymentAcceptStatuses?: Array<AcceptPaymentStatusEnum>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return PaymentsApiFp(this.configuration).listPayments(orchestrationId, paymentSource, paymentSourceId, paymentAcceptStatuses, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Search payments (e.g. between dates, amounts, etc.)
+     * @param {number} [minAmount] The minimum amount for filtering
+     * @param {number} [maxAmount] The maximum amount for filtering
+     * @param {string} [fromDate] The starting date for filtering
+     * @param {string} [toDate] The end date for filtering
+     * @param {Array<string>} [statuses] A list of statuses for filtering
+     * @param {Array<string>} [paymentTypes] A list of payment types for filtering
+     * @param {string} [id] 
+     * @param {string} [shortId] 
+     * @param {string} [toHandle] The Mozaic handle for a contact
+     * @param {string} [toEmail] The email address of the contact
+     * @param {string} [toPhone] The fully qualified phone number of the contact
+     * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+     * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+     * @param {string} [toUserId] Specifies the user associated with this contact record
+     * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+     * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+     * @param {string} [toCountryCode] 
+     * @param {string} [toExternalId] 
+     * @param {Array<AvatarSize>} [toAvatar] contact avatar
+     * @param {string} [toId] 
+     * @param {string} [toCreated] 
+     * @param {string} [toShortId] 
+     * @param {string} [toObjectName] The name of this object
+     * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+     * @param {number} [page] 1-based page index for paginated results
+     * @param {string} [userId] The user id to operate on their behalf (tenants only)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof PaymentsApi
+     */
+    public searchPayments(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, paymentTypes?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return PaymentsApiFp(this.configuration).searchPayments(minAmount, maxAmount, fromDate, toDate, statuses, paymentTypes, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * <p>Updates a <span class=\"jmbr term\">Payment </span></p>
+     * summary Update a Payment Details
+     * @param {string} id 
+     * @param {PaymentDetailsUpdateDeets} [paymentDetailsUpdateDeets] PaymentDetails_UpdateDeets
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof PaymentsApi
+     */
+    public updatePaymentDetails(id: string, paymentDetailsUpdateDeets?: PaymentDetailsUpdateDeets, options?: RawAxiosRequestConfig) {
+        return PaymentsApiFp(this.configuration).updatePaymentDetails(id, paymentDetailsUpdateDeets, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -22859,6 +26557,271 @@ export class PermissionsApi extends BaseAPI {
      */
     public permissionsGet(useCache?: boolean, options?: RawAxiosRequestConfig) {
         return PermissionsApiFp(this.configuration).permissionsGet(useCache, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * PersonalAccessTokenApi - axios parameter creator
+ * export
+ */
+export const PersonalAccessTokenApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * summary Enables a User to create a personal access token.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        personalAccessTokenCreate: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/personalAccessToken`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Enables a User to delete a personal access token.
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        personalAccessTokenDelete: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('personalAccessTokenDelete', 'id', id)
+            const localVarPath = `/api/personalAccessToken/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Retrieves the user\'s current personal access tokens.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        personalAccessTokensGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/personalAccessToken`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * PersonalAccessTokenApi - functional programming interface
+ * export
+ */
+export const PersonalAccessTokenApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = PersonalAccessTokenApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * summary Enables a User to create a personal access token.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async personalAccessTokenCreate(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PersonalAccessToken>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.personalAccessTokenCreate(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PersonalAccessTokenApi.personalAccessTokenCreate']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Enables a User to delete a personal access token.
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async personalAccessTokenDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PersonalAccessToken>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.personalAccessTokenDelete(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PersonalAccessTokenApi.personalAccessTokenDelete']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Retrieves the user\'s current personal access tokens.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async personalAccessTokensGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PersonalAccessToken>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.personalAccessTokensGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PersonalAccessTokenApi.personalAccessTokensGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * PersonalAccessTokenApi - factory interface
+ * export
+ */
+export const PersonalAccessTokenApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = PersonalAccessTokenApiFp(configuration)
+    return {
+        /**
+         * 
+         * summary Enables a User to create a personal access token.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        personalAccessTokenCreate(options?: RawAxiosRequestConfig): AxiosPromise<PersonalAccessToken> {
+            return localVarFp.personalAccessTokenCreate(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Enables a User to delete a personal access token.
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        personalAccessTokenDelete(id: number, options?: RawAxiosRequestConfig): AxiosPromise<PersonalAccessToken> {
+            return localVarFp.personalAccessTokenDelete(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Retrieves the user\'s current personal access tokens.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        personalAccessTokensGet(options?: RawAxiosRequestConfig): AxiosPromise<Array<PersonalAccessToken>> {
+            return localVarFp.personalAccessTokensGet(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * PersonalAccessTokenApi - object-oriented interface
+ * export
+ * @class PersonalAccessTokenApi
+ * @extends {BaseAPI}
+ */
+export class PersonalAccessTokenApi extends BaseAPI {
+    /**
+     * 
+     * summary Enables a User to create a personal access token.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof PersonalAccessTokenApi
+     */
+    public personalAccessTokenCreate(options?: RawAxiosRequestConfig) {
+        return PersonalAccessTokenApiFp(this.configuration).personalAccessTokenCreate(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Enables a User to delete a personal access token.
+     * @param {number} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof PersonalAccessTokenApi
+     */
+    public personalAccessTokenDelete(id: number, options?: RawAxiosRequestConfig) {
+        return PersonalAccessTokenApiFp(this.configuration).personalAccessTokenDelete(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Retrieves the user\'s current personal access tokens.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof PersonalAccessTokenApi
+     */
+    public personalAccessTokensGet(options?: RawAxiosRequestConfig) {
+        return PersonalAccessTokenApiFp(this.configuration).personalAccessTokensGet(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -23008,7 +26971,7 @@ export const PortfolioApiAxiosParamCreator = function (configuration?: Configura
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -23306,7 +27269,7 @@ export const PortfolioApiAxiosParamCreator = function (configuration?: Configura
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -23475,7 +27438,7 @@ export const PortfolioApiAxiosParamCreator = function (configuration?: Configura
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -23686,7 +27649,7 @@ export const PortfolioApiFp = function(configuration?: Configuration) {
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -23757,7 +27720,7 @@ export const PortfolioApiFp = function(configuration?: Configuration) {
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -23794,7 +27757,7 @@ export const PortfolioApiFp = function(configuration?: Configuration) {
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -23866,7 +27829,7 @@ export const PortfolioApiFactory = function (configuration?: Configuration, base
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -23928,7 +27891,7 @@ export const PortfolioApiFactory = function (configuration?: Configuration, base
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -23962,7 +27925,7 @@ export const PortfolioApiFactory = function (configuration?: Configuration, base
          * @param {number} [addressRegionId] 
          * @param {string} [addressPostalCode] Postal code or ZIP code
          * @param {string} [addressRegionName] State, region or province
-         * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+         * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
          * @param {string} [description] The decription
          * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
          * @param {string} [href] The external href (optional)
@@ -24033,7 +27996,7 @@ export class PortfolioApi extends BaseAPI {
      * @param {number} [addressRegionId] 
      * @param {string} [addressPostalCode] Postal code or ZIP code
      * @param {string} [addressRegionName] State, region or province
-     * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+     * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
      * @param {string} [description] The decription
      * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
      * @param {string} [href] The external href (optional)
@@ -24101,7 +28064,7 @@ export class PortfolioApi extends BaseAPI {
      * @param {number} [addressRegionId] 
      * @param {string} [addressPostalCode] Postal code or ZIP code
      * @param {string} [addressRegionName] State, region or province
-     * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+     * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
      * @param {string} [description] The decription
      * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
      * @param {string} [href] The external href (optional)
@@ -24137,7 +28100,7 @@ export class PortfolioApi extends BaseAPI {
      * @param {number} [addressRegionId] 
      * @param {string} [addressPostalCode] Postal code or ZIP code
      * @param {string} [addressRegionName] State, region or province
-     * @param {string} [addressCountryCode] Two-letter country code &lt;see href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\&quot;&gt;ISO 3166-1 alpha-2&lt;/see&gt;
+     * @param {string} [addressCountryCode] Two-letter country code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
      * @param {string} [description] The decription
      * @param {{ [key: string]: string; }} [details] A keyed list of other details related to the item  such as additional product details
      * @param {string} [href] The external href (optional)
@@ -24158,6 +28121,153 @@ export class PortfolioApi extends BaseAPI {
      */
     public updateItem(id: string, externalId?: string, title?: string, addressCommonName?: string, addressAddress1?: string, addressAddress2?: string, addressCityName?: string, addressGeoPoint?: string, addressRegionId?: number, addressPostalCode?: string, addressRegionName?: string, addressCountryCode?: string, description?: string, details?: { [key: string]: string; }, href?: string, type?: string, subType?: string, explicit?: boolean, durationMilliseconds?: number, minimumAgeRequirement?: number, catalogs?: Array<CatalogEntryDeets>, externalUrls?: { [key: string]: string; }, externalImages?: Array<ExternalImageDeets>, attributions?: Array<AttributionDeets>, importExternalImages?: boolean, userId?: string, options?: RawAxiosRequestConfig) {
         return PortfolioApiFp(this.configuration).updateItem(id, externalId, title, addressCommonName, addressAddress1, addressAddress2, addressCityName, addressGeoPoint, addressRegionId, addressPostalCode, addressRegionName, addressCountryCode, description, details, href, type, subType, explicit, durationMilliseconds, minimumAgeRequirement, catalogs, externalUrls, externalImages, attributions, importExternalImages, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * ProfileAvatarsApi - axios parameter creator
+ * export
+ */
+export const ProfileAvatarsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * summary Upload avatar profile image via file
+         * @param {string} id The id of the record you wish to retrieve
+         * @param {AvatarTypeEnum} [avatarType] avatar type  contact  simpleContarct  paymentCycle  profile
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {File} [file] avatar image
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        profileAvatarUpload: async (id: string, avatarType?: AvatarTypeEnum, userId?: string, file?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('profileAvatarUpload', 'id', id)
+            const localVarPath = `/api/avatars/profile/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (avatarType !== undefined) {
+                localVarQueryParameter['avatar-type'] = avatarType;
+            }
+
+            if (userId != null) {
+                localVarHeaderParameter['user_id'] = String(userId);
+            }
+
+
+            if (file !== undefined) { 
+                localVarFormParams.append('File', file as any);
+            }
+    
+    
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = localVarFormParams;
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ProfileAvatarsApi - functional programming interface
+ * export
+ */
+export const ProfileAvatarsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ProfileAvatarsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * summary Upload avatar profile image via file
+         * @param {string} id The id of the record you wish to retrieve
+         * @param {AvatarTypeEnum} [avatarType] avatar type  contact  simpleContarct  paymentCycle  profile
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {File} [file] avatar image
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async profileAvatarUpload(id: string, avatarType?: AvatarTypeEnum, userId?: string, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.profileAvatarUpload(id, avatarType, userId, file, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProfileAvatarsApi.profileAvatarUpload']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * ProfileAvatarsApi - factory interface
+ * export
+ */
+export const ProfileAvatarsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ProfileAvatarsApiFp(configuration)
+    return {
+        /**
+         * 
+         * summary Upload avatar profile image via file
+         * @param {string} id The id of the record you wish to retrieve
+         * @param {AvatarTypeEnum} [avatarType] avatar type  contact  simpleContarct  paymentCycle  profile
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {File} [file] avatar image
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        profileAvatarUpload(id: string, avatarType?: AvatarTypeEnum, userId?: string, file?: File, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.profileAvatarUpload(id, avatarType, userId, file, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * ProfileAvatarsApi - object-oriented interface
+ * export
+ * @class ProfileAvatarsApi
+ * @extends {BaseAPI}
+ */
+export class ProfileAvatarsApi extends BaseAPI {
+    /**
+     * 
+     * summary Upload avatar profile image via file
+     * @param {string} id The id of the record you wish to retrieve
+     * @param {AvatarTypeEnum} [avatarType] avatar type  contact  simpleContarct  paymentCycle  profile
+     * @param {string} [userId] The user id to operate on their behalf (tenants only)
+     * @param {File} [file] avatar image
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof ProfileAvatarsApi
+     */
+    public profileAvatarUpload(id: string, avatarType?: AvatarTypeEnum, userId?: string, file?: File, options?: RawAxiosRequestConfig) {
+        return ProfileAvatarsApiFp(this.configuration).profileAvatarUpload(id, avatarType, userId, file, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -24217,7 +28327,7 @@ export const PushNotificationsApiAxiosParamCreator = function (configuration?: C
         /**
          * 
          * summary This creates or updates a registration (with provided channelURI) at the specified id
-         * @param {string} id 
+         * @param {string} id This is the registration id optional field, used for update
          * @param {DeviceRegistration} [deviceRegistration] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24325,10 +28435,10 @@ export const PushNotificationsApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usernameUserNameDelete: async (userName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiPushNotificationsUsernameUserNameDelete: async (userName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userName' is not null or undefined
-            assertParamExists('usernameUserNameDelete', 'userName', userName)
-            const localVarPath = `/username/{userName}`
+            assertParamExists('apiPushNotificationsUsernameUserNameDelete', 'userName', userName)
+            const localVarPath = `/api/push-notifications/username/{userName}`
                 .replace(`{${"userName"}}`, encodeURIComponent(String(userName)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -24389,7 +28499,7 @@ export const PushNotificationsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * summary This creates or updates a registration (with provided channelURI) at the specified id
-         * @param {string} id 
+         * @param {string} id This is the registration id optional field, used for update
          * @param {DeviceRegistration} [deviceRegistration] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24422,10 +28532,10 @@ export const PushNotificationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usernameUserNameDelete(userName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.usernameUserNameDelete(userName, options);
+        async apiPushNotificationsUsernameUserNameDelete(userName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiPushNotificationsUsernameUserNameDelete(userName, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PushNotificationsApi.usernameUserNameDelete']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PushNotificationsApi.apiPushNotificationsUsernameUserNameDelete']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -24451,7 +28561,7 @@ export const PushNotificationsApiFactory = function (configuration?: Configurati
         /**
          * 
          * summary This creates or updates a registration (with provided channelURI) at the specified id
-         * @param {string} id 
+         * @param {string} id This is the registration id optional field, used for update
          * @param {DeviceRegistration} [deviceRegistration] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24478,8 +28588,8 @@ export const PushNotificationsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usernameUserNameDelete(userName: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.usernameUserNameDelete(userName, options).then((request) => request(axios, basePath));
+        apiPushNotificationsUsernameUserNameDelete(userName: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.apiPushNotificationsUsernameUserNameDelete(userName, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -24506,7 +28616,7 @@ export class PushNotificationsApi extends BaseAPI {
     /**
      * 
      * summary This creates or updates a registration (with provided channelURI) at the specified id
-     * @param {string} id 
+     * @param {string} id This is the registration id optional field, used for update
      * @param {DeviceRegistration} [deviceRegistration] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -24538,8 +28648,8 @@ export class PushNotificationsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof PushNotificationsApi
      */
-    public usernameUserNameDelete(userName: string, options?: RawAxiosRequestConfig) {
-        return PushNotificationsApiFp(this.configuration).usernameUserNameDelete(userName, options).then((request) => request(this.axios, this.basePath));
+    public apiPushNotificationsUsernameUserNameDelete(userName: string, options?: RawAxiosRequestConfig) {
+        return PushNotificationsApiFp(this.configuration).apiPushNotificationsUsernameUserNameDelete(userName, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -25155,7 +29265,7 @@ export const SimpleContractsApiAxiosParamCreator = function (configuration?: Con
          * avatar_id could be tenant.id, SimpleContract.id, work.id, project.id, team.id, etc
          * summary Upload avatar image via file
          * @param {string} id SimpleContract id
-         * @param {File} [file] 
+         * @param {File} [file] The avatar image for this SimpleContract
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -25490,7 +29600,7 @@ export const SimpleContractsApiFp = function(configuration?: Configuration) {
          * avatar_id could be tenant.id, SimpleContract.id, work.id, project.id, team.id, etc
          * summary Upload avatar image via file
          * @param {string} id SimpleContract id
-         * @param {File} [file] 
+         * @param {File} [file] The avatar image for this SimpleContract
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -25675,7 +29785,7 @@ export const SimpleContractsApiFactory = function (configuration?: Configuration
          * avatar_id could be tenant.id, SimpleContract.id, work.id, project.id, team.id, etc
          * summary Upload avatar image via file
          * @param {string} id SimpleContract id
-         * @param {File} [file] 
+         * @param {File} [file] The avatar image for this SimpleContract
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -25875,7 +29985,7 @@ export class SimpleContractsApi extends BaseAPI {
      * avatar_id could be tenant.id, SimpleContract.id, work.id, project.id, team.id, etc
      * summary Upload avatar image via file
      * @param {string} id SimpleContract id
-     * @param {File} [file] 
+     * @param {File} [file] The avatar image for this SimpleContract
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof SimpleContractsApi
@@ -25909,490 +30019,6 @@ export class SimpleContractsApi extends BaseAPI {
      */
     public simpleContractsUpdateAvatarByPrompt(id: string, avatarPromptCreateDeets?: AvatarPromptCreateDeets, options?: RawAxiosRequestConfig) {
         return SimpleContractsApiFp(this.configuration).simpleContractsUpdateAvatarByPrompt(id, avatarPromptCreateDeets, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * SystemEventsApi - axios parameter creator
- * export
- */
-export const SystemEventsApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * summary Sends a verification code notification with an email input.
-         * @param {string} [body] The email to which the verification code will be sent.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventAdminVerificationCodePost: async (body?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/event/admin/verification-code`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * summary Sends a payout transfer initiated notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventPayoutTransferInitiatedPost: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/event/payout/transfer-initiated`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * summary Sends a payment received notification for a recipient with an account with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventRecipientPaymentReceivedHasAccountPost: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/event/recipient/payment-received-has-account`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * summary Sends a payment received notification for a recipient without an account with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventRecipientPaymentReceivedNoAccountPost: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/event/recipient/payment-received-no-account`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * summary Sends a payment failure notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventSenderPaymentFailurePost: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/event/sender/payment-failure`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * summary Sends a payment success notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventSenderPaymentSuccessPost: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/event/sender/payment-success`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication ApiKeyScheme required
-            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
-
-            // authentication oauth2 required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * SystemEventsApi - functional programming interface
- * export
- */
-export const SystemEventsApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = SystemEventsApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * summary Sends a verification code notification with an email input.
-         * @param {string} [body] The email to which the verification code will be sent.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiEventAdminVerificationCodePost(body?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiEventAdminVerificationCodePost(body, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SystemEventsApi.apiEventAdminVerificationCodePost']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * summary Sends a payout transfer initiated notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiEventPayoutTransferInitiatedPost(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiEventPayoutTransferInitiatedPost(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SystemEventsApi.apiEventPayoutTransferInitiatedPost']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * summary Sends a payment received notification for a recipient with an account with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiEventRecipientPaymentReceivedHasAccountPost(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiEventRecipientPaymentReceivedHasAccountPost(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SystemEventsApi.apiEventRecipientPaymentReceivedHasAccountPost']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * summary Sends a payment received notification for a recipient without an account with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiEventRecipientPaymentReceivedNoAccountPost(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiEventRecipientPaymentReceivedNoAccountPost(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SystemEventsApi.apiEventRecipientPaymentReceivedNoAccountPost']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * summary Sends a payment failure notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiEventSenderPaymentFailurePost(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiEventSenderPaymentFailurePost(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SystemEventsApi.apiEventSenderPaymentFailurePost']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * summary Sends a payment success notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiEventSenderPaymentSuccessPost(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiEventSenderPaymentSuccessPost(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SystemEventsApi.apiEventSenderPaymentSuccessPost']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * SystemEventsApi - factory interface
- * export
- */
-export const SystemEventsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = SystemEventsApiFp(configuration)
-    return {
-        /**
-         * 
-         * summary Sends a verification code notification with an email input.
-         * @param {string} [body] The email to which the verification code will be sent.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventAdminVerificationCodePost(body?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.apiEventAdminVerificationCodePost(body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * summary Sends a payout transfer initiated notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventPayoutTransferInitiatedPost(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.apiEventPayoutTransferInitiatedPost(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * summary Sends a payment received notification for a recipient with an account with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventRecipientPaymentReceivedHasAccountPost(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.apiEventRecipientPaymentReceivedHasAccountPost(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * summary Sends a payment received notification for a recipient without an account with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventRecipientPaymentReceivedNoAccountPost(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.apiEventRecipientPaymentReceivedNoAccountPost(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * summary Sends a payment failure notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventSenderPaymentFailurePost(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.apiEventSenderPaymentFailurePost(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * summary Sends a payment success notification with hardcoded values.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiEventSenderPaymentSuccessPost(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.apiEventSenderPaymentSuccessPost(options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * SystemEventsApi - object-oriented interface
- * export
- * @class SystemEventsApi
- * @extends {BaseAPI}
- */
-export class SystemEventsApi extends BaseAPI {
-    /**
-     * 
-     * summary Sends a verification code notification with an email input.
-     * @param {string} [body] The email to which the verification code will be sent.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof SystemEventsApi
-     */
-    public apiEventAdminVerificationCodePost(body?: string, options?: RawAxiosRequestConfig) {
-        return SystemEventsApiFp(this.configuration).apiEventAdminVerificationCodePost(body, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * summary Sends a payout transfer initiated notification with hardcoded values.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof SystemEventsApi
-     */
-    public apiEventPayoutTransferInitiatedPost(options?: RawAxiosRequestConfig) {
-        return SystemEventsApiFp(this.configuration).apiEventPayoutTransferInitiatedPost(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * summary Sends a payment received notification for a recipient with an account with hardcoded values.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof SystemEventsApi
-     */
-    public apiEventRecipientPaymentReceivedHasAccountPost(options?: RawAxiosRequestConfig) {
-        return SystemEventsApiFp(this.configuration).apiEventRecipientPaymentReceivedHasAccountPost(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * summary Sends a payment received notification for a recipient without an account with hardcoded values.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof SystemEventsApi
-     */
-    public apiEventRecipientPaymentReceivedNoAccountPost(options?: RawAxiosRequestConfig) {
-        return SystemEventsApiFp(this.configuration).apiEventRecipientPaymentReceivedNoAccountPost(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * summary Sends a payment failure notification with hardcoded values.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof SystemEventsApi
-     */
-    public apiEventSenderPaymentFailurePost(options?: RawAxiosRequestConfig) {
-        return SystemEventsApiFp(this.configuration).apiEventSenderPaymentFailurePost(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * summary Sends a payment success notification with hardcoded values.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * memberof SystemEventsApi
-     */
-    public apiEventSenderPaymentSuccessPost(options?: RawAxiosRequestConfig) {
-        return SystemEventsApiFp(this.configuration).apiEventSenderPaymentSuccessPost(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -26953,7 +30579,7 @@ export const TenantsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * summary Gets an onboarding session key from stripe
          * @param {string} [country] A two letter country code that will be passed to Stripe for account onboarding. Ex: US
-         * @param {boolean} [enableExternalAccountCollection] Whether to allow platforms to control bank account collection for their connected&lt;br /&gt;accounts. This feature can only be false for custom accounts (or accounts where the&lt;br /&gt;platform is compliance owner). Otherwise, bank account collection is determined by&lt;br /&gt;compliance requirements.
+         * @param {boolean} [enableExternalAccountCollection] Whether to allow platforms to control bank account collection for their connected  accounts. This feature can only be false for custom accounts (or accounts where the  platform is compliance owner). Otherwise, bank account collection is determined by  compliance requirements.
          * @param {string} [businessType] One of: &#x60;company&#x60;, &#x60;government_entity&#x60;, &#x60;individual&#x60;, or &#x60;non_profit&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27173,7 +30799,7 @@ export const TenantsApiFp = function(configuration?: Configuration) {
          * 
          * summary Gets an onboarding session key from stripe
          * @param {string} [country] A two letter country code that will be passed to Stripe for account onboarding. Ex: US
-         * @param {boolean} [enableExternalAccountCollection] Whether to allow platforms to control bank account collection for their connected&lt;br /&gt;accounts. This feature can only be false for custom accounts (or accounts where the&lt;br /&gt;platform is compliance owner). Otherwise, bank account collection is determined by&lt;br /&gt;compliance requirements.
+         * @param {boolean} [enableExternalAccountCollection] Whether to allow platforms to control bank account collection for their connected  accounts. This feature can only be false for custom accounts (or accounts where the  platform is compliance owner). Otherwise, bank account collection is determined by  compliance requirements.
          * @param {string} [businessType] One of: &#x60;company&#x60;, &#x60;government_entity&#x60;, &#x60;individual&#x60;, or &#x60;non_profit&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27316,7 +30942,7 @@ export const TenantsApiFactory = function (configuration?: Configuration, basePa
          * 
          * summary Gets an onboarding session key from stripe
          * @param {string} [country] A two letter country code that will be passed to Stripe for account onboarding. Ex: US
-         * @param {boolean} [enableExternalAccountCollection] Whether to allow platforms to control bank account collection for their connected&lt;br /&gt;accounts. This feature can only be false for custom accounts (or accounts where the&lt;br /&gt;platform is compliance owner). Otherwise, bank account collection is determined by&lt;br /&gt;compliance requirements.
+         * @param {boolean} [enableExternalAccountCollection] Whether to allow platforms to control bank account collection for their connected  accounts. This feature can only be false for custom accounts (or accounts where the  platform is compliance owner). Otherwise, bank account collection is determined by  compliance requirements.
          * @param {string} [businessType] One of: &#x60;company&#x60;, &#x60;government_entity&#x60;, &#x60;individual&#x60;, or &#x60;non_profit&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -27480,7 +31106,7 @@ export class TenantsApi extends BaseAPI {
      * 
      * summary Gets an onboarding session key from stripe
      * @param {string} [country] A two letter country code that will be passed to Stripe for account onboarding. Ex: US
-     * @param {boolean} [enableExternalAccountCollection] Whether to allow platforms to control bank account collection for their connected&lt;br /&gt;accounts. This feature can only be false for custom accounts (or accounts where the&lt;br /&gt;platform is compliance owner). Otherwise, bank account collection is determined by&lt;br /&gt;compliance requirements.
+     * @param {boolean} [enableExternalAccountCollection] Whether to allow platforms to control bank account collection for their connected  accounts. This feature can only be false for custom accounts (or accounts where the  platform is compliance owner). Otherwise, bank account collection is determined by  compliance requirements.
      * @param {string} [businessType] One of: &#x60;company&#x60;, &#x60;government_entity&#x60;, &#x60;individual&#x60;, or &#x60;non_profit&#x60;.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -27502,7 +31128,7 @@ export const TipLinksApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * summary Upload image
-         * @param {File} [image] 
+         * @param {File} [image] The image for Tip Links
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -27823,7 +31449,7 @@ export const TipLinksApiFp = function(configuration?: Configuration) {
         /**
          * 
          * summary Upload image
-         * @param {File} [image] 
+         * @param {File} [image] The image for Tip Links
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -27918,7 +31544,7 @@ export const TipLinksApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * summary Upload image
-         * @param {File} [image] 
+         * @param {File} [image] The image for Tip Links
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -27995,7 +31621,7 @@ export class TipLinksApi extends BaseAPI {
     /**
      * 
      * summary Upload image
-     * @param {File} [image] 
+     * @param {File} [image] The image for Tip Links
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof TipLinksApi
@@ -28075,6 +31701,533 @@ export class TipLinksApi extends BaseAPI {
 
 
 /**
+ * TransactionsApi - axios parameter creator
+ * export
+ */
+export const TransactionsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Returns a single transaction if found
+         * summary Retrieve a transaction by ID
+         * @param {string} id The id of the record you wish to retrieve
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransactionById: async (id: string, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getTransactionById', 'id', id)
+            const localVarPath = `/api/transactions/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (userId != null) {
+                localVarHeaderParameter['user_id'] = String(userId);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Retrieve a list of transactions
+         * @param {PaymentSourceEnum} [paymentSource]   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
+         * @param {string} [paymentSourceId] 
+         * @param {Array<AcceptPaymentStatusEnum>} [paymentAcceptStatuses] 
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listTransactions: async (paymentSource?: PaymentSourceEnum, paymentSourceId?: string, paymentAcceptStatuses?: Array<AcceptPaymentStatusEnum>, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/transactions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (paymentSource !== undefined) {
+                localVarQueryParameter['payment_source'] = paymentSource;
+            }
+
+            if (paymentSourceId !== undefined) {
+                localVarQueryParameter['payment_source_id'] = paymentSourceId;
+            }
+
+            if (paymentAcceptStatuses) {
+                localVarQueryParameter['payment_accept_statuses'] = paymentAcceptStatuses;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['Limit'] = limit;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['Page'] = page;
+            }
+
+            if (userId != null) {
+                localVarHeaderParameter['user_id'] = String(userId);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * summary Search transactions (payments, payouts) (e.g. between dates, amounts, etc.)
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {string} [id] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchTransactions: async (minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/transactions/search`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (minAmount !== undefined) {
+                localVarQueryParameter['MinAmount'] = minAmount;
+            }
+
+            if (maxAmount !== undefined) {
+                localVarQueryParameter['MaxAmount'] = maxAmount;
+            }
+
+            if (fromDate !== undefined) {
+                localVarQueryParameter['FromDate'] = (fromDate as any instanceof Date) ?
+                    (fromDate as any).toISOString() :
+                    fromDate;
+            }
+
+            if (toDate !== undefined) {
+                localVarQueryParameter['ToDate'] = (toDate as any instanceof Date) ?
+                    (toDate as any).toISOString() :
+                    toDate;
+            }
+
+            if (statuses) {
+                localVarQueryParameter['Statuses'] = statuses;
+            }
+
+            if (id !== undefined) {
+                localVarQueryParameter['Id'] = id;
+            }
+
+            if (shortId !== undefined) {
+                localVarQueryParameter['ShortId'] = shortId;
+            }
+
+            if (toHandle !== undefined) {
+                localVarQueryParameter['To.Handle'] = toHandle;
+            }
+
+            if (toEmail !== undefined) {
+                localVarQueryParameter['To.Email'] = toEmail;
+            }
+
+            if (toPhone !== undefined) {
+                localVarQueryParameter['To.Phone'] = toPhone;
+            }
+
+            if (toName !== undefined) {
+                localVarQueryParameter['To.Name'] = toName;
+            }
+
+            if (toPersonaId !== undefined) {
+                localVarQueryParameter['To.persona_id'] = toPersonaId;
+            }
+
+            if (toUserId !== undefined) {
+                localVarQueryParameter['To.UserId'] = toUserId;
+            }
+
+            if (toUserAccountId !== undefined) {
+                localVarQueryParameter['To.UserAccountId'] = toUserAccountId;
+            }
+
+            if (toIsAcceptedContact !== undefined) {
+                localVarQueryParameter['To.IsAcceptedContact'] = toIsAcceptedContact;
+            }
+
+            if (toCountryCode !== undefined) {
+                localVarQueryParameter['To.CountryCode'] = toCountryCode;
+            }
+
+            if (toExternalId !== undefined) {
+                localVarQueryParameter['To.ExternalId'] = toExternalId;
+            }
+
+            if (toAvatar) {
+                localVarQueryParameter['To.Avatar'] = toAvatar;
+            }
+
+            if (toId !== undefined) {
+                localVarQueryParameter['To.id'] = toId;
+            }
+
+            if (toCreated !== undefined) {
+                localVarQueryParameter['To.Created'] = (toCreated as any instanceof Date) ?
+                    (toCreated as any).toISOString() :
+                    toCreated;
+            }
+
+            if (toShortId !== undefined) {
+                localVarQueryParameter['To.ShortId'] = toShortId;
+            }
+
+            if (toObjectName !== undefined) {
+                localVarQueryParameter['To.ObjectName'] = toObjectName;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['Limit'] = limit;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['Page'] = page;
+            }
+
+            if (userId != null) {
+                localVarHeaderParameter['user_id'] = String(userId);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TransactionsApi - functional programming interface
+ * export
+ */
+export const TransactionsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TransactionsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Returns a single transaction if found
+         * summary Retrieve a transaction by ID
+         * @param {string} id The id of the record you wish to retrieve
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTransactionById(id: string, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Transaction>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTransactionById(id, userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TransactionsApi.getTransactionById']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Retrieve a list of transactions
+         * @param {PaymentSourceEnum} [paymentSource]   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
+         * @param {string} [paymentSourceId] 
+         * @param {Array<AcceptPaymentStatusEnum>} [paymentAcceptStatuses] 
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listTransactions(paymentSource?: PaymentSourceEnum, paymentSourceId?: string, paymentAcceptStatuses?: Array<AcceptPaymentStatusEnum>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listTransactions(paymentSource, paymentSourceId, paymentAcceptStatuses, limit, page, userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TransactionsApi.listTransactions']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * summary Search transactions (payments, payouts) (e.g. between dates, amounts, etc.)
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {string} [id] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchTransactions(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchTransactions(minAmount, maxAmount, fromDate, toDate, statuses, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TransactionsApi.searchTransactions']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * TransactionsApi - factory interface
+ * export
+ */
+export const TransactionsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TransactionsApiFp(configuration)
+    return {
+        /**
+         * Returns a single transaction if found
+         * summary Retrieve a transaction by ID
+         * @param {string} id The id of the record you wish to retrieve
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTransactionById(id: string, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Transaction> {
+            return localVarFp.getTransactionById(id, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Retrieve a list of transactions
+         * @param {PaymentSourceEnum} [paymentSource]   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
+         * @param {string} [paymentSourceId] 
+         * @param {Array<AcceptPaymentStatusEnum>} [paymentAcceptStatuses] 
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listTransactions(paymentSource?: PaymentSourceEnum, paymentSourceId?: string, paymentAcceptStatuses?: Array<AcceptPaymentStatusEnum>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<TransactionListResponse> {
+            return localVarFp.listTransactions(paymentSource, paymentSourceId, paymentAcceptStatuses, limit, page, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * summary Search transactions (payments, payouts) (e.g. between dates, amounts, etc.)
+         * @param {number} [minAmount] The minimum amount for filtering
+         * @param {number} [maxAmount] The maximum amount for filtering
+         * @param {string} [fromDate] The starting date for filtering
+         * @param {string} [toDate] The end date for filtering
+         * @param {Array<string>} [statuses] A list of statuses for filtering
+         * @param {string} [id] 
+         * @param {string} [shortId] 
+         * @param {string} [toHandle] The Mozaic handle for a contact
+         * @param {string} [toEmail] The email address of the contact
+         * @param {string} [toPhone] The fully qualified phone number of the contact
+         * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+         * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+         * @param {string} [toUserId] Specifies the user associated with this contact record
+         * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+         * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+         * @param {string} [toCountryCode] 
+         * @param {string} [toExternalId] 
+         * @param {Array<AvatarSize>} [toAvatar] contact avatar
+         * @param {string} [toId] 
+         * @param {string} [toCreated] 
+         * @param {string} [toShortId] 
+         * @param {string} [toObjectName] The name of this object
+         * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+         * @param {number} [page] 1-based page index for paginated results
+         * @param {string} [userId] The user id to operate on their behalf (tenants only)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchTransactions(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<TransactionListResponse> {
+            return localVarFp.searchTransactions(minAmount, maxAmount, fromDate, toDate, statuses, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * TransactionsApi - object-oriented interface
+ * export
+ * @class TransactionsApi
+ * @extends {BaseAPI}
+ */
+export class TransactionsApi extends BaseAPI {
+    /**
+     * Returns a single transaction if found
+     * summary Retrieve a transaction by ID
+     * @param {string} id The id of the record you wish to retrieve
+     * @param {string} [userId] The user id to operate on their behalf (tenants only)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof TransactionsApi
+     */
+    public getTransactionById(id: string, userId?: string, options?: RawAxiosRequestConfig) {
+        return TransactionsApiFp(this.configuration).getTransactionById(id, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Retrieve a list of transactions
+     * @param {PaymentSourceEnum} [paymentSource]   push-payment  contract  simple-contract  payment-cycle  tip-link  transfer
+     * @param {string} [paymentSourceId] 
+     * @param {Array<AcceptPaymentStatusEnum>} [paymentAcceptStatuses] 
+     * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+     * @param {number} [page] 1-based page index for paginated results
+     * @param {string} [userId] The user id to operate on their behalf (tenants only)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof TransactionsApi
+     */
+    public listTransactions(paymentSource?: PaymentSourceEnum, paymentSourceId?: string, paymentAcceptStatuses?: Array<AcceptPaymentStatusEnum>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return TransactionsApiFp(this.configuration).listTransactions(paymentSource, paymentSourceId, paymentAcceptStatuses, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Search transactions (payments, payouts) (e.g. between dates, amounts, etc.)
+     * @param {number} [minAmount] The minimum amount for filtering
+     * @param {number} [maxAmount] The maximum amount for filtering
+     * @param {string} [fromDate] The starting date for filtering
+     * @param {string} [toDate] The end date for filtering
+     * @param {Array<string>} [statuses] A list of statuses for filtering
+     * @param {string} [id] 
+     * @param {string} [shortId] 
+     * @param {string} [toHandle] The Mozaic handle for a contact
+     * @param {string} [toEmail] The email address of the contact
+     * @param {string} [toPhone] The fully qualified phone number of the contact
+     * @param {string} [toName] Loosely, the name of the contact. May be changed during registration
+     * @param {string} [toPersonaId] Specifies the persona associated with this contact record
+     * @param {string} [toUserId] Specifies the user associated with this contact record
+     * @param {string} [toUserAccountId] Specifies the user account id associated with this contact record
+     * @param {boolean} [toIsAcceptedContact] Specifies whether this contact is in network or out of network
+     * @param {string} [toCountryCode] 
+     * @param {string} [toExternalId] 
+     * @param {Array<AvatarSize>} [toAvatar] contact avatar
+     * @param {string} [toId] 
+     * @param {string} [toCreated] 
+     * @param {string} [toShortId] 
+     * @param {string} [toObjectName] The name of this object
+     * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
+     * @param {number} [page] 1-based page index for paginated results
+     * @param {string} [userId] The user id to operate on their behalf (tenants only)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof TransactionsApi
+     */
+    public searchTransactions(minAmount?: number, maxAmount?: number, fromDate?: string, toDate?: string, statuses?: Array<string>, id?: string, shortId?: string, toHandle?: string, toEmail?: string, toPhone?: string, toName?: string, toPersonaId?: string, toUserId?: string, toUserAccountId?: string, toIsAcceptedContact?: boolean, toCountryCode?: string, toExternalId?: string, toAvatar?: Array<AvatarSize>, toId?: string, toCreated?: string, toShortId?: string, toObjectName?: string, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return TransactionsApiFp(this.configuration).searchTransactions(minAmount, maxAmount, fromDate, toDate, statuses, id, shortId, toHandle, toEmail, toPhone, toName, toPersonaId, toUserId, toUserAccountId, toIsAcceptedContact, toCountryCode, toExternalId, toAvatar, toId, toCreated, toShortId, toObjectName, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * UserPreferencesApi - axios parameter creator
  * export
  */
@@ -28082,6 +32235,7 @@ export const UserPreferencesApiAxiosParamCreator = function (configuration?: Con
     return {
         /**
          * 
+         * summary Return User preferences setting
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -28122,11 +32276,12 @@ export const UserPreferencesApiAxiosParamCreator = function (configuration?: Con
         },
         /**
          * 
-         * @param {PersonaSetting} [personaSetting] 
+         * summary Update User preference settings
+         * @param {PersonaSettingUpdateDeets} [personaSettingUpdateDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiUserPreferencesPut: async (personaSetting?: PersonaSetting, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiUserPreferencesPut: async (personaSettingUpdateDeets?: PersonaSettingUpdateDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/user-preferences`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -28157,7 +32312,7 @@ export const UserPreferencesApiAxiosParamCreator = function (configuration?: Con
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(personaSetting, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(personaSettingUpdateDeets, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -28176,10 +32331,11 @@ export const UserPreferencesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * summary Return User preferences setting
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiUserPreferencesGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PersonaSetting>> {
+        async apiUserPreferencesGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PersonaSettingResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiUserPreferencesGet(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserPreferencesApi.apiUserPreferencesGet']?.[localVarOperationServerIndex]?.url;
@@ -28187,12 +32343,13 @@ export const UserPreferencesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {PersonaSetting} [personaSetting] 
+         * summary Update User preference settings
+         * @param {PersonaSettingUpdateDeets} [personaSettingUpdateDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiUserPreferencesPut(personaSetting?: PersonaSetting, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiUserPreferencesPut(personaSetting, options);
+        async apiUserPreferencesPut(personaSettingUpdateDeets?: PersonaSettingUpdateDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PersonaSettingResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiUserPreferencesPut(personaSettingUpdateDeets, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserPreferencesApi.apiUserPreferencesPut']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -28209,20 +32366,22 @@ export const UserPreferencesApiFactory = function (configuration?: Configuration
     return {
         /**
          * 
+         * summary Return User preferences setting
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiUserPreferencesGet(options?: RawAxiosRequestConfig): AxiosPromise<PersonaSetting> {
+        apiUserPreferencesGet(options?: RawAxiosRequestConfig): AxiosPromise<PersonaSettingResponse> {
             return localVarFp.apiUserPreferencesGet(options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {PersonaSetting} [personaSetting] 
+         * summary Update User preference settings
+         * @param {PersonaSettingUpdateDeets} [personaSettingUpdateDeets] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiUserPreferencesPut(personaSetting?: PersonaSetting, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.apiUserPreferencesPut(personaSetting, options).then((request) => request(axios, basePath));
+        apiUserPreferencesPut(personaSettingUpdateDeets?: PersonaSettingUpdateDeets, options?: RawAxiosRequestConfig): AxiosPromise<PersonaSettingResponse> {
+            return localVarFp.apiUserPreferencesPut(personaSettingUpdateDeets, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -28236,6 +32395,7 @@ export const UserPreferencesApiFactory = function (configuration?: Configuration
 export class UserPreferencesApi extends BaseAPI {
     /**
      * 
+     * summary Return User preferences setting
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof UserPreferencesApi
@@ -28246,13 +32406,14 @@ export class UserPreferencesApi extends BaseAPI {
 
     /**
      * 
-     * @param {PersonaSetting} [personaSetting] 
+     * summary Update User preference settings
+     * @param {PersonaSettingUpdateDeets} [personaSettingUpdateDeets] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof UserPreferencesApi
      */
-    public apiUserPreferencesPut(personaSetting?: PersonaSetting, options?: RawAxiosRequestConfig) {
-        return UserPreferencesApiFp(this.configuration).apiUserPreferencesPut(personaSetting, options).then((request) => request(this.axios, this.basePath));
+    public apiUserPreferencesPut(personaSettingUpdateDeets?: PersonaSettingUpdateDeets, options?: RawAxiosRequestConfig) {
+        return UserPreferencesApiFp(this.configuration).apiUserPreferencesPut(personaSettingUpdateDeets, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -28386,6 +32547,7 @@ export const VersionApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
+         * summary Returns the current build version of the application
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -28436,6 +32598,7 @@ export const VersionApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * summary Returns the current build version of the application
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -28457,6 +32620,7 @@ export const VersionApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * summary Returns the current build version of the application
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -28475,6 +32639,7 @@ export const VersionApiFactory = function (configuration?: Configuration, basePa
 export class VersionApi extends BaseAPI {
     /**
      * 
+     * summary Returns the current build version of the application
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof VersionApi
@@ -28759,12 +32924,12 @@ export const WalletsApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
-         * summary Get the balance for all wallets
+         * summary Get the balance for all wallets.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiWalletsBalanceGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/wallets/balance`;
+        apiWalletsBalancesGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/wallets/balances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -29178,6 +33343,59 @@ export const WalletsApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * summary Verify customer bank account
+         * @param {string} key 
+         * @param {string} id 
+         * @param {PaymentMethodVerifyDeets} [paymentMethodVerifyDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        verifyBankAccount: async (key: string, id: string, paymentMethodVerifyDeets?: PaymentMethodVerifyDeets, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'key' is not null or undefined
+            assertParamExists('verifyBankAccount', 'key', key)
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('verifyBankAccount', 'id', id)
+            const localVarPath = `/api/wallets/{key}/payment-methods/{id}/verify`
+                .replace(`{${"key"}}`, encodeURIComponent(String(key)))
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(paymentMethodVerifyDeets, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -29190,14 +33408,14 @@ export const WalletsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * summary Get the balance for all wallets
+         * summary Get the balance for all wallets.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiWalletsBalanceGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Balance>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiWalletsBalanceGet(options);
+        async apiWalletsBalancesGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Balance>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiWalletsBalancesGet(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['WalletsApi.apiWalletsBalanceGet']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['WalletsApi.apiWalletsBalancesGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -29309,6 +33527,21 @@ export const WalletsApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['WalletsApi.apiWalletsKeyPayoutMethodsPost']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * summary Verify customer bank account
+         * @param {string} key 
+         * @param {string} id 
+         * @param {PaymentMethodVerifyDeets} [paymentMethodVerifyDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async verifyBankAccount(key: string, id: string, paymentMethodVerifyDeets?: PaymentMethodVerifyDeets, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentMethod>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.verifyBankAccount(key, id, paymentMethodVerifyDeets, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WalletsApi.verifyBankAccount']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -29321,12 +33554,12 @@ export const WalletsApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
-         * summary Get the balance for all wallets
+         * summary Get the balance for all wallets.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiWalletsBalanceGet(options?: RawAxiosRequestConfig): AxiosPromise<Balance> {
-            return localVarFp.apiWalletsBalanceGet(options).then((request) => request(axios, basePath));
+        apiWalletsBalancesGet(options?: RawAxiosRequestConfig): AxiosPromise<Balance> {
+            return localVarFp.apiWalletsBalancesGet(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -29413,6 +33646,18 @@ export const WalletsApiFactory = function (configuration?: Configuration, basePa
         apiWalletsKeyPayoutMethodsPost(key: string, payoutMethodCreateDeets?: PayoutMethodCreateDeets, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.apiWalletsKeyPayoutMethodsPost(key, payoutMethodCreateDeets, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * summary Verify customer bank account
+         * @param {string} key 
+         * @param {string} id 
+         * @param {PaymentMethodVerifyDeets} [paymentMethodVerifyDeets] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        verifyBankAccount(key: string, id: string, paymentMethodVerifyDeets?: PaymentMethodVerifyDeets, options?: RawAxiosRequestConfig): AxiosPromise<PaymentMethod> {
+            return localVarFp.verifyBankAccount(key, id, paymentMethodVerifyDeets, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -29425,13 +33670,13 @@ export const WalletsApiFactory = function (configuration?: Configuration, basePa
 export class WalletsApi extends BaseAPI {
     /**
      * 
-     * summary Get the balance for all wallets
+     * summary Get the balance for all wallets.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * memberof WalletsApi
      */
-    public apiWalletsBalanceGet(options?: RawAxiosRequestConfig) {
-        return WalletsApiFp(this.configuration).apiWalletsBalanceGet(options).then((request) => request(this.axios, this.basePath));
+    public apiWalletsBalancesGet(options?: RawAxiosRequestConfig) {
+        return WalletsApiFp(this.configuration).apiWalletsBalancesGet(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -29533,6 +33778,132 @@ export class WalletsApi extends BaseAPI {
      */
     public apiWalletsKeyPayoutMethodsPost(key: string, payoutMethodCreateDeets?: PayoutMethodCreateDeets, options?: RawAxiosRequestConfig) {
         return WalletsApiFp(this.configuration).apiWalletsKeyPayoutMethodsPost(key, payoutMethodCreateDeets, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * summary Verify customer bank account
+     * @param {string} key 
+     * @param {string} id 
+     * @param {PaymentMethodVerifyDeets} [paymentMethodVerifyDeets] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof WalletsApi
+     */
+    public verifyBankAccount(key: string, id: string, paymentMethodVerifyDeets?: PaymentMethodVerifyDeets, options?: RawAxiosRequestConfig) {
+        return WalletsApiFp(this.configuration).verifyBankAccount(key, id, paymentMethodVerifyDeets, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * WebhookPortalApi - axios parameter creator
+ * export
+ */
+export const WebhookPortalApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * The user\'s account must have Jammber.RainCloud.Webhook.Create. permissions
+         * summary Gets the user\'s webhook console portal link. You can use this link to configure your webhooks, view logs and monitor activity.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        webhookGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/webhook`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication ApiKeyScheme required
+            await setApiKeyToObject(localVarHeaderParameter, "x-api-key", configuration)
+
+            // authentication oauth2 required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2", ["openid", "profile", "email"], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * WebhookPortalApi - functional programming interface
+ * export
+ */
+export const WebhookPortalApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = WebhookPortalApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * The user\'s account must have Jammber.RainCloud.Webhook.Create. permissions
+         * summary Gets the user\'s webhook console portal link. You can use this link to configure your webhooks, view logs and monitor activity.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async webhookGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SvixWebhook>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webhookGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WebhookPortalApi.webhookGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * WebhookPortalApi - factory interface
+ * export
+ */
+export const WebhookPortalApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = WebhookPortalApiFp(configuration)
+    return {
+        /**
+         * The user\'s account must have Jammber.RainCloud.Webhook.Create. permissions
+         * summary Gets the user\'s webhook console portal link. You can use this link to configure your webhooks, view logs and monitor activity.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        webhookGet(options?: RawAxiosRequestConfig): AxiosPromise<SvixWebhook> {
+            return localVarFp.webhookGet(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * WebhookPortalApi - object-oriented interface
+ * export
+ * @class WebhookPortalApi
+ * @extends {BaseAPI}
+ */
+export class WebhookPortalApi extends BaseAPI {
+    /**
+     * The user\'s account must have Jammber.RainCloud.Webhook.Create. permissions
+     * summary Gets the user\'s webhook console portal link. You can use this link to configure your webhooks, view logs and monitor activity.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * memberof WebhookPortalApi
+     */
+    public webhookGet(options?: RawAxiosRequestConfig) {
+        return WebhookPortalApiFp(this.configuration).webhookGet(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

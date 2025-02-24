@@ -13,7 +13,7 @@
     "CommonJS",
     "ESM"
   ],
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": {
     "email": "product@jammber.com",
     "name": "mozaic.io",
@@ -36,10 +36,11 @@
   ],
   "scripts": {
     "test": "jest --reporters=jest-junit",
+    "tsc": "tsc",
     "build": "tsc && npm run copy && npm run doc",
     "doc": "typedoc",
     "copy": "copyfiles README.md LICENSE.md dist/",
-    "gen": "openapi-generator-cli generate -i https://api.sandbox.mozaic.io/swagger/v1/swagger.json -g typescript-axios -o ./src/api -t ./custom-templates",
+    "gen": "openapi-generator-cli generate -i http://localhost:5000/swagger/v1/swagger.json -g typescript-axios -o ./src/api -t ./custom-templates",
     "ver-alpha": "npm version prerelease --preid alpha",
     "ver": "npm version",
     "publish": "npm publish --access public"

@@ -47,11 +47,16 @@ Mozaic provides a rich set of Web Hooks that enables direct callbacks to your ow
 
 The Mozaic SDK consists of *Resources*. These are functional groupings of services and logic that let you perform actions with the Mozaic API. Each resource will have a top level object that is the main interface to other classes and functionality in the Resource. Resources can call other Resources and you may use several Resources together to complete a business process. The SDK's goal is to make this as easy and intuitive as possible.
 
+### [Contacts](resources/Contacts.md)
+
+The [Contacts](resources/Contacts.md) resource gives you access to view contacts that have been created based on the payments cycles you have sent to your payment recipients. You can find contacts using your own id (external id) and then view payments, payment cycles and payment cycle entries related to that contact. This will give you a convenient way to look at a contact's payment history.
+
 ### [Invoices](resources/Invoices.md)
 
 The [Invoices](resources/Invoices.md) resource enables you to download the PDF bytes of an invoice. You can then send them to a UI or download the bytes to a local file. You can also use this resource to mark an invoice as paid which will then use your Mozaic balance to fund your payment cycle.
 
-### [PaymentCycles](resources/PaymentCycles.md)
+### [Payments](resources/Payments.md)
+The [Payments](resources/Payments.md) resource lets you search for payments that have been sent to your payment recipients.
 
 The [PaymentCycles](resources/PaymentCycles.md) resource enables you to create a payment of various amounts to various people for an accounting period. This resource also lets you edit a payment cycle's entries, provide funding for the payment cycle, finalize the payment cycle to pay your recipients and download an invoice for the payment cycle. 
 
