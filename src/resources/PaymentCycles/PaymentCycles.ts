@@ -6,7 +6,7 @@
  */
 
 import { Mozaic } from "../..";
-import { Configuration, PaymentCyclesApi, PaymentCycleCreateDeets, FeeDirection, PaymentCycleStatus, ListOfSortFieldsForPaymentCyclesListObject } from "../../api";
+import { Configuration, PaymentCyclesApi, PaymentCycleCreateDeets, FeeDirection, PaymentCycleStatus, PaymentCycleSortFields } from "../../api";
 import { MozaicError } from "../MozaicError";
 import { BaseResource } from "../BaseResource";
 import { PaymentCycle } from "./PaymentCycle";
@@ -66,10 +66,10 @@ export class PaymentCycles extends BaseResource {
      * @param paymentCycleStatus An optional filter to only return payment cycles with a specific status. If not provided, all payment cycles will be returned.
      * @returns A list of PaymentCycle objects.
      */
-    async getPaymentCycles(limit: number, page: number, paymentCycleStatus?: PaymentCycleStatus, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>): Promise<PaymentCycleList> {
+    async getPaymentCycles(limit: number, page: number, paymentCycleStatus?: PaymentCycleStatus, sortBy?: PaymentCycleSortFields, sortByAscending?: boolean): Promise<PaymentCycleList> {
         this.throwIfLimitOrPageAreInvalid(limit, page);
 
-        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycles(undefined, paymentCycleStatus, undefined, undefined, sortBy, limit, page, undefined, undefined));
+        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycles(undefined, paymentCycleStatus, undefined, undefined, sortBy, sortByAscending, limit, page, undefined, undefined));
 
         const data = result.data?.map((value, index) => new PaymentCycle(this._mozaic, this._paymentCycleApi, value));
 

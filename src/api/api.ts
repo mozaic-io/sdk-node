@@ -5141,120 +5141,6 @@ export interface LineItem {
     'external_id'?: string | null;
 }
 /**
- *   createdDate  amountSent  amountPaid  status  memo
- * export
- * @enum {string}
- */
-
-export const ListOfSortFieldsForPaymentCycleEntries = {
-    /**
-    * 
-    */
-    CreatedDate: 'createdDate',
-    /**
-    * 
-    */
-    AmountSent: 'amountSent',
-    /**
-    * 
-    */
-    AmountPaid: 'amountPaid',
-    /**
-    * 
-    */
-    Status: 'status',
-    /**
-    * 
-    */
-    Memo: 'memo'
-} as const;
-
-export type ListOfSortFieldsForPaymentCycleEntries = typeof ListOfSortFieldsForPaymentCycleEntries[keyof typeof ListOfSortFieldsForPaymentCycleEntries];
-
-
-/**
- * 
- * export
- * @interface ListOfSortFieldsForPaymentCycleEntriesListObject
- */
-export interface ListOfSortFieldsForPaymentCycleEntriesListObject {
-    /**
-     * 
-     * @type {ListOfSortFieldsForPaymentCycleEntries}
-     * memberof ListOfSortFieldsForPaymentCycleEntriesListObject
-     */
-    'field_name'?: ListOfSortFieldsForPaymentCycleEntries;
-    /**
-     * 
-     * @type {boolean}
-     * memberof ListOfSortFieldsForPaymentCycleEntriesListObject
-     */
-    'is_ascending'?: boolean;
-}
-
-
-/**
- *   createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
- * export
- * @enum {string}
- */
-
-export const ListOfSortFieldsForPaymentCycles = {
-    /**
-    * 
-    */
-    CreatedDate: 'createdDate',
-    /**
-    * 
-    */
-    PaymentDate: 'paymentDate',
-    /**
-    * 
-    */
-    RecipientsCount: 'recipientsCount',
-    /**
-    * 
-    */
-    AmountSent: 'amountSent',
-    /**
-    * 
-    */
-    AmountPaid: 'amountPaid',
-    /**
-    * 
-    */
-    Status: 'status',
-    /**
-    * 
-    */
-    Memo: 'memo'
-} as const;
-
-export type ListOfSortFieldsForPaymentCycles = typeof ListOfSortFieldsForPaymentCycles[keyof typeof ListOfSortFieldsForPaymentCycles];
-
-
-/**
- * 
- * export
- * @interface ListOfSortFieldsForPaymentCyclesListObject
- */
-export interface ListOfSortFieldsForPaymentCyclesListObject {
-    /**
-     * 
-     * @type {ListOfSortFieldsForPaymentCycles}
-     * memberof ListOfSortFieldsForPaymentCyclesListObject
-     */
-    'field_name'?: ListOfSortFieldsForPaymentCycles;
-    /**
-     * 
-     * @type {boolean}
-     * memberof ListOfSortFieldsForPaymentCyclesListObject
-     */
-    'is_ascending'?: boolean;
-}
-
-
-/**
  * 
  * export
  * @interface Location
@@ -6180,6 +6066,12 @@ export interface Payment {
      * memberof Payment
      */
     'memo'?: string | null;
+    /**
+     * Global Payment Cycle Memo
+     * @type {string}
+     * memberof Payment
+     */
+    'payment_cycle_memo'?: string | null;
     /**
      * 
      * @type {Amount}
@@ -7222,6 +7114,38 @@ export interface PaymentCycleEntryListResponse {
     'object'?: string | null;
 }
 /**
+ *   createdDate  amountSent  amountPaid  status  memo
+ * export
+ * @enum {string}
+ */
+
+export const PaymentCycleEntrySortFields = {
+    /**
+    * 
+    */
+    CreatedDate: 'createdDate',
+    /**
+    * 
+    */
+    AmountSent: 'amountSent',
+    /**
+    * 
+    */
+    AmountPaid: 'amountPaid',
+    /**
+    * 
+    */
+    Status: 'status',
+    /**
+    * 
+    */
+    Memo: 'memo'
+} as const;
+
+export type PaymentCycleEntrySortFields = typeof PaymentCycleEntrySortFields[keyof typeof PaymentCycleEntrySortFields];
+
+
+/**
  * 
  * export
  * @interface PaymentCycleEntryUpdateDeets
@@ -7303,7 +7227,7 @@ export interface PaymentCycleEntryUpdateDeets {
 
 
 /**
- * payment cycle fields  none  email  amount  phoneNumber  startDate  endDate  startAndEndDate  name  countryCode  currency  externalId
+ * payment cycle fields  none  email  amount  phoneNumber  startDate  endDate  startAndEndDate  name  countryCode  currency  externalId  memo
  * export
  * @enum {string}
  */
@@ -7352,7 +7276,11 @@ export const PaymentCycleFieldEnum = {
     /**
     * 
     */
-    ExternalId: 'externalId'
+    ExternalId: 'externalId',
+    /**
+    * 
+    */
+    Memo: 'memo'
 } as const;
 
 export type PaymentCycleFieldEnum = typeof PaymentCycleFieldEnum[keyof typeof PaymentCycleFieldEnum];
@@ -7431,6 +7359,18 @@ export interface PaymentCycleFileField {
      * memberof PaymentCycleFileField
      */
     'country_code'?: string | null;
+    /**
+     * external ID
+     * @type {string}
+     * memberof PaymentCycleFileField
+     */
+    'external_id'?: string | null;
+    /**
+     * Payment cycle entry memo
+     * @type {string}
+     * memberof PaymentCycleFileField
+     */
+    'memo'?: string | null;
     /**
      * Amount currency
      * @type {string}
@@ -7709,6 +7649,46 @@ export interface PaymentCycleResponse {
      */
     'created_at'?: string;
 }
+
+
+/**
+ *   createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
+ * export
+ * @enum {string}
+ */
+
+export const PaymentCycleSortFields = {
+    /**
+    * 
+    */
+    CreatedDate: 'createdDate',
+    /**
+    * 
+    */
+    PaymentDate: 'paymentDate',
+    /**
+    * 
+    */
+    RecipientsCount: 'recipientsCount',
+    /**
+    * 
+    */
+    AmountSent: 'amountSent',
+    /**
+    * 
+    */
+    AmountPaid: 'amountPaid',
+    /**
+    * 
+    */
+    Status: 'status',
+    /**
+    * 
+    */
+    Memo: 'memo'
+} as const;
+
+export type PaymentCycleSortFields = typeof PaymentCycleSortFields[keyof typeof PaymentCycleSortFields];
 
 
 /**
@@ -8354,6 +8334,12 @@ export interface PaymentProcessingDetails {
      */
     'payment_method'?: string | null;
     /**
+     * Payment method display
+     * @type {string}
+     * memberof PaymentProcessingDetails
+     */
+    'payment_method_display'?: string | null;
+    /**
      * Provider account
      * @type {string}
      * memberof PaymentProcessingDetails
@@ -8530,6 +8516,12 @@ export interface PaymentPushCreateDeets {
      */
     'accounting_to'?: string | null;
     /**
+     * Global Payment Cycle Memo
+     * @type {string}
+     * memberof PaymentPushCreateDeets
+     */
+    'payment_cycle_memo'?: string | null;
+    /**
      * 
      * @type {string}
      * memberof PaymentPushCreateDeets
@@ -8622,6 +8614,12 @@ export interface PaymentPushCreateJournalDeets {
      * memberof PaymentPushCreateJournalDeets
      */
     'accounting_to'?: string | null;
+    /**
+     * Global Payment Cycle Memo
+     * @type {string}
+     * memberof PaymentPushCreateJournalDeets
+     */
+    'payment_cycle_memo'?: string | null;
     /**
      * 
      * @type {string}
@@ -8844,6 +8842,12 @@ export interface PaymentTransfer {
      * memberof PaymentTransfer
      */
     'memo'?: string | null;
+    /**
+     * Global Payment Cycle Memo
+     * @type {string}
+     * memberof PaymentTransfer
+     */
+    'payment_cycle_memo'?: string | null;
     /**
      * 
      * @type {Amount}
@@ -12022,6 +12026,12 @@ export interface Transaction {
      * memberof Transaction
      */
     'memo'?: string | null;
+    /**
+     * Global Payment Cycle Memo
+     * @type {string}
+     * memberof Transaction
+     */
+    'payment_cycle_memo'?: string | null;
     /**
      * 
      * @type {Amount}
@@ -23176,14 +23186,15 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
          * @param {TransactionStatusEnum} [status] Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
          * @param {string} [name] 
          * @param {string} [email] 
-         * @param {Array<ListOfSortFieldsForPaymentCycleEntriesListObject>} [sortBy] 
+         * @param {PaymentCycleEntrySortFields} [sortByFieldName] The field to sort by  createdDate  amountSent  amountPaid  status  memo
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentCycleEntries: async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listPaymentCycleEntries: async (id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortByFieldName?: PaymentCycleEntrySortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('listPaymentCycleEntries', 'id', id)
             const localVarPath = `/api/payment-cycles/{id}/entry`
@@ -23222,8 +23233,12 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['Email'] = email;
             }
 
-            if (sortBy) {
-                localVarQueryParameter['sort_by'] = sortBy;
+            if (sortByFieldName !== undefined) {
+                localVarQueryParameter['sort_by_field_name'] = sortByFieldName;
+            }
+
+            if (sortByAscending !== undefined) {
+                localVarQueryParameter['sort_by_ascending'] = sortByAscending;
             }
 
             if (limit !== undefined) {
@@ -23256,14 +23271,15 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
          * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
          * @param {string} [name] 
          * @param {string} [greaterThanPaymentDate] 
-         * @param {Array<ListOfSortFieldsForPaymentCyclesListObject>} [sortBy] 
+         * @param {PaymentCycleSortFields} [sortByFieldName] The field to sort by  createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentCycles: async (feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listPaymentCycles: async (feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortByFieldName?: PaymentCycleSortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/payment-cycles`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -23305,8 +23321,12 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
                     greaterThanPaymentDate;
             }
 
-            if (sortBy) {
-                localVarQueryParameter['sort_by'] = sortBy;
+            if (sortByFieldName !== undefined) {
+                localVarQueryParameter['sort_by_field_name'] = sortByFieldName;
+            }
+
+            if (sortByAscending !== undefined) {
+                localVarQueryParameter['sort_by_ascending'] = sortByAscending;
             }
 
             if (limit !== undefined) {
@@ -23669,15 +23689,16 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
          * @param {TransactionStatusEnum} [status] Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
          * @param {string} [name] 
          * @param {string} [email] 
-         * @param {Array<ListOfSortFieldsForPaymentCycleEntriesListObject>} [sortBy] 
+         * @param {PaymentCycleEntrySortFields} [sortByFieldName] The field to sort by  createdDate  amountSent  amountPaid  status  memo
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleEntryListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentCycleEntries(id, status, name, email, sortBy, limit, page, userId, options);
+        async listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortByFieldName?: PaymentCycleEntrySortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleEntryListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentCycleEntries(id, status, name, email, sortByFieldName, sortByAscending, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaymentCyclesApi.listPaymentCycleEntries']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -23689,15 +23710,16 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
          * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
          * @param {string} [name] 
          * @param {string} [greaterThanPaymentDate] 
-         * @param {Array<ListOfSortFieldsForPaymentCyclesListObject>} [sortBy] 
+         * @param {PaymentCycleSortFields} [sortByFieldName] The field to sort by  createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortBy, limit, page, userId, options);
+        async listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortByFieldName?: PaymentCycleSortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentCycleListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortByFieldName, sortByAscending, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PaymentCyclesApi.listPaymentCycles']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -23863,15 +23885,16 @@ export const PaymentCyclesApiFactory = function (configuration?: Configuration, 
          * @param {TransactionStatusEnum} [status] Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
          * @param {string} [name] 
          * @param {string} [email] 
-         * @param {Array<ListOfSortFieldsForPaymentCycleEntriesListObject>} [sortBy] 
+         * @param {PaymentCycleEntrySortFields} [sortByFieldName] The field to sort by  createdDate  amountSent  amountPaid  status  memo
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleEntryListResponse> {
-            return localVarFp.listPaymentCycleEntries(id, status, name, email, sortBy, limit, page, userId, options).then((request) => request(axios, basePath));
+        listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortByFieldName?: PaymentCycleEntrySortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleEntryListResponse> {
+            return localVarFp.listPaymentCycleEntries(id, status, name, email, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -23880,15 +23903,16 @@ export const PaymentCyclesApiFactory = function (configuration?: Configuration, 
          * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
          * @param {string} [name] 
          * @param {string} [greaterThanPaymentDate] 
-         * @param {Array<ListOfSortFieldsForPaymentCyclesListObject>} [sortBy] 
+         * @param {PaymentCycleSortFields} [sortByFieldName] The field to sort by  createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleListResponse> {
-            return localVarFp.listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortBy, limit, page, userId, options).then((request) => request(axios, basePath));
+        listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortByFieldName?: PaymentCycleSortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentCycleListResponse> {
+            return localVarFp.listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -24055,7 +24079,8 @@ export class PaymentCyclesApi extends BaseAPI {
      * @param {TransactionStatusEnum} [status] Based on JammberMoney.dbo.TransactionStatuses  draft  pending  posted  processing  sent  accepted  declined  publicHold  levied  adjusted  returned  postedUnderThreshold  paymentAssigned  insufficentFunds  offPlatform  suspended  payoutFailed  awaitingPayout  received  payoutCompleted  failed  pendingBalance
      * @param {string} [name] 
      * @param {string} [email] 
-     * @param {Array<ListOfSortFieldsForPaymentCycleEntriesListObject>} [sortBy] 
+     * @param {PaymentCycleEntrySortFields} [sortByFieldName] The field to sort by  createdDate  amountSent  amountPaid  status  memo
+     * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -24063,8 +24088,8 @@ export class PaymentCyclesApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof PaymentCyclesApi
      */
-    public listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return PaymentCyclesApiFp(this.configuration).listPaymentCycleEntries(id, status, name, email, sortBy, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public listPaymentCycleEntries(id: string, status?: TransactionStatusEnum, name?: string, email?: string, sortByFieldName?: PaymentCycleEntrySortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return PaymentCyclesApiFp(this.configuration).listPaymentCycleEntries(id, status, name, email, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -24074,7 +24099,8 @@ export class PaymentCyclesApi extends BaseAPI {
      * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
      * @param {string} [name] 
      * @param {string} [greaterThanPaymentDate] 
-     * @param {Array<ListOfSortFieldsForPaymentCyclesListObject>} [sortBy] 
+     * @param {PaymentCycleSortFields} [sortByFieldName] The field to sort by  createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
+     * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -24082,8 +24108,8 @@ export class PaymentCyclesApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof PaymentCyclesApi
      */
-    public listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortBy?: Array<ListOfSortFieldsForPaymentCyclesListObject>, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return PaymentCyclesApiFp(this.configuration).listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortBy, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public listPaymentCycles(feeDirection?: FeeDirection, status?: PaymentCycleStatus, name?: string, greaterThanPaymentDate?: string, sortByFieldName?: PaymentCycleSortFields, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return PaymentCyclesApiFp(this.configuration).listPaymentCycles(feeDirection, status, name, greaterThanPaymentDate, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

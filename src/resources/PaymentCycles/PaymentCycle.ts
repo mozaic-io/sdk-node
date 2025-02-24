@@ -1,5 +1,5 @@
 import { Mozaic } from "../..";
-import { Amount, FeeDirection, PaymentCycle as RawPaymentCycle, PaymentCycleStatus, PaymentCyclesApi, PaymentCycleEntryCreateDeets, Wallet, Invoice, ListOfSortFieldsForPaymentCycleEntriesListObject } from "../../api";
+import { Amount, FeeDirection, PaymentCycle as RawPaymentCycle, PaymentCycleStatus, PaymentCyclesApi, PaymentCycleEntryCreateDeets, Wallet, Invoice, PaymentCycleEntrySortFields } from "../../api";
 import { BaseResource } from "../BaseResource";
 import { WalletItem } from "../Wallets/WalletItem";
 import { PaymentCycleEntry } from "./PaymentCycleEntry";
@@ -159,10 +159,10 @@ export class PaymentCycle extends BaseResource {
      * @param sortBy The field to sort the results by.
      * @returns 
      */
-    async getPaymentCycleEntries(limit: number, page: number, sortBy?: Array<ListOfSortFieldsForPaymentCycleEntriesListObject>) : Promise<PaymentCycleEntryList> {
+    async getPaymentCycleEntries(limit: number, page: number, sortBy?: PaymentCycleEntrySortFields, sortByAscending?: boolean) : Promise<PaymentCycleEntryList> {
         this.throwIfLimitOrPageAreInvalid(limit, page);
 
-        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycleEntries(this.paymentCycleId, undefined, undefined, undefined, sortBy, limit, page, undefined, undefined));
+        const result = await this.execute(() => this._paymentCycleApi.listPaymentCycleEntries(this.paymentCycleId, undefined, undefined, undefined, sortBy, sortByAscending, limit, page, undefined, undefined));
 
         const data = result.data?.map((value) => new PaymentCycleEntry(value));
 
