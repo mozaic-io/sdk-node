@@ -43,7 +43,7 @@
     "gen": "openapi-generator-cli generate -i http://localhost:5000/swagger/v1/swagger.json -g typescript-axios -o ./src/api -t ./custom-templates",
     "ver-alpha": "npm version prerelease --preid alpha",
     "ver": "npm version",
-    "publish": "npm publish --access public"
+    "pub": "npm publish --access public"
   },
   "dependencies": {
     "axios": "^1.7.7"
