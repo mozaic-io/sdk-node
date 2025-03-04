@@ -20,9 +20,26 @@ describe("Contacts Tests", () => {
                 ContactsEntities.contactsSearch(10)
             ));
 
-        const contacts = await sdk.Contacts.getContacts(10, 1);
+        const contacts = await sdk.Contacts.getContacts(10, 1, "someone");
 
         expect(contacts.count).toBe(10);
+    });
+
+    it("contacts API requires either external id or a search term", async () => {
+
+        mockContactsApi.contactsSearch.mockResolvedValue(
+            TestUtils.createSuccessfulAxiosResponse(
+                ContactsEntities.contactsSearch(10)
+            ));
+
+        try {
+            await sdk.Contacts.getContacts(10, 1);
+            fail("It didn't throw the exception.");
+        }
+        catch (ex) {
+            expect(ex).toBeInstanceOf(Error);
+            expect((ex as Error).message).toBe("You must provide at least one search term or an external ID.");
+        }
     });
     
     it("contacts should throw an exception when the term is greater than 50 characters", async () => {
@@ -92,7 +109,7 @@ describe("Contacts Tests", () => {
                 { data: null } as ContactInfoListResponse
             ));
 
-        const contacts = await sdk.Contacts.getContacts(10, 1);
+        const contacts = await sdk.Contacts.getContacts(10, 1, "someone");
 
         expect(contacts.count).toBe(0);
     });

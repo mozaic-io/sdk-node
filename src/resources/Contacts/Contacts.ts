@@ -54,7 +54,7 @@ export class Contacts extends BaseResource {
     }
 
     /** 
-     * Searches for a contact using various search parameters.
+     * Searches for a contact using various search parameters. You must supply either a term or an external ID.
      * @param limit The number of items to return per page. Must be between 1 and 100 inclusive.
      * @param page The page number to return. Must be greater than 0.
      * @param term The search term to use. This will search the known name (the name you gave the contact), first name, last name, external ID, and email address of the contact. This parameter is limited to 50 chars max.
@@ -67,6 +67,9 @@ export class Contacts extends BaseResource {
         
         if (term != null && term.length > 50)
             throw new Error("The search term is limited to 50 characters.");
+
+        if (externalId == null && term == null)
+            throw new Error("You must provide at least one search term or an external ID.");
         
         const result = await this.execute(() => this._contactsApi.contactsSearch(
             term,
