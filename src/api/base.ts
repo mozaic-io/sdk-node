@@ -19,7 +19,7 @@ import type { Configuration } from './configuration';
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 
-export const BASE_PATH = "https://api.dev.mozaic.io".replace(/\/+$/, "");
+export const BASE_PATH = "https://web-mozaic-lighthouse-api-demo-01.azurewebsites.net".replace(/\/+$/, "");
 
 /**
  *

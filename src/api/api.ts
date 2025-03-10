@@ -177,7 +177,7 @@ export interface AccessControlRule {
 
 
 /**
- *   none  self  collaborators  all  invite  admin  webHook
+ *   none  self  collaborators  all  invite  admin  webHook  function
  * export
  * @enum {string}
  */
@@ -210,7 +210,11 @@ export const AccessPerspective = {
     /**
     * 
     */
-    WebHook: 'webHook'
+    WebHook: 'webHook',
+    /**
+    * 
+    */
+    Function: 'function'
 } as const;
 
 export type AccessPerspective = typeof AccessPerspective[keyof typeof AccessPerspective];
@@ -1366,7 +1370,7 @@ export interface ApplicationUser {
     'AccessFailedCount'?: number;
 }
 /**
- *   development  stage  sandbox  demo  production
+ *   development  stage  sandbox  demo  production  integration
  * export
  * @enum {string}
  */
@@ -1391,7 +1395,11 @@ export const AspnetCoreEnvironment = {
     /**
     * 
     */
-    Production: 'production'
+    Production: 'production',
+    /**
+    * 
+    */
+    Integration: 'integration'
 } as const;
 
 export type AspnetCoreEnvironment = typeof AspnetCoreEnvironment[keyof typeof AspnetCoreEnvironment];
@@ -5141,6 +5149,42 @@ export interface LineItem {
     'external_id'?: string | null;
 }
 /**
+ *   knownName  firstName  lastName  email  status  externalId
+ * export
+ * @enum {string}
+ */
+
+export const ListOfSortFieldsForContact = {
+    /**
+    * 
+    */
+    KnownName: 'knownName',
+    /**
+    * 
+    */
+    FirstName: 'firstName',
+    /**
+    * 
+    */
+    LastName: 'lastName',
+    /**
+    * 
+    */
+    Email: 'email',
+    /**
+    * 
+    */
+    Status: 'status',
+    /**
+    * 
+    */
+    ExternalId: 'externalId'
+} as const;
+
+export type ListOfSortFieldsForContact = typeof ListOfSortFieldsForContact[keyof typeof ListOfSortFieldsForContact];
+
+
+/**
  * 
  * export
  * @interface Location
@@ -6643,6 +6687,36 @@ export interface PaymentCycle {
     'total_entries'?: number;
     /**
      * 
+     * @type {number}
+     * memberof PaymentCycle
+     */
+    'total_success_entries'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycle
+     */
+    'total_failed_entries'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycle
+     */
+    'total_pending_entries'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycle
+     */
+    'total_draft_entries'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycle
+     */
+    'total_returned'?: number;
+    /**
+     * 
      * @type {string}
      * memberof PaymentCycle
      */
@@ -7608,6 +7682,36 @@ export interface PaymentCycleResponse {
     'total_entries'?: number;
     /**
      * 
+     * @type {number}
+     * memberof PaymentCycleResponse
+     */
+    'total_success_entries'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycleResponse
+     */
+    'total_failed_entries'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycleResponse
+     */
+    'total_pending_entries'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycleResponse
+     */
+    'total_draft_entries'?: number;
+    /**
+     * 
+     * @type {number}
+     * memberof PaymentCycleResponse
+     */
+    'total_returned'?: number;
+    /**
+     * 
      * @type {string}
      * memberof PaymentCycleResponse
      */
@@ -7692,7 +7796,7 @@ export type PaymentCycleSortFields = typeof PaymentCycleSortFields[keyof typeof 
 
 
 /**
- *   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
+ *   draft  locked  processing  invoicing  cancelled  completed  partiallyCompleted  failed
  * export
  * @enum {string}
  */
@@ -7725,7 +7829,7 @@ export const PaymentCycleStatus = {
     /**
     * 
     */
-    CompletedWithErrors: 'completedWithErrors',
+    PartiallyCompleted: 'partiallyCompleted',
     /**
     * 
     */
@@ -16343,13 +16447,15 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * summary List contacts
          * @param {boolean} [includeSelf] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contactsGETList: async (includeSelf?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contactsGETList: async (includeSelf?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/contacts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16375,6 +16481,14 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
 
             if (includeSelf !== undefined) {
                 localVarQueryParameter['include_self'] = includeSelf;
+            }
+
+            if (sortByFieldName !== undefined) {
+                localVarQueryParameter['sort_by_field_name'] = sortByFieldName;
+            }
+
+            if (sortByAscending !== undefined) {
+                localVarQueryParameter['sort_by_ascending'] = sortByAscending;
             }
 
             if (limit !== undefined) {
@@ -16661,20 +16775,22 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {string} [term] The search term or keyword
          * @param {string} [externalId] 
          * @param {string} [sinceUTC] 
-         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook
+         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook  function
          * @param {boolean} [includeAlias] 
          * @param {boolean} [includeContacts] 
          * @param {boolean} [includeRequest] 
          * @param {Array<ContactStatusPersona>} [contactStatus] 
          * @param {Array<string>} [roles] 
          * @param {boolean} [includeCounts] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contactsSearch: async (term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contactsSearch: async (term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/contacts/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16738,6 +16854,14 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
 
             if (includeCounts !== undefined) {
                 localVarQueryParameter['IncludeCounts'] = includeCounts;
+            }
+
+            if (sortByFieldName !== undefined) {
+                localVarQueryParameter['sort_by_field_name'] = sortByFieldName;
+            }
+
+            if (sortByAscending !== undefined) {
+                localVarQueryParameter['sort_by_ascending'] = sortByAscending;
             }
 
             if (limit !== undefined) {
@@ -17205,13 +17329,15 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * summary List requests
          * @param {boolean} [includeSelf] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        requestsGETList: async (includeSelf?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        requestsGETList: async (includeSelf?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/contacts/request`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -17237,6 +17363,14 @@ export const ContactsApiAxiosParamCreator = function (configuration?: Configurat
 
             if (includeSelf !== undefined) {
                 localVarQueryParameter['include_self'] = includeSelf;
+            }
+
+            if (sortByFieldName !== undefined) {
+                localVarQueryParameter['sort_by_field_name'] = sortByFieldName;
+            }
+
+            if (sortByAscending !== undefined) {
+                localVarQueryParameter['sort_by_ascending'] = sortByAscending;
             }
 
             if (limit !== undefined) {
@@ -17343,14 +17477,16 @@ export const ContactsApiFp = function(configuration?: Configuration) {
          * 
          * summary List contacts
          * @param {boolean} [includeSelf] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contactsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contactsGETList(includeSelf, limit, page, userId, options);
+        async contactsGETList(includeSelf?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.contactsGETList(includeSelf, sortByFieldName, sortByAscending, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContactsApi.contactsGETList']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -17432,21 +17568,23 @@ export const ContactsApiFp = function(configuration?: Configuration) {
          * @param {string} [term] The search term or keyword
          * @param {string} [externalId] 
          * @param {string} [sinceUTC] 
-         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook
+         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook  function
          * @param {boolean} [includeAlias] 
          * @param {boolean} [includeContacts] 
          * @param {boolean} [includeRequest] 
          * @param {Array<ContactStatusPersona>} [contactStatus] 
          * @param {Array<string>} [roles] 
          * @param {boolean} [includeCounts] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, limit, page, userId, options);
+        async contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, sortByFieldName, sortByAscending, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContactsApi.contactsSearch']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -17565,14 +17703,16 @@ export const ContactsApiFp = function(configuration?: Configuration) {
          * 
          * summary List requests
          * @param {boolean} [includeSelf] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async requestsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.requestsGETList(includeSelf, limit, page, userId, options);
+        async requestsGETList(includeSelf?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactInfoListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.requestsGETList(includeSelf, sortByFieldName, sortByAscending, limit, page, userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContactsApi.requestsGETList']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -17643,14 +17783,16 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
          * 
          * summary List contacts
          * @param {boolean} [includeSelf] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contactsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
-            return localVarFp.contactsGETList(includeSelf, limit, page, userId, options).then((request) => request(axios, basePath));
+        contactsGETList(includeSelf?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
+            return localVarFp.contactsGETList(includeSelf, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -17714,21 +17856,23 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
          * @param {string} [term] The search term or keyword
          * @param {string} [externalId] 
          * @param {string} [sinceUTC] 
-         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook
+         * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook  function
          * @param {boolean} [includeAlias] 
          * @param {boolean} [includeContacts] 
          * @param {boolean} [includeRequest] 
          * @param {Array<ContactStatusPersona>} [contactStatus] 
          * @param {Array<string>} [roles] 
          * @param {boolean} [includeCounts] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
-            return localVarFp.contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, limit, page, userId, options).then((request) => request(axios, basePath));
+        contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
+            return localVarFp.contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * avatar_id could be tenant.id, contact.id, work.id, project.id, team.id, etc
@@ -17826,14 +17970,16 @@ export const ContactsApiFactory = function (configuration?: Configuration, baseP
          * 
          * summary List requests
          * @param {boolean} [includeSelf] 
+         * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+         * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
          * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
          * @param {number} [page] 1-based page index for paginated results
          * @param {string} [userId] The user id to operate on their behalf (tenants only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        requestsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
-            return localVarFp.requestsGETList(includeSelf, limit, page, userId, options).then((request) => request(axios, basePath));
+        requestsGETList(includeSelf?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContactInfoListResponse> {
+            return localVarFp.requestsGETList(includeSelf, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -17911,6 +18057,8 @@ export class ContactsApi extends BaseAPI {
      * 
      * summary List contacts
      * @param {boolean} [includeSelf] 
+     * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+     * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -17918,8 +18066,8 @@ export class ContactsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof ContactsApi
      */
-    public contactsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return ContactsApiFp(this.configuration).contactsGETList(includeSelf, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public contactsGETList(includeSelf?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).contactsGETList(includeSelf, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -17994,13 +18142,15 @@ export class ContactsApi extends BaseAPI {
      * @param {string} [term] The search term or keyword
      * @param {string} [externalId] 
      * @param {string} [sinceUTC] 
-     * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook
+     * @param {AccessPerspective} [accessPerspective]   none  self  collaborators  all  invite  admin  webHook  function
      * @param {boolean} [includeAlias] 
      * @param {boolean} [includeContacts] 
      * @param {boolean} [includeRequest] 
      * @param {Array<ContactStatusPersona>} [contactStatus] 
      * @param {Array<string>} [roles] 
      * @param {boolean} [includeCounts] 
+     * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+     * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -18008,8 +18158,8 @@ export class ContactsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof ContactsApi
      */
-    public contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return ContactsApiFp(this.configuration).contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public contactsSearch(term?: string, externalId?: string, sinceUTC?: string, accessPerspective?: AccessPerspective, includeAlias?: boolean, includeContacts?: boolean, includeRequest?: boolean, contactStatus?: Array<ContactStatusPersona>, roles?: Array<string>, includeCounts?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).contactsSearch(term, externalId, sinceUTC, accessPerspective, includeAlias, includeContacts, includeRequest, contactStatus, roles, includeCounts, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -18120,6 +18270,8 @@ export class ContactsApi extends BaseAPI {
      * 
      * summary List requests
      * @param {boolean} [includeSelf] 
+     * @param {ListOfSortFieldsForContact} [sortByFieldName] The field to sort by  knownName  firstName  lastName  email  status  externalId
+     * @param {boolean} [sortByAscending] Whether the list will be sorted in ascending order. Default value is true
      * @param {number} [limit] A limit of the number of objects to be returned for the next page, between 1 and 100.  The default is 25
      * @param {number} [page] 1-based page index for paginated results
      * @param {string} [userId] The user id to operate on their behalf (tenants only)
@@ -18127,8 +18279,8 @@ export class ContactsApi extends BaseAPI {
      * @throws {RequiredError}
      * memberof ContactsApi
      */
-    public requestsGETList(includeSelf?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
-        return ContactsApiFp(this.configuration).requestsGETList(includeSelf, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
+    public requestsGETList(includeSelf?: boolean, sortByFieldName?: ListOfSortFieldsForContact, sortByAscending?: boolean, limit?: number, page?: number, userId?: string, options?: RawAxiosRequestConfig) {
+        return ContactsApiFp(this.configuration).requestsGETList(includeSelf, sortByFieldName, sortByAscending, limit, page, userId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -23268,7 +23420,7 @@ export const PaymentCyclesApiAxiosParamCreator = function (configuration?: Confi
          * 
          * summary Retrieve a list of payments cycles
          * @param {FeeDirection} [feeDirection] Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
-         * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
+         * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  partiallyCompleted  failed
          * @param {string} [name] 
          * @param {string} [greaterThanPaymentDate] 
          * @param {PaymentCycleSortFields} [sortByFieldName] The field to sort by  createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
@@ -23707,7 +23859,7 @@ export const PaymentCyclesApiFp = function(configuration?: Configuration) {
          * 
          * summary Retrieve a list of payments cycles
          * @param {FeeDirection} [feeDirection] Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
-         * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
+         * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  partiallyCompleted  failed
          * @param {string} [name] 
          * @param {string} [greaterThanPaymentDate] 
          * @param {PaymentCycleSortFields} [sortByFieldName] The field to sort by  createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
@@ -23900,7 +24052,7 @@ export const PaymentCyclesApiFactory = function (configuration?: Configuration, 
          * 
          * summary Retrieve a list of payments cycles
          * @param {FeeDirection} [feeDirection] Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
-         * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
+         * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  partiallyCompleted  failed
          * @param {string} [name] 
          * @param {string} [greaterThanPaymentDate] 
          * @param {PaymentCycleSortFields} [sortByFieldName] The field to sort by  createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
@@ -24096,7 +24248,7 @@ export class PaymentCyclesApi extends BaseAPI {
      * 
      * summary Retrieve a list of payments cycles
      * @param {FeeDirection} [feeDirection] Defines the direction in which fees are charged.  default (Use the platform default fee direction which is to the Payee)  payer (Fees are charged to the Payer)  payee (Fees are charged to the Payee)  split (Fees are split equally between Payer and Payee.   Any remaineder is paid by the Payee)
-     * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  completedWithErrors  failed
+     * @param {PaymentCycleStatus} [status]   draft  locked  processing  invoicing  cancelled  completed  partiallyCompleted  failed
      * @param {string} [name] 
      * @param {string} [greaterThanPaymentDate] 
      * @param {PaymentCycleSortFields} [sortByFieldName] The field to sort by  createdDate  paymentDate  recipientsCount  amountSent  amountPaid  status  memo
@@ -28307,7 +28459,7 @@ export const PushNotificationsApiAxiosParamCreator = function (configuration?: C
     return {
         /**
          * 
-         * summary delete device registration
+         * summary Delete device registration
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28456,7 +28608,7 @@ export const PushNotificationsApiAxiosParamCreator = function (configuration?: C
         },
         /**
          * 
-         * summary 
+         * summary Delete by username
          * @param {string} userName 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28511,7 +28663,7 @@ export const PushNotificationsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * summary delete device registration
+         * summary Delete device registration
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28553,7 +28705,7 @@ export const PushNotificationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * summary 
+         * summary Delete by username
          * @param {string} userName 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28576,7 +28728,7 @@ export const PushNotificationsApiFactory = function (configuration?: Configurati
     return {
         /**
          * 
-         * summary delete device registration
+         * summary Delete device registration
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28609,7 +28761,7 @@ export const PushNotificationsApiFactory = function (configuration?: Configurati
         },
         /**
          * 
-         * summary 
+         * summary Delete by username
          * @param {string} userName 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28629,7 +28781,7 @@ export const PushNotificationsApiFactory = function (configuration?: Configurati
 export class PushNotificationsApi extends BaseAPI {
     /**
      * 
-     * summary delete device registration
+     * summary Delete device registration
      * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -28668,7 +28820,7 @@ export class PushNotificationsApi extends BaseAPI {
 
     /**
      * 
-     * summary 
+     * summary Delete by username
      * @param {string} userName 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

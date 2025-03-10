@@ -26,12 +26,32 @@ describe("ApiError Tests", () => {
     it("It should have status = -1 and statusText = empty string when values are not present in AxiosError", async () => {
         const error = new AxiosError("This is an error");
         const config: InternalAxiosRequestConfig = {headers: new AxiosHeaders()};
-        error.response = {data: "data", config: config, headers: config.headers, status: 400, statusText: "broken"};
+        error.response = {data: "this is the data error message", config: config, headers: config.headers, status: 400, statusText: "broken"};
 
         const apiError = MozaicError.create(error);
 
         expect(apiError.status).toBe(-1);
-        expect(apiError.message).toBe("This is an error: broken, data");
+        expect(apiError.message).toBe("This is an error: broken, this is the data error message");
+        expect(apiError.rawError).toEqual(error);
+    });
+
+    it("It should have status = -1 and all statuses displayed from response status section in AxiosError", async () => {
+        const error = new AxiosError("This is an error");
+        const config: InternalAxiosRequestConfig = { headers: new AxiosHeaders() };
+        error.response = {
+            data: {
+                errors: {
+                    Status: [
+                        "This is error 1",
+                        "This is error 2"
+                    ]
+                }
+            }, config: config, headers: config.headers, status: 400, statusText: "broken" };
+
+        const apiError = MozaicError.create(error);
+
+        expect(apiError.status).toBe(-1);
+        expect(apiError.message).toBe("This is an error: broken, This is error 1, This is error 2");
         expect(apiError.rawError).toEqual(error);
     });
 

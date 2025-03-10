@@ -62,6 +62,11 @@ export class MozaicError extends Error {
                                 message += ", " + value.ErrorMessage;
                         });
                     }
+                    else if (obj.response.data.errors !== undefined && obj.response.data.errors.Status !== undefined && Array.isArray(obj.response.data.errors.Status) == true) {
+                        obj.response.data.errors.Status.forEach((value: any, index: number) => {
+                            message += ", " + value;
+                        });
+                    }
                     else {
                         message += ", " + obj.response.data;
                     }
@@ -78,7 +83,7 @@ export class MozaicError extends Error {
 
         const response = obj as AxiosResponse;
 
-        // If it is a real AxiosRespose, then these should be set at a minimum.
+        // If it is a real AxiosResponse, then these should be set at a minimum.
         if (response.status !== undefined && response.data !== undefined)
             return new MozaicError(response.status, response.data, undefined, obj);
 

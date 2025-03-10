@@ -82,6 +82,8 @@ export class Contacts extends BaseResource {
             contactStatus,
             undefined,
             undefined,
+            undefined,
+            undefined,
             limit,
             page,
             undefined,

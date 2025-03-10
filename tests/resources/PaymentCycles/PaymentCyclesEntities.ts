@@ -131,7 +131,7 @@ export class PaymentCyclesEntities {
 
         switch (status) {
             case 'completed':
-            case 'completedWithErrors':
+            case 'partiallyCompleted':
             case 'invoicing':
             case 'processing':
                 includeInvoiceId = true;
